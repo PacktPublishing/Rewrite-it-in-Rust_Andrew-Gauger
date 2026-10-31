@@ -1,6 +1,6 @@
 //! The first port against Access, on every return it can take.
 
-#[path = "../../../../part 2/crate/cairn-core/tests/common/mod.rs"]
+#[path = "../../../crate/cairn-core/tests/common/mod.rs"]
 mod common;
 
 use first_route::{route, ReturnFacts};

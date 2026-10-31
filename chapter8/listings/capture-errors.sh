@@ -12,7 +12,7 @@ capture() { # name, sed script
     cp -R "$here/first-route" "$work/first-route"
     rm -rf "$work/first-route/target"
     sed -i '' "$2" "$work/first-route/src/lib.rs"
-    sed -i '' 's#path = "../../../part 2#path = "'"$here"'/../../part 2#' "$work/first-route/Cargo.toml"
+    sed -i '' 's#path = "../../crate#path = "'"$here"'/../crate#' "$work/first-route/Cargo.toml"
     (cd "$work/first-route" && cargo build -q 2>&1 | sed '/^warning/,/^$/d') > "$out/$1" || true
 }
 

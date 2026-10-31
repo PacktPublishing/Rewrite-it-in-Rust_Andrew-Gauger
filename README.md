@@ -17,7 +17,7 @@ Every benchmark, test result, and compiler error printed in the book came from t
 | 5 | Painting the Heatmap Onto a Moving Map | [chapter5](chapter5/): painting the canvas from Rust with `web-sys`, plus the paint benchmark |
 | 6 | The File Nobody Could Touch | [chapter6](chapter6/): the naive "just export it" run against PostgreSQL |
 | 7 | Reading the Ruins | [chapter7](chapter7/): rule inventory, interview data, and the AI test-drafting harness |
-| 8 | Modeling the Rules in Rust | [chapter8](chapter8/) and [`part 2/crate`](part%202/crate/): the `cairn-core` crate |
+| 8 | Modeling the Rules in Rust | [chapter8](chapter8/): the `cairn-core` crate as of this chapter, in [`chapter8/crate`](chapter8/crate/) |
 
 ## The Part II database
 

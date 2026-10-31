@@ -8,7 +8,7 @@ description = "Chapter 8's first, literal port of qryRMARouting: days as a plain
 [workspace]
 
 [dependencies]
-cairn-core = { path = "../../../part 2/crate/cairn-core" }
+cairn-core = { path = "../../crate/cairn-core" }
 
 [dev-dependencies]
 csv = "1.4"
