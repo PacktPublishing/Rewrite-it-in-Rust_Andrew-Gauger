@@ -20,3 +20,6 @@ __pycache__/
 .DS_Store
 ~$*
 *.laccdb
+
+# Local Postgres cluster made by part 2/crate/dev-db.sh
+.pgdata/

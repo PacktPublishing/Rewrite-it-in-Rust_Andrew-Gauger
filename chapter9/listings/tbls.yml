@@ -1,0 +1,11 @@
+# tbls settings for Figure 9.3: the schema the migrations build, drawn
+# with only the key columns so it reads at page width.
+dsn: postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5433/cairn?sslmode=disable
+exclude:
+  - public.seaql_migrations
+er:
+  format: png
+  hideDef: true
+  showColumnTypes:
+    related: true
+    primary: true

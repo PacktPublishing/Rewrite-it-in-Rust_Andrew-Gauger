@@ -1,0 +1,43 @@
+digraph "cairn" {
+  // Config
+  graph [rankdir=TB, layout=dot, fontname="Arial"];
+  node [shape=record, fontsize=14, margin=0.6, fontname="Arial"];
+  edge [fontsize=10, labelfloat=false, splines=none, fontname="Arial"];
+
+  // Tables
+  "public.sales_reps" [shape=none, label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="6">
+                 <tr><td bgcolor="#EFEFEF"><font face="Arial Bold" point-size="18">public.sales_reps</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#666666">[BASE TABLE]</font></td></tr>
+                 <tr><td port="id" align="left">id <font color="#666666">[integer]</font></td></tr>
+              </table>>];
+  "public.customers" [shape=none, label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="6">
+                 <tr><td bgcolor="#EFEFEF"><font face="Arial Bold" point-size="18">public.customers</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#666666">[BASE TABLE]</font></td></tr>
+                 <tr><td port="id" align="left">id <font color="#666666">[integer]</font></td></tr>
+                 <tr><td port="assigned_rep_id" align="left">assigned_rep_id <font color="#666666">[integer]</font></td></tr>
+              </table>>];
+  "public.products" [shape=none, label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="6">
+                 <tr><td bgcolor="#EFEFEF"><font face="Arial Bold" point-size="18">public.products</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#666666">[BASE TABLE]</font></td></tr>
+                 <tr><td port="id" align="left">id <font color="#666666">[integer]</font></td></tr>
+              </table>>];
+  "public.orders" [shape=none, label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="6">
+                 <tr><td bgcolor="#EFEFEF"><font face="Arial Bold" point-size="18">public.orders</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#666666">[BASE TABLE]</font></td></tr>
+                 <tr><td port="id" align="left">id <font color="#666666">[integer]</font></td></tr>
+                 <tr><td port="customer_id" align="left">customer_id <font color="#666666">[integer]</font></td></tr>
+                 <tr><td port="rep_id" align="left">rep_id <font color="#666666">[integer]</font></td></tr>
+              </table>>];
+  "public.rmas" [shape=none, label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="6">
+                 <tr><td bgcolor="#EFEFEF"><font face="Arial Bold" point-size="18">public.rmas</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#666666">[BASE TABLE]</font></td></tr>
+                 <tr><td port="customer_id" align="left">customer_id <font color="#666666">[integer]</font></td></tr>
+                 <tr><td port="order_id" align="left">order_id <font color="#666666">[integer]</font></td></tr>
+                 <tr><td port="product_id" align="left">product_id <font color="#666666">[integer]</font></td></tr>
+                 <tr><td port="opened_by_rep_id" align="left">opened_by_rep_id <font color="#666666">[integer]</font></td></tr>
+              </table>>];
+
+  // Relations
+  "public.customers":"assigned_rep_id" -> "public.sales_reps":"id" [dir=back, arrowtail=crow,  taillabel=<<table cellpadding="5" border="0" cellborder="0"><tr><td></td></tr></table>>];
+  "public.orders":"rep_id" -> "public.sales_reps":"id" [dir=back, arrowtail=crow,  taillabel=<<table cellpadding="5" border="0" cellborder="0"><tr><td></td></tr></table>>];
+  "public.orders":"customer_id" -> "public.customers":"id" [dir=back, arrowtail=crow,  taillabel=<<table cellpadding="5" border="0" cellborder="0"><tr><td></td></tr></table>>];
+  "public.rmas":"opened_by_rep_id" -> "public.sales_reps":"id" [dir=back, arrowtail=crow,  taillabel=<<table cellpadding="5" border="0" cellborder="0"><tr><td></td></tr></table>>];
+  "public.rmas":"customer_id" -> "public.customers":"id" [dir=back, arrowtail=crow,  taillabel=<<table cellpadding="5" border="0" cellborder="0"><tr><td></td></tr></table>>];
+  "public.rmas":"product_id" -> "public.products":"id" [dir=back, arrowtail=crow,  taillabel=<<table cellpadding="5" border="0" cellborder="0"><tr><td></td></tr></table>>];
+  "public.rmas":"order_id" -> "public.orders":"id" [dir=back, arrowtail=crow,  taillabel=<<table cellpadding="5" border="0" cellborder="0"><tr><td></td></tr></table>>];
+}

@@ -1,0 +1,6 @@
+INSERT INTO rmas (customer_id, order_id, product_id, reason,
+                  description)
+VALUES (766, 14237, 11, 'Failed in Warranty',
+        'Battery drains in under a month.');
+ERROR:  insert or update on table "rmas" violates foreign key constraint "fk_rmas_order"
+DETAIL:  Key (order_id)=(14237) is not present in table "orders".

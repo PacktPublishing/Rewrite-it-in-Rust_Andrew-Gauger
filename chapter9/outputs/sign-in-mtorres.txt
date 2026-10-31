@@ -1,0 +1,8 @@
+Opening the browser to sign in...
+Open this address in a browser:
+http://localhost:3000/auth/start?port=49914&challenge=CRM-GPTwfvie4ohWQ02pyNgFbGubqpEG_0agYDLjtQ8
+Signed in as Maya Torres (rep_348bddea6de340c5b0405d2ed213878e), until 2026-10-31 22:44:12.216883+00
+Postgres says current_user = rep_348bddea6de340c5b0405d2ed213878e (Maya Torres)
+Waiting 120 seconds for the login to expire...
+The open connection: 28000 Cairn session for rep_348bddea6de340c5b0405d2ed213878e has expired
+A new login: 28P01 password authentication failed for user "rep_348bddea6de340c5b0405d2ed213878e"

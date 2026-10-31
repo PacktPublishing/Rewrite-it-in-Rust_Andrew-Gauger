@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+members = ["cairn-auth","cairn-core", "migration"]
+
+[workspace.package]
+edition = "2021"
+publish = false
