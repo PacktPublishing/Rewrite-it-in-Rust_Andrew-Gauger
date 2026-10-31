@@ -1,0 +1,59 @@
+Chapter 8 Windows capture: V1's manufacturer request with a quote mark in the customer name
+Run 2026-10-30, 16:49, on the Windows machine (GTX1070).
+
+Versions
+- Access: Microsoft Access for Microsoft 365, 64-bit, 16.0.20326.20232, Current Channel.
+  This came from Application.Version/Build and the ClickToRun registry key, not from
+  File > Account > About Access, so the "Version 2xxx" label isn't recorded.
+- Mock manufacturer: Windows PowerShell 5.1.19041.6456 (Desktop), not PowerShell 7.
+  The parse-error text below is the 5.1 wording.
+
+Result: it went as described
+- The copy was made from part 2\CairnSystems1.accdb (MD5 AB2D3755032AD6E015EA3C9E5A25F203,
+  unchanged after the run). Customer 3 was renamed from "Harlow Manufacturing" to
+  Harlow "Old Mill" Manufacturing, using straight quotes (Chr 34).
+- Send to Manufacturer on SO-2026-0204 (OrderID 4) produced the 400 dialog.
+  Retry sent the same body again and got the same 400. Cancel closed it.
+- The mock created no order. Its ledger file was never written, because it only writes
+  one when an order is created.
+- ManufacturerOrders in the returned copy has two rows, Attempt 1 and Attempt 2. Both
+  have HttpStatus 400, no ManufacturerRef, no ErrorText, and an identical
+  243-character RequestBody. The Mfr Order box on the form stays blank.
+- The second dialog was byte-for-byte the same as the first (same text, and an identical
+  screenshot), so only one is included.
+
+Worth noting for the chapter
+- The dialog cuts the manufacturer's answer off at ..."name":\"Ha. That's VBA's
+  Left(resp, 200), so the user never sees the part of the request that broke.
+- The mock's console shows only "400 malformed JSON". Its transcript also logged the
+  parser's own error, which never appears on screen:
+    Invalid object passed in, ':' or '}' expected. (81): {"dealer":"CAIRN",...,"shipTo":{"name":"Harlow "Old Mill" Manufacturing",...}
+  Position 81 falls on "Old", just after the quote that ends the name string early
+  (the O if the parser counts from 1, the l if from 0).
+- The response body Access stored escapes the apostrophes as '. That's
+  ConvertTo-Json in PowerShell 5.1 encoding the parser's message.
+
+How it was run (differences from the steps)
+- Driven by automation (Access COM plus window messages), not by hand. No keystrokes
+  were sent. Every step happened in the real UI of the copy:
+  - The sign-in form, with pshah / Cairn!2020 filled in, was submitted through its
+    own LoginCheck.
+  - The rename went through the Customers form, and the record was saved there.
+  - The send ran the form's own SendManufacturerOrder.
+  - Retry and Cancel were pressed on the real message box.
+- No yellow Enable Content bar appeared: the automation opens the file with macros
+  enabled.
+- mfr-quote-mark-dialog.txt wasn't copied with Ctrl+C. The message text was read from the
+  dialog's own window (WM_GETTEXT, exact characters, CRLFs kept) and laid out the way
+  Ctrl+C on a message box lays it out. The title "Cairn Systems" comes from the
+  MsgBox call and is visible in the screenshot.
+- The mock ran in normal mode with no options except -Ledger, which pointed at a temp
+  file so nothing got written into part 2\MockManufacturer. That path appears in the
+  mock's first line, in both the screenshot and the .txt. It was stopped with
+  POST /control?mode=stop instead of Ctrl+C.
+- mfr-quote-mark-mock.txt holds the console lines as they appear on screen, taken from a
+  transcript of that console.
+- The copy was made at part 2\CairnSystems1_quote-mark.accdb as described, then moved
+  (not copied) here after Access closed, so part 2 has no leftover copy.
+- chapter8\ didn't exist at the top of the project folder on this machine (only
+  part 2\chapter8, the AI workspace), so it was created for this.

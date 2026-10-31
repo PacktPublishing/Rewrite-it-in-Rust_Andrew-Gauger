@@ -1,0 +1,1 @@
+SELECT ol.OrderLineID, ol.OrderID, ol.ProductID, p.SKU, p.Category, Nz(ol.LineDescription, p.ProductName) AS ItemDescription, ol.Quantity, ol.UnitPrice, ol.DiscountPct, Round(ol.Quantity*ol.UnitPrice*(1-ol.DiscountPct),2) AS LineTotal, ol.Quantity*p.UnitCost AS LineCost, ol.SerialNumbers FROM OrderLines AS ol INNER JOIN Products AS p ON ol.ProductID = p.ProductID;

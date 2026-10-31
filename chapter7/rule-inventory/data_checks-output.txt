@@ -1,0 +1,16 @@
+D01/D02 status values as stored
+  quotes:    {'Accepted': 10137, 'Sent': 81, 'Draft': 47, 'Expired': 4097, 'Declined': 5006, 'On Hold': 12, "'Draft'": 9}
+  orders:    {'Invoiced': 119, 'Shipped': 56, 'In Production': 79, 'Open': 76, 'Closed': 12911, 'Cancelled': 259, 'Back Order': 31}
+  customers: {'Active': 517, 'Prospect': 206, 'Inactive': 273, "'Prospect'": 4}
+R19 payment terms as stored: {'Net 45': 136, 'Net 30': 646, 'Due on Receipt': 97, 'Net 15': 104, 'Net 60': 17}
+P01 pricing codes in customer Notes:
+  \[DIST-15\]: 17
+  (?i)dist 15%: 26
+  (?i)net 60 ok: 16
+  \[GOV\]: 9
+  (?i)gov pricing: 2
+  KEY ACCT: 6
+  customers with any code: 76
+P02 Net 60:
+  terms say Net 60: 17; notes say 'net 60 ok': 16; both: 0
+  terms of the customers whose notes say 'net 60 ok': {'Net 30': 10, 'Net 15': 3, 'Net 45': 1, 'Due on Receipt': 2}

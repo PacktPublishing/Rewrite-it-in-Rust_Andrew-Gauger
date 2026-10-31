@@ -1,0 +1,7 @@
+V1 sends:
+{"dealer":"CAIRN","po":"SO-2026-1226","customerPo":"","shipTo":{"name":"The "Original" Bakery","address":"6503 Enterprise Rd","city":"Lubbock","state":"TX","zip":"76161"},"lines":[{"sku":"CS-TH100","qty":385},{"sku":"CS-GW400","qty":8}]}
+
+the manufacturer can't read it: expected `,` or `}` at line 1 column 78
+
+cairn-core sends:
+{"correlationId":"1704f6ce-e953-4808-8ab3-f10d05201610","dealer":"CAIRN","po":"SO-2026-1226","customerPo":"","shipTo":{"name":"The \"Original\" Bakery","address":"6503 Enterprise Rd","city":"Lubbock","state":"TX","zip":"76161"},"lines":[{"sku":"CS-TH100","qty":385},{"sku":"CS-GW400","qty":8}]}

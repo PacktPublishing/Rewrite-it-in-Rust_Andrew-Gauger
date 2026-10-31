@@ -1,0 +1,1119 @@
+   Compiling cairn-ai-tests v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/chapter7/ai-tests/crate)
+warning: unused variable: `line`
+  --> tests/u038_query_qryorderlines.rs:27:21
+   |
+27 | fn item_description(line: &Line, product: &Product) -> String {
+   |                     ^^^^ help: if this is intentional, prefix it with an underscore: `_line`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `product`
+  --> tests/u038_query_qryorderlines.rs:27:34
+   |
+27 | fn item_description(line: &Line, product: &Product) -> String {
+   |                                  ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_product`
+
+warning: unused variable: `line`
+  --> tests/u038_query_qryorderlines.rs:30:15
+   |
+30 | fn line_total(line: &Line) -> f64 {
+   |               ^^^^ help: if this is intentional, prefix it with an underscore: `_line`
+
+warning: unused variable: `line`
+  --> tests/u038_query_qryorderlines.rs:33:14
+   |
+33 | fn line_cost(line: &Line, product: &Product) -> f64 {
+   |              ^^^^ help: if this is intentional, prefix it with an underscore: `_line`
+
+warning: unused variable: `product`
+  --> tests/u038_query_qryorderlines.rs:33:27
+   |
+33 | fn line_cost(line: &Line, product: &Product) -> f64 {
+   |                           ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_product`
+
+warning: unused variable: `line`
+  --> tests/u038_query_qryorderlines.rs:36:25
+   |
+36 | fn join_line_to_product(line: &Line, products: &[Product]) -> Option<Product> {
+   |                         ^^^^ help: if this is intentional, prefix it with an underscore: `_line`
+
+warning: unused variable: `products`
+  --> tests/u038_query_qryorderlines.rs:36:38
+   |
+36 | fn join_line_to_product(line: &Line, products: &[Product]) -> Option<Product> {
+   |                                      ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_products`
+
+warning: fields `product_id`, `line_description`, `quantity`, `unit_price`, and `discount_pct` are never read
+  --> tests/u038_query_qryorderlines.rs:12:5
+   |
+11 | struct Line {
+   |        ---- fields in this struct
+12 |     product_id: i64,
+   |     ^^^^^^^^^^
+13 |     line_description: Option<String>,
+   |     ^^^^^^^^^^^^^^^^
+14 |     quantity: i64,
+   |     ^^^^^^^^
+15 |     unit_price: f64,
+   |     ^^^^^^^^^^
+16 |     discount_pct: f64,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `Line` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `product_id`, `product_name`, and `unit_cost` are never read
+  --> tests/u038_query_qryorderlines.rs:21:5
+   |
+20 | struct Product {
+   |        ------- fields in this struct
+21 |     product_id: i64,
+   |     ^^^^^^^^^^
+22 |     product_name: String,
+   |     ^^^^^^^^^^^^
+23 |     unit_cost: f64,
+   |     ^^^^^^^^^
+   |
+   = note: `Product` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+
+warning: `cairn-ai-tests` (test "u038_query_qryorderlines") generated 9 warnings (run `cargo fix --test "u038_query_qryorderlines" -p cairn-ai-tests` to apply 7 suggestions)
+error[E0433]: cannot find module or crate `decimal` in this scope
+  --> tests/u037_query_qryorderpayments.rs:16:5
+   |
+16 | use decimal::prelude::PrimitiveDecimal;
+   |     ^^^^^^^ use of unresolved module or unlinked crate `decimal`
+   |
+   = help: if you wanted to use a crate named `decimal`, use `cargo add decimal` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `chrono`
+  --> tests/u037_query_qryorderpayments.rs:15:5
+   |
+15 | use chrono::NaiveDate;
+   |     ^^^^^^ use of unresolved module or unlinked crate `chrono`
+   |
+   = help: if you wanted to use a crate named `chrono`, use `cargo add chrono` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `decimal`
+  --> tests/u037_query_qryorderpayments.rs:17:5
+   |
+17 | use decimal::Decimal;
+   |     ^^^^^^^ use of unresolved module or unlinked crate `decimal`
+   |
+   = help: if you wanted to use a crate named `decimal`, use `cargo add decimal` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `chrono`
+  --> tests/u021_query_qryrmarouting.rs:16:5
+   |
+16 | use chrono::NaiveDate;
+   |     ^^^^^^ use of unresolved module or unlinked crate `chrono`
+   |
+   = help: if you wanted to use a crate named `chrono`, use `cargo add chrono` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `crate::cairn_reports`
+  --> tests/u015_vba_cairnreports_receiptpaidtodate.rs:24:12
+   |
+24 | use crate::cairn_reports::ReceiptPaidToDate;
+   |            ^^^^^^^^^^^^^ could not find `cairn_reports` in the crate root
+
+error[E0425]: cannot find function `rma_defaults` in this scope
+  --> tests/u005_vba_cairnforms_rmadefaults.rs:25:20
+   |
+25 |     let (num, _) = rma_defaults(None, None, 42, &[], 2026);
+   |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission_period` in this scope
+  --> tests/u014_vba_cairnreports_commissionperiod.rs:21:16
+   |
+21 |     assert_eq!(commission_period(""), "All dates");
+   |                ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rma_defaults` in this scope
+  --> tests/u005_vba_cairnforms_rmadefaults.rs:32:20
+   |
+32 |     let (num, _) = rma_defaults(
+   |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rma_defaults` in this scope
+  --> tests/u005_vba_cairnforms_rmadefaults.rs:45:20
+   |
+45 |     let (num, _) = rma_defaults(
+   |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rma_defaults` in this scope
+  --> tests/u005_vba_cairnforms_rmadefaults.rs:59:20
+   |
+59 |     let (num, _) = rma_defaults(None, None, 42, &["RMA-2025-0099"], 2026);
+   |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rma_defaults` in this scope
+  --> tests/u005_vba_cairnforms_rmadefaults.rs:66:20
+   |
+66 |     let (_, rep) = rma_defaults(None, None, 42, &[], 2026);
+   |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission_period` in this scope
+  --> tests/u014_vba_cairnreports_commissionperiod.rs:28:16
+   |
+28 |     assert_eq!(commission_period("March 2025"), "March 2025");
+   |                ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rma_defaults` in this scope
+  --> tests/u005_vba_cairnforms_rmadefaults.rs:73:20
+   |
+73 |     let (_, rep) = rma_defaults(None, Some(7), 42, &[], 2026);
+   |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0432]: unresolved import `crate::db`
+  --> tests/u041_table_orderlines.rs:17:12
+   |
+17 | use crate::db::{
+   |            ^^ could not find `db` in the crate root
+
+error[E0425]: cannot find function `commission_period` in this scope
+  --> tests/u014_vba_cairnreports_commissionperiod.rs:35:16
+   |
+35 |     assert_eq!(commission_period(" "), " ");
+   |                ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rma_defaults` in this scope
+  --> tests/u005_vba_cairnforms_rmadefaults.rs:81:22
+   |
+81 |     let (num, rep) = rma_defaults(None, None, 42, &["RMA-2026-0001"], 2026);
+   |                      ^^^^^^^^^^^^ not found in this scope
+
+For more information about this error, try `rustc --explain E0425`.
+For more information about this error, try `rustc --explain E0432`.
+error[E0425]: cannot find function `rma_route` in this scope
+  --> tests/u021_query_qryrmarouting.rs:19:5
+   |
+19 |     rma_route(r, c, tax, ext, d)
+   |     ^^^^^^^^^ not found in this scope
+
+warning: unused variable: `customerid`
+  --> tests/u031_table_customers.rs:12:20
+   |
+12 | fn assigned_rep_id(customerid: i32) -> Option<i32> {
+   |                    ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_customerid`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `repid`
+  --> tests/u031_table_customers.rs:15:18
+   |
+15 | fn rep_is_active(repid: i32) -> bool {
+   |                  ^^^^^ help: if this is intentional, prefix it with an underscore: `_repid`
+
+warning: unused variable: `customerid`
+  --> tests/u031_table_customers.rs:18:20
+   |
+18 | fn customer_status(customerid: i32) -> String {
+   |                    ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_customerid`
+
+warning: unused variable: `customerid`
+  --> tests/u031_table_customers.rs:21:18
+   |
+21 | fn payment_terms(customerid: i32) -> String {
+   |                  ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_customerid`
+
+warning: unused variable: `customerid`
+  --> tests/u031_table_customers.rs:24:18
+   |
+24 | fn is_tax_exempt(customerid: i32) -> bool {
+   |                  ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_customerid`
+
+error: could not compile `cairn-ai-tests` (test "u015_vba_cairnreports_receiptpaidtodate") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `cairn-ai-tests` (test "u014_vba_cairnreports_commissionperiod") due to 3 previous errors
+error: could not compile `cairn-ai-tests` (test "u005_vba_cairnforms_rmadefaults") due to 7 previous errors
+error[E0425]: cannot find function `days_in_service` in this scope
+  --> tests/u021_query_qryrmarouting.rs:28:16
+   |
+28 |     assert_eq!(days_in_service(opened, ship, order), 374);
+   |                ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `activity_defaults` in this scope
+  --> tests/u004_vba_cairnforms_activitydefaults.rs:50:5
+   |
+50 |     activity_defaults(&mut frm);
+   |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `days_in_service` in this scope
+  --> tests/u021_query_qryrmarouting.rs:36:16
+   |
+36 |     assert_eq!(days_in_service(opened, None, order), 30);
+   |                ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `open_quote_value` in this scope
+  --> tests/u020_query_qryopenquotevalue.rs:74:23
+   |
+74 |     let got = map_of(&open_quote_value(&quotes));
+   |                       ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `activity_defaults` in this scope
+  --> tests/u004_vba_cairnforms_activitydefaults.rs:58:5
+   |
+58 |     activity_defaults(&mut frm);
+   |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `open_quote_value` in this scope
+  --> tests/u020_query_qryopenquotevalue.rs:86:23
+   |
+86 |     let got = map_of(&open_quote_value(&quotes));
+   |                       ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `open_quote_value` in this scope
+   --> tests/u020_query_qryopenquotevalue.rs:106:23
+    |
+106 |     let got = map_of(&open_quote_value(&quotes));
+    |                       ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `activity_defaults` in this scope
+  --> tests/u004_vba_cairnforms_activitydefaults.rs:67:5
+   |
+67 |     activity_defaults(&mut frm);
+   |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `open_quote_value` in this scope
+   --> tests/u020_query_qryopenquotevalue.rs:127:23
+    |
+127 |     let got = map_of(&open_quote_value(&quotes));
+    |                       ^^^^^^^^^^^^^^^^ not found in this scope
+
+Some errors have detailed explanations: E0432, E0433.
+For more information about an error, try `rustc --explain E0432`.
+error[E0425]: cannot find function `open_quote_value` in this scope
+   --> tests/u020_query_qryopenquotevalue.rs:139:23
+    |
+139 |     let got = map_of(&open_quote_value(&quotes));
+    |                       ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `activity_defaults` in this scope
+  --> tests/u004_vba_cairnforms_activitydefaults.rs:77:5
+   |
+77 |     activity_defaults(&mut frm);
+   |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `activity_defaults` in this scope
+  --> tests/u004_vba_cairnforms_activitydefaults.rs:86:5
+   |
+86 |     activity_defaults(&mut frm);
+   |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `open_quote_value` in this scope
+   --> tests/u020_query_qryopenquotevalue.rs:151:23
+    |
+151 |     let got = map_of(&open_quote_value(&quotes));
+    |                       ^^^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u037_query_qryorderpayments") due to 3 previous errors
+error[E0425]: cannot find function `order_number_not_null` in this scope
+  --> tests/u028_table_orders.rs:18:14
+   |
+18 |     assert!(!order_number_not_null(None));
+   |              ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `order_number_not_null` in this scope
+  --> tests/u028_table_orders.rs:19:13
+   |
+19 |     assert!(order_number_not_null(Some("SO-2026-0920")));
+   |             ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u041_table_orderlines") due to 1 previous error
+error[E0425]: cannot find function `order_number_unique` in this scope
+  --> tests/u028_table_orders.rs:29:14
+   |
+29 |     assert!(!order_number_unique("SO-2026-0920", &existing));
+   |              ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `order_number_unique` in this scope
+  --> tests/u028_table_orders.rs:30:13
+   |
+30 |     assert!(order_number_unique("SO-2026-1068", &existing));
+   |             ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `customer_required` in this scope
+  --> tests/u028_table_orders.rs:36:14
+   |
+36 |     assert!(!customer_required(None));
+   |              ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `customer_required` in this scope
+  --> tests/u028_table_orders.rs:37:13
+   |
+37 |     assert!(customer_required(Some(1)));
+   |             ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u004_vba_cairnforms_activitydefaults") due to 5 previous errors
+error: could not compile `cairn-ai-tests` (test "u020_query_qryopenquotevalue") due to 6 previous errors
+error[E0425]: cannot find function `rep_required` in this scope
+  --> tests/u028_table_orders.rs:43:14
+   |
+43 |     assert!(!rep_required(None));
+   |              ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rep_required` in this scope
+  --> tests/u028_table_orders.rs:44:13
+   |
+44 |     assert!(rep_required(Some(1)));
+   |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `days_in_service` in this scope
+   --> tests/u021_query_qryrmarouting.rs:124:16
+    |
+124 |     let days = days_in_service(opened, ship, order);
+    |                ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `contact_optional` in this scope
+  --> tests/u028_table_orders.rs:51:13
+   |
+51 |     assert!(contact_optional(None, &existing));
+   |             ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `contact_optional` in this scope
+  --> tests/u028_table_orders.rs:52:13
+   |
+52 |     assert!(contact_optional(Some(219), &existing));
+   |             ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `contact_optional` in this scope
+  --> tests/u028_table_orders.rs:53:14
+   |
+53 |     assert!(!contact_optional(Some(999_999), &existing));
+   |              ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `quote_optional` in this scope
+  --> tests/u028_table_orders.rs:61:13
+   |
+61 |     assert!(quote_optional(None, &existing));
+   |             ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `quote_optional` in this scope
+  --> tests/u028_table_orders.rs:62:13
+   |
+62 |     assert!(quote_optional(Some(6), &existing));
+   |             ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `quote_optional` in this scope
+  --> tests/u028_table_orders.rs:63:14
+   |
+63 |     assert!(!quote_optional(Some(999_999), &existing));
+   |              ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `default_status` in this scope
+  --> tests/u028_table_orders.rs:69:16
+   |
+69 |     assert_eq!(default_status(None), "Open");
+   |                ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `default_status` in this scope
+  --> tests/u028_table_orders.rs:70:16
+   |
+70 |     assert_eq!(default_status(Some("Shipped")), "Shipped");
+   |                ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0432]: unresolved import `chrono`
+  --> tests/u013_vba_cairnreports_commissioncriteria.rs:21:5
+   |
+21 | use chrono::{Datelike, NaiveDate, NaiveDateTime};
+   |     ^^^^^^ use of unresolved module or unlinked crate `chrono`
+   |
+   = help: if you wanted to use a crate named `chrono`, use `cargo add chrono` to add it to your `Cargo.toml`
+
+Some errors have detailed explanations: E0425, E0432.
+For more information about an error, try `rustc --explain E0425`.
+error[E0425]: cannot find function `default_tax_rate` in this scope
+  --> tests/u028_table_orders.rs:76:16
+   |
+76 |     assert_eq!(default_tax_rate(None), 0.0);
+   |                ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `default_tax_rate` in this scope
+  --> tests/u028_table_orders.rs:77:16
+   |
+77 |     assert_eq!(default_tax_rate(Some(0.0825)), 0.0825);
+   |                ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:21:13
+   |
+21 |     let r = add_contact(None, "Elena", Some("Brooks"), None, None, None, None, true, None);
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:28:13
+   |
+28 |     let r = add_contact(Some(999_999), "Ghost", None, None, None, None, None, true, None);
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `valid_order_status` in this scope
+  --> tests/u028_table_orders.rs:85:17
+   |
+85 |         assert!(valid_order_status(s), "expected {s} to be a valid order status");
+   |                 ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u021_query_qryrmarouting") due to 5 previous errors
+error[E0425]: cannot find function `valid_order_status` in this scope
+  --> tests/u028_table_orders.rs:87:14
+   |
+87 |     assert!(!valid_order_status("Pending"));
+   |              ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_customer` in this scope
+  --> tests/u033_table_contacts.rs:35:13
+   |
+35 |     let c = add_customer(999);
+   |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:36:13
+   |
+36 |     let a = add_contact(Some(c), "Elena", Some("Brooks"), None, None, None, None, true, None);
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:37:13
+   |
+37 |     let b = add_contact(Some(c), "Tom", Some("Reyes"), None, None, None, None, false, None);
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `delete_customer` in this scope
+  --> tests/u033_table_contacts.rs:38:19
+   |
+38 |     let removed = delete_customer(c);
+   |                   ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `contacts_of` in this scope
+  --> tests/u033_table_contacts.rs:40:13
+   |
+40 |     assert!(contacts_of(c).is_empty(), "no contacts may survive the customer's deletion");
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_contact` in this scope
+  --> tests/u033_table_contacts.rs:41:13
+   |
+41 |     assert!(get_contact(a).is_none() && get_contact(b).is_none());
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_contact` in this scope
+  --> tests/u033_table_contacts.rs:41:41
+   |
+41 |     assert!(get_contact(a).is_none() && get_contact(b).is_none());
+   |                                         ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_customer` in this scope
+  --> tests/u033_table_contacts.rs:48:13
+   |
+48 |     let c = add_customer(998);
+   |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:49:14
+   |
+49 |     let id = add_contact(Some(c), "Grace", None, None, None, None, None, true, None)
+   |              ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_contact` in this scope
+  --> tests/u033_table_contacts.rs:51:15
+   |
+51 |     let got = get_contact(id).expect("contact must be retrievable");
+   |               ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_customer` in this scope
+  --> tests/u033_table_contacts.rs:61:13
+   |
+61 |     let c = add_customer(997);
+   |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:62:13
+   |
+62 |     let p = add_contact(Some(c), "Stephanie", Some("Jackson"), None, None, None, None, true, None);
+   |             ^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u028_table_orders") due to 20 previous errors
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:63:5
+   |
+63 |     add_contact(Some(c), "Stephanie", Some("Harris"), None, None, None, None, false, None);
+   |     ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:64:5
+   |
+64 |     add_contact(Some(c), "Eric", None, Some("Operations Manager"), None, None, None, false, None);
+   |     ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `primary_contact` in this scope
+  --> tests/u033_table_contacts.rs:65:16
+   |
+65 |     assert_eq!(primary_contact(c), Some(p), "the single primary contact must be returned");
+   |                ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `contacts_of` in this scope
+  --> tests/u033_table_contacts.rs:66:21
+   |
+66 |     let primaries = contacts_of(c).iter().filter(|k| k.isprimary).count();
+   |                     ^^^^^^^^^^^ not found in this scope
+
+error[E0432]: unresolved import `crate::quotes`
+  --> tests/u027_table_quotes.rs:11:12
+   |
+11 | use crate::quotes::*;
+   |            ^^^^^^ could not find `quotes` in the crate root
+
+error[E0425]: cannot find function `add_customer` in this scope
+  --> tests/u033_table_contacts.rs:73:13
+   |
+73 |     let c = add_customer(996);
+   |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `primary_contact` in this scope
+  --> tests/u033_table_contacts.rs:74:16
+   |
+74 |     assert_eq!(primary_contact(c), None);
+   |                ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_customer` in this scope
+  --> tests/u033_table_contacts.rs:80:13
+   |
+80 |     let c = add_customer(995);
+   |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:81:13
+   |
+81 |     let a = add_contact(Some(c), "Elena", Some("Brooks"), None, None, None, None, true, None);
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:82:13
+   |
+82 |     let b = add_contact(Some(c), "Marcus", Some("Webb"), None, None, None, None, false, None);
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_customer` in this scope
+  --> tests/u033_table_contacts.rs:90:13
+   |
+90 |     let c = add_customer(994);
+   |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `add_contact` in this scope
+  --> tests/u033_table_contacts.rs:91:14
+   |
+91 |     let id = add_contact(Some(c), "Hannah", Some("Cole"), None, None, None, None, true, None);
+   |              ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_contact` in this scope
+  --> tests/u033_table_contacts.rs:92:13
+   |
+92 |     assert!(get_contact(id).expect("contact exists").isprimary);
+   |             ^^^^^^^^^^^ not found in this scope
+
+error[E0433]: cannot find module or crate `chrono` in this scope
+  --> tests/u013_vba_cairnreports_commissioncriteria.rs:34:33
+   |
+34 |             .checked_add_months(chrono::Months::new(1))
+   |                                 ^^^^^^ use of unresolved module or unlinked crate `chrono`
+   |
+   = help: if you wanted to use a crate named `chrono`, use `cargo add chrono` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `chrono`
+  --> tests/u034_vba_cairnreports_sqldate.rs:15:5
+   |
+15 | use chrono::NaiveDateTime;
+   |     ^^^^^^ use of unresolved module or unlinked crate `chrono`
+   |
+   = help: if you wanted to use a crate named `chrono`, use `cargo add chrono` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `chrono` in this scope
+  --> tests/u013_vba_cairnreports_commissioncriteria.rs:82:45
+   |
+82 |         let next = start.checked_add_months(chrono::Months::new(1)).unwrap();
+   |                                             ^^^^^^ use of unresolved module or unlinked crate `chrono`
+   |
+   = help: if you wanted to use a crate named `chrono`, use `cargo add chrono` to add it to your `Cargo.toml`
+
+error: could not compile `cairn-ai-tests` (test "u033_table_contacts") due to 26 previous errors
+error[E0432]: unresolved import `crate::cairn_forms`
+  --> tests/u010_vba_cairnforms_messagecustomerchanged.rs:21:12
+   |
+21 | use crate::cairn_forms::{
+   |            ^^^^^^^^^^^ could not find `cairn_forms` in the crate root
+
+error[E0432]: unresolved import `crate::cairnforms`
+  --> tests/u012_vba_cairnforms_mfrrefs.rs:22:12
+   |
+22 | use crate::cairnforms::{drop_manufacturer_orders_table, mfr_refs, seed_manufacturer_orders};
+   |            ^^^^^^^^^^ could not find `cairnforms` in the crate root
+
+error[E0432]: unresolved import `crate::cairn_forms`
+  --> tests/u007_vba_cairnforms_docload.rs:19:12
+   |
+19 | use crate::cairn_forms::doc_load;
+   |            ^^^^^^^^^^^ could not find `cairn_forms` in the crate root
+
+error[E0425]: cannot find function `sql_date` in this scope
+  --> tests/u034_vba_cairnreports_sqldate.rs:25:16
+   |
+25 |     assert_eq!(sql_date(dt("2024-01-05 09:05:03")), "#2024-01-05 09:05:03#");
+   |                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `sql_date` in this scope
+  --> tests/u034_vba_cairnreports_sqldate.rs:32:16
+   |
+32 |     assert_eq!(sql_date(dt("2024-03-05 14:30:45")), "#2024-03-05 14:30:45#");
+   |                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rep_name` in this scope
+  --> tests/u036_table_salesreps.rs:18:16
+   |
+18 |     assert_eq!(rep_name("Maya", "Torres"), "Maya Torres");
+   |                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `sql_date` in this scope
+  --> tests/u034_vba_cairnreports_sqldate.rs:39:16
+   |
+39 |     assert_eq!(sql_date(dt("2024-03-01 00:00:00")), "#2024-03-01 00:00:00#");
+   |                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `sql_date` in this scope
+  --> tests/u034_vba_cairnreports_sqldate.rs:46:16
+   |
+46 |     assert_eq!(sql_date(dt("2024-12-31 23:59:59")), "#2024-12-31 23:59:59#");
+   |                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rep_name` in this scope
+  --> tests/u036_table_salesreps.rs:20:16
+   |
+20 |     assert_eq!(rep_name("Derek", "Liu"), "Derek Liu");
+   |                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `sql_date` in this scope
+  --> tests/u034_vba_cairnreports_sqldate.rs:54:15
+   |
+54 |     let out = sql_date(dt("2024-06-15 08:09:10"));
+   |               ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `rep_name` in this scope
+  --> tests/u036_table_salesreps.rs:21:16
+   |
+21 |     assert_eq!(rep_name("Priya", "Shah"), "Priya Shah");
+   |                ^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u034_vba_cairnreports_sqldate") due to 6 previous errors
+error: could not compile `cairn-ai-tests` (test "u027_table_quotes") due to 1 previous error
+error[E0425]: cannot find function `commission` in this scope
+  --> tests/u036_table_salesreps.rs:27:19
+   |
+27 |     assert!(close(commission(1234.56, 0.06), 74.07));
+   |                   ^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission` in this scope
+  --> tests/u036_table_salesreps.rs:29:19
+   |
+29 |     assert!(close(commission(1000.00, 0.05), 50.00));
+   |                   ^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission` in this scope
+  --> tests/u036_table_salesreps.rs:31:19
+   |
+31 |     assert!(close(commission(999.99, 0.065), 65.00));
+   |                   ^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission` in this scope
+  --> tests/u036_table_salesreps.rs:33:19
+   |
+33 |     assert!(close(commission(555.55, 0.04), 22.22));
+   |                   ^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission` in this scope
+  --> tests/u036_table_salesreps.rs:35:19
+   |
+35 |     assert!(close(commission(100.00, 0.03), 3.00));
+   |                   ^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `default_commission_rate` in this scope
+  --> tests/u036_table_salesreps.rs:41:19
+   |
+41 |     assert!(close(default_commission_rate(), 0.05));
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `default_active` in this scope
+  --> tests/u036_table_salesreps.rs:42:13
+   |
+42 |     assert!(default_active());
+   |             ^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u012_vba_cairnforms_mfrrefs") due to 1 previous error
+error[E0425]: cannot find function `commission_rate_label` in this scope
+  --> tests/u036_table_salesreps.rs:48:16
+   |
+48 |     assert_eq!(commission_rate_label(0.06), "6.0% of net sales");
+   |                ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission_rate_label` in this scope
+  --> tests/u036_table_salesreps.rs:49:16
+   |
+49 |     assert_eq!(commission_rate_label(0.065), "6.5% of net sales");
+   |                ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission_rate_label` in this scope
+  --> tests/u036_table_salesreps.rs:50:16
+   |
+50 |     assert_eq!(commission_rate_label(0.055), "5.5% of net sales");
+   |                ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `commission_rate_label` in this scope
+  --> tests/u036_table_salesreps.rs:51:16
+   |
+51 |     assert_eq!(commission_rate_label(0.03), "3.0% of net sales");
+   |                ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u010_vba_cairnforms_messagecustomerchanged") due to 1 previous error
+error: could not compile `cairn-ai-tests` (test "u013_vba_cairnreports_commissioncriteria") due to 3 previous errors
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:23:16
+   |
+23 |     assert_eq!(next_number("Q", 2026, 1699), "Q-2026-1700");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u036_table_salesreps") due to 14 previous errors
+error: could not compile `cairn-ai-tests` (test "u007_vba_cairnforms_docload") due to 1 previous error
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:29:16
+   |
+29 |     assert_eq!(next_number("SO", 2026, 999), "SO-2026-1000");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0432]: unresolved import `crate::cairn_forms`
+  --> tests/u006_vba_cairnforms_lineproductchanged.rs:21:12
+   |
+21 | use crate::cairn_forms::line_product_changed;
+   |            ^^^^^^^^^^^ could not find `cairn_forms` in the crate root
+
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:35:16
+   |
+35 |     assert_eq!(next_number("RMA", 2026, 69), "RMA-2026-0070");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:41:16
+   |
+41 |     assert_eq!(next_number("Q", 2026, 0), "Q-2026-0001");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:46:16
+   |
+46 |     assert_eq!(next_number("SO", 2026, 0), "SO-2026-0001");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:51:16
+   |
+51 |     assert_eq!(next_number("RMA", 2026, 0), "RMA-2026-0001");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:57:16
+   |
+57 |     assert_eq!(next_number("Q", 2025, 83), "Q-2025-0084");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:63:16
+   |
+63 |     assert_eq!(next_number("SO", 2016, 0), "SO-2016-0001");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:69:16
+   |
+69 |     assert_eq!(next_number("Q", 2026, 999), "Q-2026-1000");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `next_number` in this scope
+  --> tests/u001_vba_cairnforms_nextnumber.rs:76:16
+   |
+76 |     assert_eq!(next_number("Q", 2026, 10000), "Q-2026-10001");
+   |                ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `message_returned` in this scope
+  --> tests/u011_vba_cairnforms_messagereturned.rs:36:5
+   |
+36 |     message_returned(&mut frm);
+   |     ^^^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u001_vba_cairnforms_nextnumber") due to 10 previous errors
+error: could not compile `cairn-ai-tests` (test "u006_vba_cairnforms_lineproductchanged") due to 1 previous error
+error[E0425]: cannot find function `message_returned` in this scope
+  --> tests/u011_vba_cairnforms_messagereturned.rs:52:5
+   |
+52 |     message_returned(&mut frm);
+   |     ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `message_returned` in this scope
+  --> tests/u011_vba_cairnforms_messagereturned.rs:69:5
+   |
+69 |     message_returned(&mut frm);
+   |     ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `message_returned` in this scope
+  --> tests/u011_vba_cairnforms_messagereturned.rs:85:5
+   |
+85 |     message_returned(&mut frm);
+   |     ^^^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u011_vba_cairnforms_messagereturned") due to 4 previous errors
+error[E0425]: cannot find function `company_info_row_count` in this scope
+  --> tests/u032_table_companyinfo.rs:11:16
+   |
+11 |     assert_eq!(company_info_row_count(), 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `company_name` in this scope
+  --> tests/u032_table_companyinfo.rs:16:16
+   |
+16 |     assert_eq!(company_name(), "Cairn Systems");
+   |                ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `default_tax_rate` in this scope
+  --> tests/u032_table_companyinfo.rs:22:14
+   |
+22 |     assert!((default_tax_rate() - 0.0825).abs() < 1e-12);
+   |              ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `default_tax_rate_or_zero` in this scope
+  --> tests/u032_table_companyinfo.rs:29:16
+   |
+29 |     assert_eq!(default_tax_rate_or_zero(None), 0.0);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `default_tax_rate_or_zero` in this scope
+  --> tests/u032_table_companyinfo.rs:30:16
+   |
+30 |     assert_eq!(default_tax_rate_or_zero(Some(0.0825)), 0.0825);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `quote_terms_fallback` in this scope
+  --> tests/u032_table_companyinfo.rs:38:9
+   |
+38 |         quote_terms_fallback(None),
+   |         ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `quote_terms_fallback` in this scope
+  --> tests/u032_table_companyinfo.rs:41:16
+   |
+41 |     assert_eq!(quote_terms_fallback(Some("Custom terms")), "Custom terms");
+   |                ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `receipt_footer` in this scope
+  --> tests/u032_table_companyinfo.rs:48:9
+   |
+48 |         receipt_footer(),
+   |         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `manufacturer_api_url` in this scope
+  --> tests/u032_table_companyinfo.rs:55:16
+   |
+55 |     assert_eq!(manufacturer_api_url(), "http://localhost:8765/orders");
+   |                ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `manufacturer_url_guard` in this scope
+  --> tests/u032_table_companyinfo.rs:64:9
+   |
+64 |         manufacturer_url_guard(""),
+   |         ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `manufacturer_url_guard` in this scope
+  --> tests/u032_table_companyinfo.rs:67:16
+   |
+67 |     assert_eq!(manufacturer_url_guard("http://localhost:8765/orders"), None);
+   |                ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `seller_city_state_zip` in this scope
+  --> tests/u032_table_companyinfo.rs:73:16
+   |
+73 |     assert_eq!(seller_city_state_zip("[City]", "[ST]", "[Zip]"), "[City], [ST] [Zip]");
+   |                ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `quote_print_seller_block` in this scope
+  --> tests/u032_table_companyinfo.rs:80:13
+   |
+80 |     let s = quote_print_seller_block();
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: could not compile `cairn-ai-tests` (test "u032_table_companyinfo") due to 13 previous errors
+error[E0433]: too many leading `super` keywords within `crate`
+  --> tests/u029_table_activities.rs:26:5
+   |
+26 | use super::activities::*;
+   |     ^^^^^ this `super` would go above the crate root
+
+error[E0425]: cannot find type `Activity` in this scope
+  --> tests/u029_table_activities.rs:28:73
+   |
+28 | fn act(c: i32, k: Option<i32>, r: i32, t: &str, s: &str, done: bool) -> Activity {
+   |                                                                         ^^^^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Activity` in this scope
+  --> tests/u029_table_activities.rs:29:5
+   |
+29 |     Activity {
+   |     ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:46:13
+   |
+46 |     assert!(insert_activity(&a).is_ok());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:54:13
+   |
+54 |     assert!(insert_activity(&a).is_err());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:61:13
+   |
+61 |     assert!(insert_activity(&a).is_err());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:69:13
+   |
+69 |     assert!(insert_activity(&a).is_err());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:76:13
+   |
+76 |     assert!(insert_activity(&a).is_err());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:83:13
+   |
+83 |     assert!(insert_activity(&a).is_ok());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:90:13
+   |
+90 |     assert!(insert_activity(&a).is_err());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:97:13
+   |
+97 |     assert!(insert_activity(&ok).is_ok());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+  --> tests/u029_table_activities.rs:99:13
+   |
+99 |     assert!(insert_activity(&bad).is_err());
+   |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:106:13
+    |
+106 |     assert!(insert_activity(&ok).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:108:13
+    |
+108 |     assert!(insert_activity(&bad).is_err());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:114:13
+    |
+114 |     assert!(insert_activity(&act(1, None, 1, "Call", "x", true)).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:115:13
+    |
+115 |     assert!(insert_activity(&act(1, None, 1, "Call", "x", false)).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:123:13
+    |
+123 |     assert!(insert_activity(&a).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:125:13
+    |
+125 |     assert!(insert_activity(&a).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+warning: `cairn-ai-tests` (test "u031_table_customers") generated 5 warnings (run `cargo fix --test "u031_table_customers" -p cairn-ai-tests` to apply 5 suggestions)
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:133:13
+    |
+133 |     assert!(insert_activity(&a).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:135:13
+    |
+135 |     assert!(insert_activity(&a).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:141:15
+    |
+141 |     let id1 = insert_activity(&act(1, None, 1, "Call", "a", false)).unwrap();
+    |               ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `insert_activity` in this scope
+   --> tests/u029_table_activities.rs:142:15
+    |
+142 |     let id2 = insert_activity(&act(1, None, 1, "Call", "b", false)).unwrap();
+    |               ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `delete_customer` in this scope
+   --> tests/u029_table_activities.rs:150:13
+    |
+150 |     assert!(delete_customer(2).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_activity` in this scope
+   --> tests/u029_table_activities.rs:151:13
+    |
+151 |     assert!(get_activity(2).is_none());
+    |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_activity` in this scope
+   --> tests/u029_table_activities.rs:152:13
+    |
+152 |     assert!(get_activity(6).is_none());
+    |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_activity` in this scope
+   --> tests/u029_table_activities.rs:153:13
+    |
+153 |     assert!(get_activity(1).is_some());
+    |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_activity` in this scope
+   --> tests/u029_table_activities.rs:154:13
+    |
+154 |     assert!(get_activity(5).is_some());
+    |             ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `delete_customer` in this scope
+   --> tests/u029_table_activities.rs:160:13
+    |
+160 |     assert!(delete_customer(1000).is_ok());
+    |             ^^^^^^^^^^^^^^^ not found in this scope
+
+Some errors have detailed explanations: E0422, E0425, E0433.
+For more information about an error, try `rustc --explain E0422`.
+error: could not compile `cairn-ai-tests` (test "u029_table_activities") due to 28 previous errors

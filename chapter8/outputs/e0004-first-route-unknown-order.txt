@@ -1,0 +1,23 @@
+error[E0004]: non-exhaustive patterns: `&Route::UnknownOrder` not covered
+  --> src/lib.rs:22:27
+   |
+22 |         f.write_str(match self {
+   |                           ^^^^ pattern `&Route::UnknownOrder` not covered
+   |
+note: `Route` defined here
+  --> src/lib.rs:9:10
+   |
+ 9 | pub enum Route {
+   |          ^^^^^
+...
+17 |     UnknownOrder,
+   |     ------------ not covered
+   = note: the matched value is of type `&Route`
+help: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern or an explicit pattern as shown
+   |
+29 ~             Route::CustomerPaysRepair => "Customer Pays Repair",
+30 ~             &Route::UnknownOrder => todo!(),
+   |
+
+For more information about this error, try `rustc --explain E0004`.
+error: could not compile `first-route` (lib) due to 1 previous error

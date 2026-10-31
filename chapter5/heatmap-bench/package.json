@@ -1,0 +1,13 @@
+{
+  "name": "heatmap-bench",
+  "private": true,
+  "type": "module",
+  "description": "Isolated call-cost benchmark for chapter 5's paint_heatmap pipeline vs a hand-written JS equivalent. Sibling of chapter3/wasm-bench.",
+  "scripts": {
+    "gen": "ruby gen-readings.rb cluster > fixtures/readings.cluster.json && ruby gen-readings.rb highway > fixtures/readings.highway.json",
+    "bench": "node bench.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

@@ -1,0 +1,11 @@
+---------------------------
+Cairn Systems
+---------------------------
+The manufacturer did not confirm the order.
+
+The manufacturer answered 400: {"error":"malformed JSON","detail":"Invalid object passed in, \u0027:\u0027 or \u0027}\u0027 expected. (81): {\"dealer\":\"CAIRN\",\"po\":\"SO-2026-0204\",\"customerPo\":\"\",\"shipTo\":{\"name\":\"Ha
+
+Try again?
+---------------------------
+Retry   Cancel
+---------------------------

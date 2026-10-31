@@ -1,0 +1,67 @@
+﻿[
+    {
+        "File":  "01-commission-sql.png",
+        "Name":  "commission-sql",
+        "Title":  "Commission rule (SQL)",
+        "Group":  "Where the rules live",
+        "Description":  "qryCommissionDetail in SQL View: the query the commission statements print from.",
+        "Ok":  true,
+        "DialogTitle":  null,
+        "DialogText":  "",
+        "DialogButtons":  "",
+        "Actions":  "",
+        "Note":  ""
+    },
+    {
+        "File":  "02-row-source.png",
+        "Name":  "row-source",
+        "Title":  "Customer combo box: Row Source",
+        "Group":  "Where the rules live",
+        "Description":  "frmQuotes in Design View, Customer combo box (CustomerID) selected, Property Sheet on the Data tab. Row Source: SELECT CustomerID, CompanyName FROM Customers ORDER BY CompanyName; ",
+        "Ok":  true,
+        "DialogTitle":  null,
+        "DialogText":  "",
+        "DialogButtons":  "",
+        "Actions":  "",
+        "Note":  ""
+    },
+    {
+        "File":  "03-vba-doccustomerchanged.png",
+        "Name":  "vba-doccustomerchanged",
+        "Title":  "VBA: DocCustomerChanged",
+        "Group":  "Where the rules live",
+        "Description":  "CairnForms module at DocCustomerChanged, run when the customer is picked on a quote or order.",
+        "Ok":  true,
+        "DialogTitle":  null,
+        "DialogText":  "",
+        "DialogButtons":  "",
+        "Actions":  "",
+        "Note":  null
+    },
+    {
+        "File":  "04-vba-quotetoorder.png",
+        "Name":  "vba-quotetoorder",
+        "Title":  "VBA: QuoteToOrder",
+        "Group":  "Where the rules live",
+        "Description":  "CairnForms module at QuoteToOrder, which copies an accepted quote into a sales order.",
+        "Ok":  true,
+        "DialogTitle":  null,
+        "DialogText":  "",
+        "DialogButtons":  "",
+        "Actions":  "",
+        "Note":  null
+    },
+    {
+        "File":  "05-payment-terms.png",
+        "Name":  "payment-terms",
+        "Title":  "Payment terms list",
+        "Group":  "Where the rules live",
+        "Description":  "Customer 194, Oakridge Logistics, with the Terms list dropped down. Saved terms: Net 60. List: Due on Receipt;Net 15;Net 30;Net 45;Net 60.",
+        "Ok":  true,
+        "DialogTitle":  null,
+        "DialogText":  "",
+        "DialogButtons":  "",
+        "Actions":  "",
+        "Note":  ""
+    }
+]

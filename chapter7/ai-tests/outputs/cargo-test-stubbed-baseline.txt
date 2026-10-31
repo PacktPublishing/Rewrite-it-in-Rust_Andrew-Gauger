@@ -1,0 +1,1727 @@
+warning: unused variable: `line`
+  --> tests/u038_query_qryorderlines.rs:27:21
+   |
+27 | fn item_description(line: &Line, product: &Product) -> String {
+   |                     ^^^^ help: if this is intentional, prefix it with an underscore: `_line`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `product`
+  --> tests/u038_query_qryorderlines.rs:27:34
+   |
+27 | fn item_description(line: &Line, product: &Product) -> String {
+   |                                  ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_product`
+
+warning: unused variable: `line`
+  --> tests/u038_query_qryorderlines.rs:30:15
+   |
+30 | fn line_total(line: &Line) -> f64 {
+   |               ^^^^ help: if this is intentional, prefix it with an underscore: `_line`
+
+warning: unused variable: `line`
+  --> tests/u038_query_qryorderlines.rs:33:14
+   |
+33 | fn line_cost(line: &Line, product: &Product) -> f64 {
+   |              ^^^^ help: if this is intentional, prefix it with an underscore: `_line`
+
+warning: unused variable: `product`
+  --> tests/u038_query_qryorderlines.rs:33:27
+   |
+33 | fn line_cost(line: &Line, product: &Product) -> f64 {
+   |                           ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_product`
+
+warning: unused variable: `line`
+  --> tests/u038_query_qryorderlines.rs:36:25
+   |
+36 | fn join_line_to_product(line: &Line, products: &[Product]) -> Option<Product> {
+   |                         ^^^^ help: if this is intentional, prefix it with an underscore: `_line`
+
+warning: unused variable: `products`
+  --> tests/u038_query_qryorderlines.rs:36:38
+   |
+36 | fn join_line_to_product(line: &Line, products: &[Product]) -> Option<Product> {
+   |                                      ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_products`
+
+warning: fields `product_id`, `line_description`, `quantity`, `unit_price`, and `discount_pct` are never read
+  --> tests/u038_query_qryorderlines.rs:12:5
+   |
+11 | struct Line {
+   |        ---- fields in this struct
+12 |     product_id: i64,
+   |     ^^^^^^^^^^
+13 |     line_description: Option<String>,
+   |     ^^^^^^^^^^^^^^^^
+14 |     quantity: i64,
+   |     ^^^^^^^^
+15 |     unit_price: f64,
+   |     ^^^^^^^^^^
+16 |     discount_pct: f64,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `Line` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `product_id`, `product_name`, and `unit_cost` are never read
+  --> tests/u038_query_qryorderlines.rs:21:5
+   |
+20 | struct Product {
+   |        ------- fields in this struct
+21 |     product_id: i64,
+   |     ^^^^^^^^^^
+22 |     product_name: String,
+   |     ^^^^^^^^^^^^
+23 |     unit_cost: f64,
+   |     ^^^^^^^^^
+   |
+   = note: `Product` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+
+   Compiling cairn-ai-tests-stubbed v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/chapter7/ai-tests/crate-stubbed)
+warning: `cairn-ai-tests-stubbed` (test "u038_query_qryorderlines") generated 9 warnings (run `cargo fix --test "u038_query_qryorderlines" -p cairn-ai-tests-stubbed` to apply 7 suggestions)
+warning: fields `tax_exempt`, `assigned_rep_id`, and `primary_contact_id` are never read
+   --> tests/u027_table_quotes.rs:163:31
+    |
+163 |     pub struct Customer { pub tax_exempt: bool, pub assigned_rep_id: Option<i32>, pub primary_contact_id: Option<i32> }
+    |                --------       ^^^^^^^^^^            ^^^^^^^^^^^^^^^                   ^^^^^^^^^^^^^^^^^^
+    |                |
+    |                fields in this struct
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `product_id` is never read
+  --> tests/u006_vba_cairnforms_lineproductchanged.rs:25:5
+   |
+24 | struct Form {
+   |        ---- field in this struct
+25 |     product_id: Option<i32>,
+   |     ^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `NaiveDateTime`
+  --> tests/u013_vba_cairnreports_commissioncriteria.rs:21:35
+   |
+21 | use chrono::{Datelike, NaiveDate, NaiveDateTime};
+   |                                   ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `open_args` is never read
+  --> tests/u007_vba_cairnforms_docload.rs:24:5
+   |
+23 | struct Form {
+   |        ---- field in this struct
+24 |     open_args: Option<i64>,
+   |     ^^^^^^^^^
+   |
+   = note: `Form` has derived impls for the traits `Debug` and `Clone`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `cairn-ai-tests-stubbed` (test "u027_table_quotes") generated 1 warning
+warning: `cairn-ai-tests-stubbed` (test "u006_vba_cairnforms_lineproductchanged") generated 1 warning
+warning: `cairn-ai-tests-stubbed` (test "u013_vba_cairnreports_commissioncriteria") generated 1 warning (run `cargo fix --test "u013_vba_cairnreports_commissioncriteria" -p cairn-ai-tests-stubbed` to apply 1 suggestion)
+warning: `cairn-ai-tests-stubbed` (test "u007_vba_cairnforms_docload") generated 1 warning
+warning: unused import: `decimal::prelude::PrimitiveDecimal`
+  --> tests/u037_query_qryorderpayments.rs:16:5
+   |
+16 | use decimal::prelude::PrimitiveDecimal;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `rows`
+  --> tests/u037_query_qryorderpayments.rs:36:34
+   |
+36 | fn order_payments(order_id: i32, rows: &[PaymentRow]) -> Option<(Decimal, Option<NaiveDate>)> {
+   |                                  ^^^^ help: if this is intentional, prefix it with an underscore: `_rows`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `amount` and `payment_date` are never read
+  --> tests/u037_query_qryorderpayments.rs:29:5
+   |
+28 | struct PaymentRow {
+   |        ---------- fields in this struct
+29 |     amount: Decimal,
+   |     ^^^^^^
+30 |     payment_date: Option<NaiveDate>,
+   |     ^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: trait `PrimitiveDecimal` is never used
+   --> tests/u037_query_qryorderpayments.rs:142:19
+    |
+142 |         pub trait PrimitiveDecimal {}
+    |                   ^^^^^^^^^^^^^^^^
+
+warning: fields `contactid`, `activitytype`, `subject`, `details`, and `completed` are never read
+   --> tests/u029_table_activities.rs:170:34
+    |
+169 |     pub struct Activity {
+    |                -------- fields in this struct
+170 |         pub customerid: i32, pub contactid: Option<i32>, pub repid: i32,
+    |                                  ^^^^^^^^^
+171 |         pub activitydate: Option<String>, pub activitytype: String, pub subject: String,
+    |                                               ^^^^^^^^^^^^              ^^^^^^^
+172 |         pub details: Option<String>, pub followupdate: Option<String>, pub completed: bool,
+    |             ^^^^^^^                                                        ^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `parent` is never read
+  --> tests/u004_vba_cairnforms_activitydefaults.rs:32:5
+   |
+30 | struct ActivityForm {
+   |        ------------ field in this struct
+31 |     rep_id: Option<i32>,
+32 |     parent: ParentState,
+   |     ^^^^^^
+   |
+   = note: `ActivityForm` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `cairn-ai-tests-stubbed` (test "u037_query_qryorderpayments") generated 4 warnings (run `cargo fix --test "u037_query_qryorderpayments" -p cairn-ai-tests-stubbed` to apply 2 suggestions)
+warning: `cairn-ai-tests-stubbed` (test "u029_table_activities") generated 1 warning
+warning: `cairn-ai-tests-stubbed` (test "u004_vba_cairnforms_activitydefaults") generated 1 warning
+warning: unused variable: `customerid`
+  --> tests/u031_table_customers.rs:12:20
+   |
+12 | fn assigned_rep_id(customerid: i32) -> Option<i32> {
+   |                    ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_customerid`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `repid`
+  --> tests/u031_table_customers.rs:15:18
+   |
+15 | fn rep_is_active(repid: i32) -> bool {
+   |                  ^^^^^ help: if this is intentional, prefix it with an underscore: `_repid`
+
+warning: unused variable: `customerid`
+  --> tests/u031_table_customers.rs:18:20
+   |
+18 | fn customer_status(customerid: i32) -> String {
+   |                    ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_customerid`
+
+warning: unused variable: `customerid`
+  --> tests/u031_table_customers.rs:21:18
+   |
+21 | fn payment_terms(customerid: i32) -> String {
+   |                  ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_customerid`
+
+warning: unused variable: `customerid`
+  --> tests/u031_table_customers.rs:24:18
+   |
+24 | fn is_tax_exempt(customerid: i32) -> bool {
+   |                  ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_customerid`
+
+warning: `cairn-ai-tests-stubbed` (test "u031_table_customers") generated 5 warnings (run `cargo fix --test "u031_table_customers" -p cairn-ai-tests-stubbed` to apply 5 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running unittests src/lib.rs (target/debug/deps/cairn_ai_tests_stubbed-1fe31fb0ee94b8c3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/u001_vba_cairnforms_nextnumber.rs (target/debug/deps/u001_vba_cairnforms_nextnumber-ffa8dd8eecbb52b5)
+
+running 10 tests
+test quote_2025_max_83_yields_0084 ... FAILED
+test order_2026_max_999_yields_1000 ... FAILED
+test order_2026_no_rows_yields_0001 ... FAILED
+test order_2016_no_rows_yields_0001 ... FAILED
+test quote_2026_max_10000_yields_10001 ... FAILED
+test quote_2026_max_999_yields_1000 ... FAILED
+test quote_2026_no_rows_yields_0001 ... FAILED
+test quote_2026_max_1699_yields_1700 ... FAILED
+test rma_2026_max_69_yields_0070 ... FAILED
+test rma_2026_no_rows_yields_0001 ... FAILED
+
+failures:
+
+---- quote_2025_max_83_yields_0084 stdout ----
+
+thread 'quote_2025_max_83_yields_0084' (10612602) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+---- order_2026_max_999_yields_1000 stdout ----
+
+thread 'order_2026_max_999_yields_1000' (10612600) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- order_2026_no_rows_yields_0001 stdout ----
+
+thread 'order_2026_no_rows_yields_0001' (10612601) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+---- order_2016_no_rows_yields_0001 stdout ----
+
+thread 'order_2016_no_rows_yields_0001' (10612599) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+---- quote_2026_max_10000_yields_10001 stdout ----
+
+thread 'quote_2026_max_10000_yields_10001' (10612603) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+---- quote_2026_max_999_yields_1000 stdout ----
+
+thread 'quote_2026_max_999_yields_1000' (10612605) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+---- quote_2026_no_rows_yields_0001 stdout ----
+
+thread 'quote_2026_no_rows_yields_0001' (10612606) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+---- quote_2026_max_1699_yields_1700 stdout ----
+
+thread 'quote_2026_max_1699_yields_1700' (10612604) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+---- rma_2026_max_69_yields_0070 stdout ----
+
+thread 'rma_2026_max_69_yields_0070' (10612607) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+---- rma_2026_no_rows_yields_0001 stdout ----
+
+thread 'rma_2026_no_rows_yields_0001' (10612608) panicked at tests/u001_vba_cairnforms_nextnumber.rs:82:70:
+not yet implemented
+
+
+failures:
+    order_2016_no_rows_yields_0001
+    order_2026_max_999_yields_1000
+    order_2026_no_rows_yields_0001
+    quote_2025_max_83_yields_0084
+    quote_2026_max_10000_yields_10001
+    quote_2026_max_1699_yields_1700
+    quote_2026_max_999_yields_1000
+    quote_2026_no_rows_yields_0001
+    rma_2026_max_69_yields_0070
+    rma_2026_no_rows_yields_0001
+
+test result: FAILED. 0 passed; 10 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u001_vba_cairnforms_nextnumber`
+     Running tests/u004_vba_cairnforms_activitydefaults.rs (target/debug/deps/u004_vba_cairnforms_activitydefaults-0d9660cb03101f70)
+
+running 5 tests
+test non_null_rep_is_left_unchanged ... FAILED
+test missing_parent_control_is_swallowed_and_rep_unchanged ... FAILED
+test null_parent_rep_yields_null_rep ... FAILED
+test null_rep_defaults_to_parent_assigned_rep ... FAILED
+test unavailable_parent_is_swallowed_and_rep_unchanged ... FAILED
+
+failures:
+
+---- non_null_rep_is_left_unchanged stdout ----
+
+thread 'non_null_rep_is_left_unchanged' (10612611) panicked at tests/u004_vba_cairnforms_activitydefaults.rs:93:49:
+not yet implemented
+
+---- missing_parent_control_is_swallowed_and_rep_unchanged stdout ----
+
+thread 'missing_parent_control_is_swallowed_and_rep_unchanged' (10612610) panicked at tests/u004_vba_cairnforms_activitydefaults.rs:93:49:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- null_parent_rep_yields_null_rep stdout ----
+
+thread 'null_parent_rep_yields_null_rep' (10612612) panicked at tests/u004_vba_cairnforms_activitydefaults.rs:93:49:
+not yet implemented
+
+---- null_rep_defaults_to_parent_assigned_rep stdout ----
+
+thread 'null_rep_defaults_to_parent_assigned_rep' (10612613) panicked at tests/u004_vba_cairnforms_activitydefaults.rs:93:49:
+not yet implemented
+
+---- unavailable_parent_is_swallowed_and_rep_unchanged stdout ----
+
+thread 'unavailable_parent_is_swallowed_and_rep_unchanged' (10612614) panicked at tests/u004_vba_cairnforms_activitydefaults.rs:93:49:
+not yet implemented
+
+
+failures:
+    missing_parent_control_is_swallowed_and_rep_unchanged
+    non_null_rep_is_left_unchanged
+    null_parent_rep_yields_null_rep
+    null_rep_defaults_to_parent_assigned_rep
+    unavailable_parent_is_swallowed_and_rep_unchanged
+
+test result: FAILED. 0 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u004_vba_cairnforms_activitydefaults`
+     Running tests/u005_vba_cairnforms_rmadefaults.rs (target/debug/deps/u005_vba_cairnforms_rmadefaults-0493486aa8ce7659)
+
+running 7 tests
+test opened_by_rep_defaults_to_login_rep_when_null ... FAILED
+test opened_by_rep_not_overwritten_when_already_set ... FAILED
+test rma_number_not_overwritten_when_already_set ... FAILED
+test rma_number_defaults_to_first_of_year_when_null_and_no_rows ... FAILED
+test both_defaults_applied_together_on_fresh_form ... FAILED
+test next_rma_number_is_max_plus_one_zero_padded_for_current_year ... FAILED
+test rows_from_other_years_do_not_affect_sequence ... FAILED
+
+failures:
+
+---- opened_by_rep_defaults_to_login_rep_when_null stdout ----
+
+thread 'opened_by_rep_defaults_to_login_rep_when_null' (10612618) panicked at tests/u005_vba_cairnforms_rmadefaults.rs:89:149:
+not yet implemented
+
+---- opened_by_rep_not_overwritten_when_already_set stdout ----
+
+thread 'opened_by_rep_not_overwritten_when_already_set' (10612619) panicked at tests/u005_vba_cairnforms_rmadefaults.rs:89:149:
+not yet implemented
+
+---- rma_number_not_overwritten_when_already_set stdout ----
+
+thread 'rma_number_not_overwritten_when_already_set' (10612621) panicked at tests/u005_vba_cairnforms_rmadefaults.rs:89:149:
+not yet implemented
+
+---- rma_number_defaults_to_first_of_year_when_null_and_no_rows stdout ----
+
+thread 'rma_number_defaults_to_first_of_year_when_null_and_no_rows' (10612620) panicked at tests/u005_vba_cairnforms_rmadefaults.rs:89:149:
+not yet implemented
+
+---- both_defaults_applied_together_on_fresh_form stdout ----
+
+thread 'both_defaults_applied_together_on_fresh_form' (10612616) panicked at tests/u005_vba_cairnforms_rmadefaults.rs:89:149:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- next_rma_number_is_max_plus_one_zero_padded_for_current_year stdout ----
+
+thread 'next_rma_number_is_max_plus_one_zero_padded_for_current_year' (10612617) panicked at tests/u005_vba_cairnforms_rmadefaults.rs:89:149:
+not yet implemented
+
+---- rows_from_other_years_do_not_affect_sequence stdout ----
+
+thread 'rows_from_other_years_do_not_affect_sequence' (10612622) panicked at tests/u005_vba_cairnforms_rmadefaults.rs:89:149:
+not yet implemented
+
+
+failures:
+    both_defaults_applied_together_on_fresh_form
+    next_rma_number_is_max_plus_one_zero_padded_for_current_year
+    opened_by_rep_defaults_to_login_rep_when_null
+    opened_by_rep_not_overwritten_when_already_set
+    rma_number_defaults_to_first_of_year_when_null_and_no_rows
+    rma_number_not_overwritten_when_already_set
+    rows_from_other_years_do_not_affect_sequence
+
+test result: FAILED. 0 passed; 7 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u005_vba_cairnforms_rmadefaults`
+     Running tests/u006_vba_cairnforms_lineproductchanged.rs (target/debug/deps/u006_vba_cairnforms_lineproductchanged-59c175d4ad1907f7)
+
+running 7 tests
+test inactive_product_11_still_gets_stored_price_79_00 ... FAILED
+test active_product_5_sets_unit_price_to_649_00 ... FAILED
+test nonexistent_product_id_nulls_unit_price ... FAILED
+test active_product_1_sets_unit_price_to_89_00 ... FAILED
+test null_product_id_leaves_unit_price_untouched ... FAILED
+test inactive_product_12_still_gets_stored_price_449_00 ... FAILED
+test null_product_id_with_no_price_stays_null ... FAILED
+
+failures:
+
+---- inactive_product_11_still_gets_stored_price_79_00 stdout ----
+
+thread 'inactive_product_11_still_gets_stored_price_79_00' (10612626) panicked at tests/u006_vba_cairnforms_lineproductchanged.rs:99:52:
+not yet implemented
+
+---- active_product_5_sets_unit_price_to_649_00 stdout ----
+
+thread 'active_product_5_sets_unit_price_to_649_00' (10612625) panicked at tests/u006_vba_cairnforms_lineproductchanged.rs:99:52:
+not yet implemented
+
+---- nonexistent_product_id_nulls_unit_price stdout ----
+
+thread 'nonexistent_product_id_nulls_unit_price' (10612628) panicked at tests/u006_vba_cairnforms_lineproductchanged.rs:99:52:
+not yet implemented
+
+---- active_product_1_sets_unit_price_to_89_00 stdout ----
+
+thread 'active_product_1_sets_unit_price_to_89_00' (10612624) panicked at tests/u006_vba_cairnforms_lineproductchanged.rs:99:52:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- null_product_id_leaves_unit_price_untouched stdout ----
+
+thread 'null_product_id_leaves_unit_price_untouched' (10612629) panicked at tests/u006_vba_cairnforms_lineproductchanged.rs:99:52:
+not yet implemented
+
+---- inactive_product_12_still_gets_stored_price_449_00 stdout ----
+
+thread 'inactive_product_12_still_gets_stored_price_449_00' (10612627) panicked at tests/u006_vba_cairnforms_lineproductchanged.rs:99:52:
+not yet implemented
+
+---- null_product_id_with_no_price_stays_null stdout ----
+
+thread 'null_product_id_with_no_price_stays_null' (10612630) panicked at tests/u006_vba_cairnforms_lineproductchanged.rs:99:52:
+not yet implemented
+
+
+failures:
+    active_product_1_sets_unit_price_to_89_00
+    active_product_5_sets_unit_price_to_649_00
+    inactive_product_11_still_gets_stored_price_79_00
+    inactive_product_12_still_gets_stored_price_449_00
+    nonexistent_product_id_nulls_unit_price
+    null_product_id_leaves_unit_price_untouched
+    null_product_id_with_no_price_stays_null
+
+test result: FAILED. 0 passed; 7 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u006_vba_cairnforms_lineproductchanged`
+     Running tests/u007_vba_cairnforms_docload.rs (target/debug/deps/u007_vba_cairnforms_docload-019047bb3456ba0c)
+
+running 5 tests
+test doc_load_open_args_1_presets_tax_exempt_northfield ... FAILED
+test doc_load_null_open_args_does_nothing ... FAILED
+test doc_load_open_args_2_presets_bluepine ... FAILED
+test doc_load_keeps_existing_rep_id ... FAILED
+test doc_load_open_args_3_presets_harlow ... FAILED
+
+failures:
+
+---- doc_load_open_args_1_presets_tax_exempt_northfield stdout ----
+
+thread 'doc_load_open_args_1_presets_tax_exempt_northfield' (10612634) panicked at tests/u007_vba_cairnforms_docload.rs:97:40:
+not yet implemented
+
+---- doc_load_null_open_args_does_nothing stdout ----
+
+thread 'doc_load_null_open_args_does_nothing' (10612633) panicked at tests/u007_vba_cairnforms_docload.rs:97:40:
+not yet implemented
+
+---- doc_load_open_args_2_presets_bluepine stdout ----
+
+thread 'doc_load_open_args_2_presets_bluepine' (10612635) panicked at tests/u007_vba_cairnforms_docload.rs:97:40:
+not yet implemented
+
+---- doc_load_keeps_existing_rep_id stdout ----
+
+thread 'doc_load_keeps_existing_rep_id' (10612632) panicked at tests/u007_vba_cairnforms_docload.rs:97:40:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- doc_load_open_args_3_presets_harlow stdout ----
+
+thread 'doc_load_open_args_3_presets_harlow' (10612636) panicked at tests/u007_vba_cairnforms_docload.rs:97:40:
+not yet implemented
+
+
+failures:
+    doc_load_keeps_existing_rep_id
+    doc_load_null_open_args_does_nothing
+    doc_load_open_args_1_presets_tax_exempt_northfield
+    doc_load_open_args_2_presets_bluepine
+    doc_load_open_args_3_presets_harlow
+
+test result: FAILED. 0 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u007_vba_cairnforms_docload`
+     Running tests/u010_vba_cairnforms_messagecustomerchanged.rs (target/debug/deps/u010_vba_cairnforms_messagecustomerchanged-55e3ab13285002cf)
+
+running 5 tests
+test null_customer_id_changes_nothing ... FAILED
+test valid_customer_overwrites_stale_caller_company ... FAILED
+test unknown_customer_yields_null_company_and_phone ... FAILED
+test existing_caller_phone_is_never_overwritten ... FAILED
+test null_caller_phone_is_filled_from_customer ... FAILED
+
+failures:
+
+---- null_customer_id_changes_nothing stdout ----
+
+thread 'null_customer_id_changes_nothing' (10612640) panicked at tests/u010_vba_cairnforms_messagecustomerchanged.rs:117:68:
+not yet implemented
+
+---- valid_customer_overwrites_stale_caller_company stdout ----
+
+thread 'valid_customer_overwrites_stale_caller_company' (10612642) panicked at tests/u010_vba_cairnforms_messagecustomerchanged.rs:117:68:
+not yet implemented
+
+---- unknown_customer_yields_null_company_and_phone stdout ----
+
+thread 'unknown_customer_yields_null_company_and_phone' (10612641) panicked at tests/u010_vba_cairnforms_messagecustomerchanged.rs:117:68:
+not yet implemented
+
+---- existing_caller_phone_is_never_overwritten stdout ----
+
+thread 'existing_caller_phone_is_never_overwritten' (10612638) panicked at tests/u010_vba_cairnforms_messagecustomerchanged.rs:117:68:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- null_caller_phone_is_filled_from_customer stdout ----
+
+thread 'null_caller_phone_is_filled_from_customer' (10612639) panicked at tests/u010_vba_cairnforms_messagecustomerchanged.rs:117:68:
+not yet implemented
+
+
+failures:
+    existing_caller_phone_is_never_overwritten
+    null_caller_phone_is_filled_from_customer
+    null_customer_id_changes_nothing
+    unknown_customer_yields_null_company_and_phone
+    valid_customer_overwrites_stale_caller_company
+
+test result: FAILED. 0 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u010_vba_cairnforms_messagecustomerchanged`
+     Running tests/u011_vba_cairnforms_messagereturned.rs (target/debug/deps/u011_vba_cairnforms_messagereturned-76353170f0a5e263)
+
+running 4 tests
+test message_returned_sets_status_to_returned ... FAILED
+test message_returned_clears_dirty_flag ... FAILED
+test message_returned_stamps_returned_at_when_null ... FAILED
+test message_returned_preserves_existing_returned_at ... FAILED
+
+failures:
+
+---- message_returned_sets_status_to_returned stdout ----
+
+thread 'message_returned_sets_status_to_returned' (10612646) panicked at tests/u011_vba_cairnforms_messagereturned.rs:95:52:
+not yet implemented
+
+---- message_returned_clears_dirty_flag stdout ----
+
+thread 'message_returned_clears_dirty_flag' (10612644) panicked at tests/u011_vba_cairnforms_messagereturned.rs:95:52:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- message_returned_stamps_returned_at_when_null stdout ----
+
+thread 'message_returned_stamps_returned_at_when_null' (10612647) panicked at tests/u011_vba_cairnforms_messagereturned.rs:95:52:
+not yet implemented
+
+---- message_returned_preserves_existing_returned_at stdout ----
+
+thread 'message_returned_preserves_existing_returned_at' (10612645) panicked at tests/u011_vba_cairnforms_messagereturned.rs:95:52:
+not yet implemented
+
+
+failures:
+    message_returned_clears_dirty_flag
+    message_returned_preserves_existing_returned_at
+    message_returned_sets_status_to_returned
+    message_returned_stamps_returned_at_when_null
+
+test result: FAILED. 0 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u011_vba_cairnforms_messagereturned`
+     Running tests/u012_vba_cairnforms_mfrrefs.rs (target/debug/deps/u012_vba_cairnforms_mfrrefs-2645b46520bea410)
+
+running 6 tests
+test mfr_refs_missing_table_returns_null ... FAILED
+test mfr_refs_order_with_no_rows_returns_null ... FAILED
+test mfr_refs_ignores_refs_of_other_orders ... FAILED
+test mfr_refs_excludes_null_refs_and_joins_in_sentat_order ... FAILED
+test mfr_refs_null_order_id_returns_null ... FAILED
+test mfr_refs_single_ref_has_no_separator ... FAILED
+
+failures:
+
+---- mfr_refs_missing_table_returns_null stdout ----
+
+thread 'mfr_refs_missing_table_returns_null' (10612651) panicked at tests/u012_vba_cairnforms_mfrrefs.rs:87:47:
+not yet implemented
+
+---- mfr_refs_order_with_no_rows_returns_null stdout ----
+
+thread 'mfr_refs_order_with_no_rows_returns_null' (10612653) panicked at tests/u012_vba_cairnforms_mfrrefs.rs:86:87:
+not yet implemented
+
+---- mfr_refs_ignores_refs_of_other_orders stdout ----
+
+thread 'mfr_refs_ignores_refs_of_other_orders' (10612650) panicked at tests/u012_vba_cairnforms_mfrrefs.rs:86:87:
+not yet implemented
+
+---- mfr_refs_excludes_null_refs_and_joins_in_sentat_order stdout ----
+
+thread 'mfr_refs_excludes_null_refs_and_joins_in_sentat_order' (10612649) panicked at tests/u012_vba_cairnforms_mfrrefs.rs:86:87:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- mfr_refs_null_order_id_returns_null stdout ----
+
+thread 'mfr_refs_null_order_id_returns_null' (10612652) panicked at tests/u012_vba_cairnforms_mfrrefs.rs:85:65:
+not yet implemented
+
+---- mfr_refs_single_ref_has_no_separator stdout ----
+
+thread 'mfr_refs_single_ref_has_no_separator' (10612654) panicked at tests/u012_vba_cairnforms_mfrrefs.rs:86:87:
+not yet implemented
+
+
+failures:
+    mfr_refs_excludes_null_refs_and_joins_in_sentat_order
+    mfr_refs_ignores_refs_of_other_orders
+    mfr_refs_missing_table_returns_null
+    mfr_refs_null_order_id_returns_null
+    mfr_refs_order_with_no_rows_returns_null
+    mfr_refs_single_ref_has_no_separator
+
+test result: FAILED. 0 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u012_vba_cairnforms_mfrrefs`
+     Running tests/u013_vba_cairnreports_commissioncriteria.rs (target/debug/deps/u013_vba_cairnreports_commissioncriteria-5a0d390482bb9ad0)
+
+running 5 tests
+test criteria_december_rolls_over_to_next_january ... ok
+test criteria_mid_year_month_is_half_open_window ... ok
+test caller_normalizes_any_date_in_month_to_first_of_month ... ok
+test criteria_uses_ge_lower_and_strict_lt_upper ... ok
+test criteria_spans_exactly_one_calendar_month ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/u014_vba_cairnreports_commissionperiod.rs (target/debug/deps/u014_vba_cairnreports_commissionperiod-a443516ba58910de)
+
+running 3 tests
+test single_space_is_nonempty_and_returned_verbatim ... FAILED
+test empty_period_returns_all_dates ... FAILED
+test month_label_returned_verbatim ... FAILED
+
+failures:
+
+---- single_space_is_nonempty_and_returned_verbatim stdout ----
+
+thread 'single_space_is_nonempty_and_returned_verbatim' (10612664) panicked at tests/u014_vba_cairnreports_commissionperiod.rs:41:51:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- empty_period_returns_all_dates stdout ----
+
+thread 'empty_period_returns_all_dates' (10612662) panicked at tests/u014_vba_cairnreports_commissionperiod.rs:41:51:
+not yet implemented
+
+---- month_label_returned_verbatim stdout ----
+
+thread 'month_label_returned_verbatim' (10612663) panicked at tests/u014_vba_cairnreports_commissionperiod.rs:41:51:
+not yet implemented
+
+
+failures:
+    empty_period_returns_all_dates
+    month_label_returned_verbatim
+    single_space_is_nonempty_and_returned_verbatim
+
+test result: FAILED. 0 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u014_vba_cairnreports_commissionperiod`
+     Running tests/u015_vba_cairnreports_receiptpaidtodate.rs (target/debug/deps/u015_vba_cairnreports_receiptpaidtodate-abb8fc2b9ee37743)
+
+running 6 tests
+test nonexistent_payment_returns_zero ... FAILED
+test first_payment_of_order_returns_its_own_amount ... FAILED
+test later_payment_includes_all_earlier_payments_on_same_order ... FAILED
+test second_of_two_same_order_payments_sums_both ... FAILED
+test payments_on_other_orders_are_excluded ... FAILED
+test single_payment_order_returns_its_amount ... FAILED
+
+failures:
+
+---- nonexistent_payment_returns_zero stdout ----
+
+thread 'nonexistent_payment_returns_zero' (10612668) panicked at tests/u015_vba_cairnreports_receiptpaidtodate.rs:72:57:
+not yet implemented
+
+---- first_payment_of_order_returns_its_own_amount stdout ----
+
+thread 'first_payment_of_order_returns_its_own_amount' (10612666) panicked at tests/u015_vba_cairnreports_receiptpaidtodate.rs:72:57:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- later_payment_includes_all_earlier_payments_on_same_order stdout ----
+
+thread 'later_payment_includes_all_earlier_payments_on_same_order' (10612667) panicked at tests/u015_vba_cairnreports_receiptpaidtodate.rs:72:57:
+not yet implemented
+
+---- second_of_two_same_order_payments_sums_both stdout ----
+
+thread 'second_of_two_same_order_payments_sums_both' (10612670) panicked at tests/u015_vba_cairnreports_receiptpaidtodate.rs:72:57:
+not yet implemented
+
+---- payments_on_other_orders_are_excluded stdout ----
+
+thread 'payments_on_other_orders_are_excluded' (10612669) panicked at tests/u015_vba_cairnreports_receiptpaidtodate.rs:72:57:
+not yet implemented
+
+---- single_payment_order_returns_its_amount stdout ----
+
+thread 'single_payment_order_returns_its_amount' (10612671) panicked at tests/u015_vba_cairnreports_receiptpaidtodate.rs:72:57:
+not yet implemented
+
+
+failures:
+    first_payment_of_order_returns_its_own_amount
+    later_payment_includes_all_earlier_payments_on_same_order
+    nonexistent_payment_returns_zero
+    payments_on_other_orders_are_excluded
+    second_of_two_same_order_payments_sums_both
+    single_payment_order_returns_its_amount
+
+test result: FAILED. 0 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u015_vba_cairnreports_receiptpaidtodate`
+     Running tests/u020_query_qryopenquotevalue.rs (target/debug/deps/u020_query_qryopenquotevalue-af1cbccd795a2ee1)
+
+running 6 tests
+test open_quote_value_zero_tax_is_subtotal_plus_shipping ... FAILED
+test open_quote_value_is_max_not_sum_across_sent_quotes ... FAILED
+test open_quote_value_computed_independently_per_customer ... FAILED
+test open_quote_value_ignores_non_sent_statuses ... FAILED
+test open_quote_value_real_quote3_customer4_is_5332_68 ... FAILED
+test customer_with_no_sent_quote_is_absent ... FAILED
+
+failures:
+
+---- open_quote_value_zero_tax_is_subtotal_plus_shipping stdout ----
+
+thread 'open_quote_value_zero_tax_is_subtotal_plus_shipping' (10612678) panicked at tests/u020_query_qryopenquotevalue.rs:159:61:
+not yet implemented
+
+---- open_quote_value_is_max_not_sum_across_sent_quotes stdout ----
+
+thread 'open_quote_value_is_max_not_sum_across_sent_quotes' (10612676) panicked at tests/u020_query_qryopenquotevalue.rs:159:61:
+not yet implemented
+
+---- open_quote_value_computed_independently_per_customer stdout ----
+
+thread 'open_quote_value_computed_independently_per_customer' (10612674) panicked at tests/u020_query_qryopenquotevalue.rs:159:61:
+not yet implemented
+
+---- open_quote_value_ignores_non_sent_statuses stdout ----
+
+thread 'open_quote_value_ignores_non_sent_statuses' (10612675) panicked at tests/u020_query_qryopenquotevalue.rs:159:61:
+not yet implemented
+
+---- open_quote_value_real_quote3_customer4_is_5332_68 stdout ----
+
+thread 'open_quote_value_real_quote3_customer4_is_5332_68' (10612677) panicked at tests/u020_query_qryopenquotevalue.rs:159:61:
+not yet implemented
+
+---- customer_with_no_sent_quote_is_absent stdout ----
+
+thread 'customer_with_no_sent_quote_is_absent' (10612673) panicked at tests/u020_query_qryopenquotevalue.rs:159:61:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    customer_with_no_sent_quote_is_absent
+    open_quote_value_computed_independently_per_customer
+    open_quote_value_ignores_non_sent_statuses
+    open_quote_value_is_max_not_sum_across_sent_quotes
+    open_quote_value_real_quote3_customer4_is_5332_68
+    open_quote_value_zero_tax_is_subtotal_plus_shipping
+
+test result: FAILED. 0 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u020_query_qryopenquotevalue`
+     Running tests/u021_query_qryrmarouting.rs (target/debug/deps/u021_query_qryrmarouting-d335c2177af9af31)
+
+running 14 tests
+test days_in_service_uses_ship_date_when_shipped ... FAILED
+test days_in_service_falls_back_to_order_date_when_never_shipped ... FAILED
+test bench_test_branch_is_dead_for_ordinary_inputs ... FAILED
+test doa_after_30_days_still_advance_replacement ... FAILED
+test over_730_days_scrap_out_of_warranty ... FAILED
+test rma1_data_row_routes_to_customer_pays_repair ... FAILED
+test exactly_730_days_is_not_scrap ... FAILED
+test damaged_in_shipping_always_carrier_claim ... FAILED
+test doa_within_30_days_advance_replacement ... FAILED
+test default_route_customer_pays_repair ... FAILED
+test service_category_account_manager ... FAILED
+test tax_exempt_account_manager ... FAILED
+test extended_warranty_manufacturer_repair_even_out_of_window ... FAILED
+test within_one_year_manufacturer_repair ... FAILED
+
+failures:
+
+---- days_in_service_uses_ship_date_when_shipped stdout ----
+
+thread 'days_in_service_uses_ship_date_when_shipped' (10612683) panicked at tests/u021_query_qryrmarouting.rs:132:94:
+not yet implemented
+
+---- days_in_service_falls_back_to_order_date_when_never_shipped stdout ----
+
+thread 'days_in_service_falls_back_to_order_date_when_never_shipped' (10612682) panicked at tests/u021_query_qryrmarouting.rs:132:94:
+not yet implemented
+
+---- bench_test_branch_is_dead_for_ordinary_inputs stdout ----
+
+thread 'bench_test_branch_is_dead_for_ordinary_inputs' (10612680) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- doa_after_30_days_still_advance_replacement stdout ----
+
+thread 'doa_after_30_days_still_advance_replacement' (10612685) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- over_730_days_scrap_out_of_warranty stdout ----
+
+thread 'over_730_days_scrap_out_of_warranty' (10612689) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- rma1_data_row_routes_to_customer_pays_repair stdout ----
+
+thread 'rma1_data_row_routes_to_customer_pays_repair' (10612690) panicked at tests/u021_query_qryrmarouting.rs:132:94:
+not yet implemented
+
+---- exactly_730_days_is_not_scrap stdout ----
+
+thread 'exactly_730_days_is_not_scrap' (10612687) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- damaged_in_shipping_always_carrier_claim stdout ----
+
+thread 'damaged_in_shipping_always_carrier_claim' (10612681) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- doa_within_30_days_advance_replacement stdout ----
+
+thread 'doa_within_30_days_advance_replacement' (10612686) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- default_route_customer_pays_repair stdout ----
+
+thread 'default_route_customer_pays_repair' (10612684) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- service_category_account_manager stdout ----
+
+thread 'service_category_account_manager' (10612691) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- tax_exempt_account_manager stdout ----
+
+thread 'tax_exempt_account_manager' (10612692) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- extended_warranty_manufacturer_repair_even_out_of_window stdout ----
+
+thread 'extended_warranty_manufacturer_repair_even_out_of_window' (10612688) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+---- within_one_year_manufacturer_repair stdout ----
+
+thread 'within_one_year_manufacturer_repair' (10612693) panicked at tests/u021_query_qryrmarouting.rs:133:116:
+not yet implemented
+
+
+failures:
+    bench_test_branch_is_dead_for_ordinary_inputs
+    damaged_in_shipping_always_carrier_claim
+    days_in_service_falls_back_to_order_date_when_never_shipped
+    days_in_service_uses_ship_date_when_shipped
+    default_route_customer_pays_repair
+    doa_after_30_days_still_advance_replacement
+    doa_within_30_days_advance_replacement
+    exactly_730_days_is_not_scrap
+    extended_warranty_manufacturer_repair_even_out_of_window
+    over_730_days_scrap_out_of_warranty
+    rma1_data_row_routes_to_customer_pays_repair
+    service_category_account_manager
+    tax_exempt_account_manager
+    within_one_year_manufacturer_repair
+
+test result: FAILED. 0 passed; 14 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u021_query_qryrmarouting`
+     Running tests/u027_table_quotes.rs (target/debug/deps/u027_table_quotes-0897fb63eda2b500)
+
+running 15 tests
+test default_rep_is_none_when_customer_has_no_assigned_rep ... FAILED
+test customer_change_sets_all_three_defaults_when_customer_selected ... FAILED
+test customer_change_is_noop_when_no_customer_selected ... FAILED
+test default_contact_is_the_customers_primary_contact ... FAILED
+test default_contact_is_none_when_customer_has_no_primary_contact ... FAILED
+test default_quote_status_is_draft ... FAILED
+test default_tax_rate_uses_company_default_value ... FAILED
+test default_tax_rate_uses_company_default_when_not_exempt ... FAILED
+test default_valid_until_is_quote_date_plus_30_days_crossing_year ... FAILED
+test default_tax_rate_is_zero_when_customer_is_tax_exempt ... FAILED
+test default_rep_is_the_customers_assigned_rep ... FAILED
+test default_valid_until_is_quote_date_plus_30_days_leap_feb ... FAILED
+test default_valid_until_is_quote_date_plus_30_days_same_month ... FAILED
+test quote_status_list_has_no_duplicates ... FAILED
+test quote_status_list_is_exactly_five_values_in_order ... FAILED
+
+failures:
+
+---- default_rep_is_none_when_customer_has_no_assigned_rep stdout ----
+
+thread 'default_rep_is_none_when_customer_has_no_assigned_rep' (10612700) panicked at tests/u027_table_quotes.rs:169:56:
+not yet implemented
+
+---- customer_change_sets_all_three_defaults_when_customer_selected stdout ----
+
+thread 'customer_change_sets_all_three_defaults_when_customer_selected' (10612696) panicked at tests/u027_table_quotes.rs:171:79:
+not yet implemented
+
+---- customer_change_is_noop_when_no_customer_selected stdout ----
+
+thread 'customer_change_is_noop_when_no_customer_selected' (10612695) panicked at tests/u027_table_quotes.rs:171:79:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- default_contact_is_the_customers_primary_contact stdout ----
+
+thread 'default_contact_is_the_customers_primary_contact' (10612698) panicked at tests/u027_table_quotes.rs:170:60:
+not yet implemented
+
+---- default_contact_is_none_when_customer_has_no_primary_contact stdout ----
+
+thread 'default_contact_is_none_when_customer_has_no_primary_contact' (10612697) panicked at tests/u027_table_quotes.rs:170:60:
+not yet implemented
+
+---- default_quote_status_is_draft stdout ----
+
+thread 'default_quote_status_is_draft' (10612699) panicked at tests/u027_table_quotes.rs:166:53:
+not yet implemented
+
+---- default_tax_rate_uses_company_default_value stdout ----
+
+thread 'default_tax_rate_uses_company_default_value' (10612703) panicked at tests/u027_table_quotes.rs:168:77:
+not yet implemented
+
+---- default_tax_rate_uses_company_default_when_not_exempt stdout ----
+
+thread 'default_tax_rate_uses_company_default_when_not_exempt' (10612704) panicked at tests/u027_table_quotes.rs:168:77:
+not yet implemented
+
+---- default_valid_until_is_quote_date_plus_30_days_crossing_year stdout ----
+
+thread 'default_valid_until_is_quote_date_plus_30_days_crossing_year' (10612705) panicked at tests/u027_table_quotes.rs:161:62:
+not yet implemented
+
+---- default_tax_rate_is_zero_when_customer_is_tax_exempt stdout ----
+
+thread 'default_tax_rate_is_zero_when_customer_is_tax_exempt' (10612702) panicked at tests/u027_table_quotes.rs:168:77:
+not yet implemented
+
+---- default_rep_is_the_customers_assigned_rep stdout ----
+
+thread 'default_rep_is_the_customers_assigned_rep' (10612701) panicked at tests/u027_table_quotes.rs:169:56:
+not yet implemented
+
+---- default_valid_until_is_quote_date_plus_30_days_leap_feb stdout ----
+
+thread 'default_valid_until_is_quote_date_plus_30_days_leap_feb' (10612706) panicked at tests/u027_table_quotes.rs:161:62:
+not yet implemented
+
+---- default_valid_until_is_quote_date_plus_30_days_same_month stdout ----
+
+thread 'default_valid_until_is_quote_date_plus_30_days_same_month' (10612707) panicked at tests/u027_table_quotes.rs:161:62:
+not yet implemented
+
+---- quote_status_list_has_no_duplicates stdout ----
+
+thread 'quote_status_list_has_no_duplicates' (10612708) panicked at tests/u027_table_quotes.rs:165:55:
+not yet implemented
+
+---- quote_status_list_is_exactly_five_values_in_order stdout ----
+
+thread 'quote_status_list_is_exactly_five_values_in_order' (10612709) panicked at tests/u027_table_quotes.rs:165:55:
+not yet implemented
+
+
+failures:
+    customer_change_is_noop_when_no_customer_selected
+    customer_change_sets_all_three_defaults_when_customer_selected
+    default_contact_is_none_when_customer_has_no_primary_contact
+    default_contact_is_the_customers_primary_contact
+    default_quote_status_is_draft
+    default_rep_is_none_when_customer_has_no_assigned_rep
+    default_rep_is_the_customers_assigned_rep
+    default_tax_rate_is_zero_when_customer_is_tax_exempt
+    default_tax_rate_uses_company_default_value
+    default_tax_rate_uses_company_default_when_not_exempt
+    default_valid_until_is_quote_date_plus_30_days_crossing_year
+    default_valid_until_is_quote_date_plus_30_days_leap_feb
+    default_valid_until_is_quote_date_plus_30_days_same_month
+    quote_status_list_has_no_duplicates
+    quote_status_list_is_exactly_five_values_in_order
+
+test result: FAILED. 0 passed; 15 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u027_table_quotes`
+     Running tests/u028_table_orders.rs (target/debug/deps/u028_table_orders-462fef892be34688)
+
+running 9 tests
+test default_status_is_open ... FAILED
+test order_number_not_null_rejects_null ... FAILED
+test customer_required_rejects_null ... FAILED
+test default_tax_rate_is_zero ... FAILED
+test contact_optional_allows_null_and_enforces_fk ... FAILED
+test quote_optional_allows_null_and_enforces_fk ... FAILED
+test status_list_is_the_six_observed_statuses ... FAILED
+test rep_required_rejects_null ... FAILED
+test order_number_unique_rejects_duplicate ... FAILED
+
+failures:
+
+---- default_status_is_open stdout ----
+
+thread 'default_status_is_open' (10612713) panicked at tests/u028_table_orders.rs:99:49:
+not yet implemented
+
+---- order_number_not_null_rejects_null stdout ----
+
+thread 'order_number_not_null_rejects_null' (10612715) panicked at tests/u028_table_orders.rs:93:54:
+not yet implemented
+
+---- customer_required_rejects_null stdout ----
+
+thread 'customer_required_rejects_null' (10612712) panicked at tests/u028_table_orders.rs:95:50:
+not yet implemented
+
+---- default_tax_rate_is_zero stdout ----
+
+thread 'default_tax_rate_is_zero' (10612714) panicked at tests/u028_table_orders.rs:100:47:
+not yet implemented
+
+---- contact_optional_allows_null_and_enforces_fk stdout ----
+
+thread 'contact_optional_allows_null_and_enforces_fk' (10612711) panicked at tests/u028_table_orders.rs:97:68:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- quote_optional_allows_null_and_enforces_fk stdout ----
+
+thread 'quote_optional_allows_null_and_enforces_fk' (10612717) panicked at tests/u028_table_orders.rs:98:66:
+not yet implemented
+
+---- status_list_is_the_six_observed_statuses stdout ----
+
+thread 'status_list_is_the_six_observed_statuses' (10612719) panicked at tests/u028_table_orders.rs:101:43:
+not yet implemented
+
+---- rep_required_rejects_null stdout ----
+
+thread 'rep_required_rejects_null' (10612718) panicked at tests/u028_table_orders.rs:96:45:
+not yet implemented
+
+---- order_number_unique_rejects_duplicate stdout ----
+
+thread 'order_number_unique_rejects_duplicate' (10612716) panicked at tests/u028_table_orders.rs:94:64:
+not yet implemented
+
+
+failures:
+    contact_optional_allows_null_and_enforces_fk
+    customer_required_rejects_null
+    default_status_is_open
+    default_tax_rate_is_zero
+    order_number_not_null_rejects_null
+    order_number_unique_rejects_duplicate
+    quote_optional_allows_null_and_enforces_fk
+    rep_required_rejects_null
+    status_list_is_the_six_observed_statuses
+
+test result: FAILED. 0 passed; 9 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u028_table_orders`
+     Running tests/u029_table_activities.rs (target/debug/deps/u029_table_activities-f59ae507ec62ba7b)
+
+running 15 tests
+test delete_customer_cascades_to_its_activities ... FAILED
+test completed_accepts_both_values ... FAILED
+test activitytype_length_limit_20 ... FAILED
+test activitydate_nullable ... FAILED
+test insert_nonexistent_customer_rejected ... FAILED
+test activityid_auto_increments ... FAILED
+test insert_nonexistent_contact_rejected ... FAILED
+test followupdate_nullable ... FAILED
+test delete_customer_with_no_activities_succeeds ... FAILED
+test insert_null_customer_rejected ... FAILED
+test insert_null_contact_accepted ... FAILED
+test insert_null_rep_rejected ... FAILED
+test insert_nonexistent_rep_rejected ... FAILED
+test insert_valid_activity_succeeds ... FAILED
+test subject_length_limit_150 ... FAILED
+
+failures:
+
+---- delete_customer_cascades_to_its_activities stdout ----
+
+thread 'delete_customer_cascades_to_its_activities' (10612725) panicked at tests/u029_table_activities.rs:175:71:
+not yet implemented
+
+---- completed_accepts_both_values stdout ----
+
+thread 'completed_accepts_both_values' (10612724) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- activitytype_length_limit_20 stdout ----
+
+thread 'activitytype_length_limit_20' (10612723) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- activitydate_nullable stdout ----
+
+thread 'activitydate_nullable' (10612721) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- insert_nonexistent_customer_rejected stdout ----
+
+thread 'insert_nonexistent_customer_rejected' (10612729) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- activityid_auto_increments stdout ----
+
+thread 'activityid_auto_increments' (10612722) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- insert_nonexistent_contact_rejected stdout ----
+
+thread 'insert_nonexistent_contact_rejected' (10612728) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- followupdate_nullable stdout ----
+
+thread 'followupdate_nullable' (10612727) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- delete_customer_with_no_activities_succeeds stdout ----
+
+thread 'delete_customer_with_no_activities_succeeds' (10612726) panicked at tests/u029_table_activities.rs:175:71:
+not yet implemented
+
+---- insert_null_customer_rejected stdout ----
+
+thread 'insert_null_customer_rejected' (10612732) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- insert_null_contact_accepted stdout ----
+
+thread 'insert_null_contact_accepted' (10612731) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- insert_null_rep_rejected stdout ----
+
+thread 'insert_null_rep_rejected' (10612733) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- insert_nonexistent_rep_rejected stdout ----
+
+thread 'insert_nonexistent_rep_rejected' (10612730) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- insert_valid_activity_succeeds stdout ----
+
+thread 'insert_valid_activity_succeeds' (10612734) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+---- subject_length_limit_150 stdout ----
+
+thread 'subject_length_limit_150' (10612735) panicked at tests/u029_table_activities.rs:174:68:
+not yet implemented
+
+
+failures:
+    activitydate_nullable
+    activityid_auto_increments
+    activitytype_length_limit_20
+    completed_accepts_both_values
+    delete_customer_cascades_to_its_activities
+    delete_customer_with_no_activities_succeeds
+    followupdate_nullable
+    insert_nonexistent_contact_rejected
+    insert_nonexistent_customer_rejected
+    insert_nonexistent_rep_rejected
+    insert_null_contact_accepted
+    insert_null_customer_rejected
+    insert_null_rep_rejected
+    insert_valid_activity_succeeds
+    subject_length_limit_150
+
+test result: FAILED. 0 passed; 15 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u029_table_activities`
+     Running tests/u031_table_customers.rs (target/debug/deps/u031_table_customers-7738f44884eb3448)
+
+running 7 tests
+test customer_status_is_one_of_active_prospect_inactive ... FAILED
+test no_customer_is_assigned_to_an_inactive_rep ... FAILED
+test every_customer_has_non_null_assigned_rep ... FAILED
+test customer_ids_are_unique_and_within_1_to_1000 ... FAILED
+test payment_terms_is_one_of_the_known_values ... FAILED
+test sample_rows_match_observed_data ... FAILED
+test taxexempt_is_a_boolean ... FAILED
+
+failures:
+
+---- customer_status_is_one_of_active_prospect_inactive stdout ----
+
+thread 'customer_status_is_one_of_active_prospect_inactive' (10612743) panicked at tests/u031_table_customers.rs:10:5:
+not implemented: SELECT customerid FROM Customers
+
+---- no_customer_is_assigned_to_an_inactive_rep stdout ----
+
+thread 'no_customer_is_assigned_to_an_inactive_rep' (10612745) panicked at tests/u031_table_customers.rs:10:5:
+not implemented: SELECT customerid FROM Customers
+
+---- every_customer_has_non_null_assigned_rep stdout ----
+
+thread 'every_customer_has_non_null_assigned_rep' (10612744) panicked at tests/u031_table_customers.rs:10:5:
+not implemented: SELECT customerid FROM Customers
+
+---- customer_ids_are_unique_and_within_1_to_1000 stdout ----
+
+thread 'customer_ids_are_unique_and_within_1_to_1000' (10612742) panicked at tests/u031_table_customers.rs:10:5:
+not implemented: SELECT customerid FROM Customers
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- payment_terms_is_one_of_the_known_values stdout ----
+
+thread 'payment_terms_is_one_of_the_known_values' (10612746) panicked at tests/u031_table_customers.rs:10:5:
+not implemented: SELECT customerid FROM Customers
+
+---- sample_rows_match_observed_data stdout ----
+
+thread 'sample_rows_match_observed_data' (10612747) panicked at tests/u031_table_customers.rs:19:5:
+not implemented: SELECT customerstatus FROM Customers WHERE customerid=$1
+
+---- taxexempt_is_a_boolean stdout ----
+
+thread 'taxexempt_is_a_boolean' (10612748) panicked at tests/u031_table_customers.rs:10:5:
+not implemented: SELECT customerid FROM Customers
+
+
+failures:
+    customer_ids_are_unique_and_within_1_to_1000
+    customer_status_is_one_of_active_prospect_inactive
+    every_customer_has_non_null_assigned_rep
+    no_customer_is_assigned_to_an_inactive_rep
+    payment_terms_is_one_of_the_known_values
+    sample_rows_match_observed_data
+    taxexempt_is_a_boolean
+
+test result: FAILED. 0 passed; 7 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u031_table_customers`
+     Running tests/u032_table_companyinfo.rs (target/debug/deps/u032_table_companyinfo-05d74dc3df1182d6)
+
+running 10 tests
+test default_tax_rate_is_8_25_percent ... FAILED
+test manufacturer_order_aborts_with_message_when_url_empty ... FAILED
+test manufacturer_api_url_is_configured ... FAILED
+test company_name_is_cairn_systems ... FAILED
+test default_tax_rate_falls_back_to_zero_when_unset ... FAILED
+test company_info_has_exactly_one_row ... FAILED
+test quote_print_seller_block_uses_company_info_fields ... FAILED
+test quote_terms_fall_back_to_company_default_when_quote_terms_null ... FAILED
+test receipt_footer_text_is_the_company_default ... FAILED
+test seller_city_state_zip_joins_city_comma_space_state_space_zip ... FAILED
+
+failures:
+
+---- default_tax_rate_is_8_25_percent stdout ----
+
+thread 'default_tax_rate_is_8_25_percent' (10612753) panicked at tests/u032_table_companyinfo.rs:95:32:
+not yet implemented
+
+---- manufacturer_order_aborts_with_message_when_url_empty stdout ----
+
+thread 'manufacturer_order_aborts_with_message_when_url_empty' (10612755) panicked at tests/u032_table_companyinfo.rs:100:65:
+not yet implemented
+
+---- manufacturer_api_url_is_configured stdout ----
+
+thread 'manufacturer_api_url_is_configured' (10612754) panicked at tests/u032_table_companyinfo.rs:99:39:
+not yet implemented
+
+---- company_name_is_cairn_systems stdout ----
+
+thread 'company_name_is_cairn_systems' (10612751) panicked at tests/u032_table_companyinfo.rs:94:31:
+not yet implemented
+
+---- default_tax_rate_falls_back_to_zero_when_unset stdout ----
+
+thread 'default_tax_rate_falls_back_to_zero_when_unset' (10612752) panicked at tests/u032_table_companyinfo.rs:96:55:
+not yet implemented
+
+---- company_info_has_exactly_one_row stdout ----
+
+thread 'company_info_has_exactly_one_row' (10612750) panicked at tests/u032_table_companyinfo.rs:93:40:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- quote_print_seller_block_uses_company_info_fields stdout ----
+
+thread 'quote_print_seller_block_uses_company_info_fields' (10612756) panicked at tests/u032_table_companyinfo.rs:102:48:
+not yet implemented
+
+---- quote_terms_fall_back_to_company_default_when_quote_terms_null stdout ----
+
+thread 'quote_terms_fall_back_to_company_default_when_quote_terms_null' (10612757) panicked at tests/u032_table_companyinfo.rs:97:59:
+not yet implemented
+
+---- receipt_footer_text_is_the_company_default stdout ----
+
+thread 'receipt_footer_text_is_the_company_default' (10612758) panicked at tests/u032_table_companyinfo.rs:98:33:
+not yet implemented
+
+---- seller_city_state_zip_joins_city_comma_space_state_space_zip stdout ----
+
+thread 'seller_city_state_zip_joins_city_comma_space_state_space_zip' (10612759) panicked at tests/u032_table_companyinfo.rs:101:77:
+not yet implemented
+
+
+failures:
+    company_info_has_exactly_one_row
+    company_name_is_cairn_systems
+    default_tax_rate_falls_back_to_zero_when_unset
+    default_tax_rate_is_8_25_percent
+    manufacturer_api_url_is_configured
+    manufacturer_order_aborts_with_message_when_url_empty
+    quote_print_seller_block_uses_company_info_fields
+    quote_terms_fall_back_to_company_default_when_quote_terms_null
+    receipt_footer_text_is_the_company_default
+    seller_city_state_zip_joins_city_comma_space_state_space_zip
+
+test result: FAILED. 0 passed; 10 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u032_table_companyinfo`
+     Running tests/u034_vba_cairnreports_sqldate.rs (target/debug/deps/u034_vba_cairnreports_sqldate-8db0ca041c600826)
+
+running 5 tests
+test sql_date_double_digit_components_stay_two_digits ... FAILED
+test sql_date_midnight_is_zero_hour ... FAILED
+test sql_date_uses_24_hour_clock ... FAILED
+test sql_date_wraps_in_hash_delimiters_with_expected_separators ... FAILED
+test sql_date_zero_pads_single_digit_components ... FAILED
+
+failures:
+
+---- sql_date_double_digit_components_stay_two_digits stdout ----
+
+thread 'sql_date_double_digit_components_stay_two_digits' (10612761) panicked at tests/u034_vba_cairnreports_sqldate.rs:63:44:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- sql_date_midnight_is_zero_hour stdout ----
+
+thread 'sql_date_midnight_is_zero_hour' (10612762) panicked at tests/u034_vba_cairnreports_sqldate.rs:63:44:
+not yet implemented
+
+---- sql_date_uses_24_hour_clock stdout ----
+
+thread 'sql_date_uses_24_hour_clock' (10612763) panicked at tests/u034_vba_cairnreports_sqldate.rs:63:44:
+not yet implemented
+
+---- sql_date_wraps_in_hash_delimiters_with_expected_separators stdout ----
+
+thread 'sql_date_wraps_in_hash_delimiters_with_expected_separators' (10612764) panicked at tests/u034_vba_cairnreports_sqldate.rs:63:44:
+not yet implemented
+
+---- sql_date_zero_pads_single_digit_components stdout ----
+
+thread 'sql_date_zero_pads_single_digit_components' (10612765) panicked at tests/u034_vba_cairnreports_sqldate.rs:63:44:
+not yet implemented
+
+
+failures:
+    sql_date_double_digit_components_stay_two_digits
+    sql_date_midnight_is_zero_hour
+    sql_date_uses_24_hour_clock
+    sql_date_wraps_in_hash_delimiters_with_expected_separators
+    sql_date_zero_pads_single_digit_components
+
+test result: FAILED. 0 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u034_vba_cairnreports_sqldate`
+     Running tests/u036_table_salesreps.rs (target/debug/deps/u036_table_salesreps-22edb97f6fcdd523)
+
+running 4 tests
+test new_rep_defaults_are_5_percent_rate_and_active ... FAILED
+test commission_rate_displays_as_percent_of_net_sales ... FAILED
+test rep_name_is_first_name_space_last_name ... FAILED
+test commission_is_net_sales_times_rate_rounded_to_cents ... FAILED
+
+failures:
+
+---- new_rep_defaults_are_5_percent_rate_and_active stdout ----
+
+thread 'new_rep_defaults_are_5_percent_rate_and_active' (10612769) panicked at tests/u036_table_salesreps.rs:59:39:
+not yet implemented
+
+---- commission_rate_displays_as_percent_of_net_sales stdout ----
+
+thread 'commission_rate_displays_as_percent_of_net_sales' (10612768) panicked at tests/u036_table_salesreps.rs:61:50:
+not yet implemented
+
+---- rep_name_is_first_name_space_last_name stdout ----
+
+thread 'rep_name_is_first_name_space_last_name' (10612770) panicked at tests/u036_table_salesreps.rs:57:52:
+not yet implemented
+
+---- commission_is_net_sales_times_rate_rounded_to_cents stdout ----
+
+thread 'commission_is_net_sales_times_rate_rounded_to_cents' (10612767) panicked at tests/u036_table_salesreps.rs:58:53:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    commission_is_net_sales_times_rate_rounded_to_cents
+    commission_rate_displays_as_percent_of_net_sales
+    new_rep_defaults_are_5_percent_rate_and_active
+    rep_name_is_first_name_space_last_name
+
+test result: FAILED. 0 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u036_table_salesreps`
+     Running tests/u037_query_qryorderpayments.rs (target/debug/deps/u037_query_qryorderpayments-5290611e3828847a)
+
+running 8 tests
+test last_payment_date_is_null_when_all_dates_null ... FAILED
+test amount_paid_is_sum_of_all_payment_rows ... FAILED
+test order_without_payments_produces_no_row ... FAILED
+test amount_paid_sums_fractional_amounts ... FAILED
+test last_payment_date_is_max_of_payment_dates ... FAILED
+test amount_paid_single_payment_row ... FAILED
+test output_is_amount_paid_then_last_payment_date ... FAILED
+test last_payment_date_ignores_null_dates ... FAILED
+
+failures:
+
+---- last_payment_date_is_null_when_all_dates_null stdout ----
+
+thread 'last_payment_date_is_null_when_all_dates_null' (10612777) panicked at tests/u037_query_qryorderpayments.rs:38:5:
+not implemented: assumed function for query:qryOrderPayments
+
+---- amount_paid_is_sum_of_all_payment_rows stdout ----
+
+thread 'amount_paid_is_sum_of_all_payment_rows' (10612772) panicked at tests/u037_query_qryorderpayments.rs:38:5:
+not implemented: assumed function for query:qryOrderPayments
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- order_without_payments_produces_no_row stdout ----
+
+thread 'order_without_payments_produces_no_row' (10612778) panicked at tests/u037_query_qryorderpayments.rs:38:5:
+not implemented: assumed function for query:qryOrderPayments
+
+---- amount_paid_sums_fractional_amounts stdout ----
+
+thread 'amount_paid_sums_fractional_amounts' (10612774) panicked at tests/u037_query_qryorderpayments.rs:38:5:
+not implemented: assumed function for query:qryOrderPayments
+
+---- last_payment_date_is_max_of_payment_dates stdout ----
+
+thread 'last_payment_date_is_max_of_payment_dates' (10612776) panicked at tests/u037_query_qryorderpayments.rs:38:5:
+not implemented: assumed function for query:qryOrderPayments
+
+---- amount_paid_single_payment_row stdout ----
+
+thread 'amount_paid_single_payment_row' (10612773) panicked at tests/u037_query_qryorderpayments.rs:38:5:
+not implemented: assumed function for query:qryOrderPayments
+
+---- output_is_amount_paid_then_last_payment_date stdout ----
+
+thread 'output_is_amount_paid_then_last_payment_date' (10612779) panicked at tests/u037_query_qryorderpayments.rs:38:5:
+not implemented: assumed function for query:qryOrderPayments
+
+---- last_payment_date_ignores_null_dates stdout ----
+
+thread 'last_payment_date_ignores_null_dates' (10612775) panicked at tests/u037_query_qryorderpayments.rs:38:5:
+not implemented: assumed function for query:qryOrderPayments
+
+
+failures:
+    amount_paid_is_sum_of_all_payment_rows
+    amount_paid_single_payment_row
+    amount_paid_sums_fractional_amounts
+    last_payment_date_ignores_null_dates
+    last_payment_date_is_max_of_payment_dates
+    last_payment_date_is_null_when_all_dates_null
+    order_without_payments_produces_no_row
+    output_is_amount_paid_then_last_payment_date
+
+test result: FAILED. 0 passed; 8 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u037_query_qryorderpayments`
+     Running tests/u038_query_qryorderlines.rs (target/debug/deps/u038_query_qryorderlines-1bbd8b585d4025af)
+
+running 6 tests
+test line_total_rounds_to_two_decimals ... FAILED
+test line_total_is_discounted_total_rounded_to_two_decimals ... FAILED
+test line_with_no_matching_product_is_dropped_by_inner_join ... FAILED
+test item_description_falls_back_to_product_name_when_line_description_is_null ... FAILED
+test item_description_prefers_line_description_when_present ... FAILED
+test line_cost_uses_current_product_unit_cost ... FAILED
+
+failures:
+
+---- line_total_rounds_to_two_decimals stdout ----
+
+thread 'line_total_rounds_to_two_decimals' (10612785) panicked at tests/u038_query_qryorderlines.rs:31:5:
+not implemented: Round(ol.Quantity*ol.UnitPrice*(1-ol.DiscountPct),2)
+
+---- line_total_is_discounted_total_rounded_to_two_decimals stdout ----
+
+thread 'line_total_is_discounted_total_rounded_to_two_decimals' (10612784) panicked at tests/u038_query_qryorderlines.rs:31:5:
+not implemented: Round(ol.Quantity*ol.UnitPrice*(1-ol.DiscountPct),2)
+
+---- line_with_no_matching_product_is_dropped_by_inner_join stdout ----
+
+thread 'line_with_no_matching_product_is_dropped_by_inner_join' (10612786) panicked at tests/u038_query_qryorderlines.rs:37:5:
+not implemented: inner join on ProductID
+
+---- item_description_falls_back_to_product_name_when_line_description_is_null stdout ----
+
+thread 'item_description_falls_back_to_product_name_when_line_description_is_null' (10612781) panicked at tests/u038_query_qryorderlines.rs:28:5:
+not implemented: Nz(ol.LineDescription, p.ProductName)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- item_description_prefers_line_description_when_present stdout ----
+
+thread 'item_description_prefers_line_description_when_present' (10612782) panicked at tests/u038_query_qryorderlines.rs:28:5:
+not implemented: Nz(ol.LineDescription, p.ProductName)
+
+---- line_cost_uses_current_product_unit_cost stdout ----
+
+thread 'line_cost_uses_current_product_unit_cost' (10612783) panicked at tests/u038_query_qryorderlines.rs:34:5:
+not implemented: ol.Quantity*p.UnitCost
+
+
+failures:
+    item_description_falls_back_to_product_name_when_line_description_is_null
+    item_description_prefers_line_description_when_present
+    line_cost_uses_current_product_unit_cost
+    line_total_is_discounted_total_rounded_to_two_decimals
+    line_total_rounds_to_two_decimals
+    line_with_no_matching_product_is_dropped_by_inner_join
+
+test result: FAILED. 0 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u038_query_qryorderlines`
+     Running tests/u041_table_orderlines.rs (target/debug/deps/u041_table_orderlines-650860c2a9190e37)
+
+running 11 tests
+test line_without_existing_order_is_rejected ... FAILED
+test deleting_product_with_lines_is_blocked ... FAILED
+test duplicate_orderlineid_is_rejected ... FAILED
+test line_without_discount_is_accepted ... FAILED
+test deleting_order_cascades_to_its_lines ... FAILED
+test line_without_existing_product_is_rejected ... FAILED
+test line_without_serialnumbers_is_accepted ... FAILED
+test line_without_description_is_accepted ... FAILED
+test orderlineid_is_auto_assigned_and_unique_per_line ... FAILED
+test quantity_is_not_enforced_by_schema ... FAILED
+test line_without_unitprice_is_accepted ... FAILED
+
+failures:
+
+---- line_without_existing_order_is_rejected stdout ----
+
+thread 'line_without_existing_order_is_rejected' (10612793) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- deleting_product_with_lines_is_blocked stdout ----
+
+thread 'deleting_product_with_lines_is_blocked' (10612789) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- duplicate_orderlineid_is_rejected stdout ----
+
+thread 'duplicate_orderlineid_is_rejected' (10612790) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- line_without_discount_is_accepted stdout ----
+
+thread 'line_without_discount_is_accepted' (10612792) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- deleting_order_cascades_to_its_lines stdout ----
+
+thread 'deleting_order_cascades_to_its_lines' (10612788) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- line_without_existing_product_is_rejected stdout ----
+
+thread 'line_without_existing_product_is_rejected' (10612794) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- line_without_serialnumbers_is_accepted stdout ----
+
+thread 'line_without_serialnumbers_is_accepted' (10612795) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- line_without_description_is_accepted stdout ----
+
+thread 'line_without_description_is_accepted' (10612791) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- orderlineid_is_auto_assigned_and_unique_per_line stdout ----
+
+thread 'orderlineid_is_auto_assigned_and_unique_per_line' (10612797) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- quantity_is_not_enforced_by_schema stdout ----
+
+thread 'quantity_is_not_enforced_by_schema' (10612798) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+---- line_without_unitprice_is_accepted stdout ----
+
+thread 'line_without_unitprice_is_accepted' (10612796) panicked at tests/u041_table_orderlines.rs:138:137:
+not yet implemented
+
+
+failures:
+    deleting_order_cascades_to_its_lines
+    deleting_product_with_lines_is_blocked
+    duplicate_orderlineid_is_rejected
+    line_without_description_is_accepted
+    line_without_discount_is_accepted
+    line_without_existing_order_is_rejected
+    line_without_existing_product_is_rejected
+    line_without_serialnumbers_is_accepted
+    line_without_unitprice_is_accepted
+    orderlineid_is_auto_assigned_and_unique_per_line
+    quantity_is_not_enforced_by_schema
+
+test result: FAILED. 0 passed; 11 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test u041_table_orderlines`
+   Doc-tests cairn_ai_tests_stubbed
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: 22 targets failed:
+    `--test u001_vba_cairnforms_nextnumber`
+    `--test u004_vba_cairnforms_activitydefaults`
+    `--test u005_vba_cairnforms_rmadefaults`
+    `--test u006_vba_cairnforms_lineproductchanged`
+    `--test u007_vba_cairnforms_docload`
+    `--test u010_vba_cairnforms_messagecustomerchanged`
+    `--test u011_vba_cairnforms_messagereturned`
+    `--test u012_vba_cairnforms_mfrrefs`
+    `--test u014_vba_cairnreports_commissionperiod`
+    `--test u015_vba_cairnreports_receiptpaidtodate`
+    `--test u020_query_qryopenquotevalue`
+    `--test u021_query_qryrmarouting`
+    `--test u027_table_quotes`
+    `--test u028_table_orders`
+    `--test u029_table_activities`
+    `--test u031_table_customers`
+    `--test u032_table_companyinfo`
+    `--test u034_vba_cairnreports_sqldate`
+    `--test u036_table_salesreps`
+    `--test u037_query_qryorderpayments`
+    `--test u038_query_qryorderlines`
+    `--test u041_table_orderlines`

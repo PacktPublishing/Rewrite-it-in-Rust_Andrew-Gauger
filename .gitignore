@@ -1,0 +1,22 @@
+# Build output
+target/
+node_modules/
+pkg/*.tgz
+__pycache__/
+*.pyc
+
+# Rails apps: secrets, logs, temp files, local storage
+**/config/master.key
+**/.env*
+**/.bundle/
+**/log/*
+**/tmp/*
+**/storage/*
+!**/log/.keep
+!**/tmp/.keep
+!**/storage/.keep
+
+# Editors and OS
+.DS_Store
+~$*
+*.laccdb

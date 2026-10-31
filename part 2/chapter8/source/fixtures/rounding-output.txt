@@ -1,0 +1,18 @@
+== Carla Mendes, September 2026 (Access printed: commission $25,701.07, unpaid $328,267.47)
+  half-up    commission    25,701.08   unpaid     328,267.48
+  half-even  commission    25,701.06   unpaid     328,267.47
+  access     commission    25,701.07   unpaid     328,267.47
+
+== SO-2026-1053 tax: net sales x tax rate
+  12098.00 x 0.0725 = 877.105000
+  half-up    877.11
+  half-even  877.10
+  access     877.1
+
+== All September 2026 commission statements
+  half-up    136 orders, commission 183,280.55; 82 unpaid orders carry 101,665.31
+  half-even  136 orders, commission 183,280.47; 82 unpaid orders carry 101,665.26
+  access     136 orders, commission 183,280.48; 82 unpaid orders carry 101,665.26
+
+== Orders whose tax depends on the rounding model
+  access vs half-up: 528 of 13531

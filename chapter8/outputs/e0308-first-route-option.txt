@@ -1,0 +1,62 @@
+error[E0308]: mismatched types
+  --> src/lib.rs:48:42
+   |
+48 |     } else if dead_on_arrival && days <= 30 {
+   |                                  ----    ^^ expected `Option<i32>`, found integer
+   |                                  |
+   |                                  expected because this is `Option<i32>`
+   |
+   = note: expected enum `Option<i32>`
+              found type `{integer}`
+help: try wrapping the expression in `Some`
+   |
+48 |     } else if dead_on_arrival && days <= Some(30) {
+   |                                          +++++  +
+
+error[E0308]: mismatched types
+  --> src/lib.rs:52:23
+   |
+52 |     } else if days <= 365 || r.extended_warranty {
+   |               ----    ^^^ expected `Option<i32>`, found integer
+   |               |
+   |               expected because this is `Option<i32>`
+   |
+   = note: expected enum `Option<i32>`
+              found type `{integer}`
+help: try wrapping the expression in `Some`
+   |
+52 |     } else if days <= Some(365) || r.extended_warranty {
+   |                       +++++   +
+
+error[E0308]: mismatched types
+  --> src/lib.rs:56:23
+   |
+56 |     } else if days <= 90 {
+   |               ----    ^^ expected `Option<i32>`, found integer
+   |               |
+   |               expected because this is `Option<i32>`
+   |
+   = note: expected enum `Option<i32>`
+              found type `{integer}`
+help: try wrapping the expression in `Some`
+   |
+56 |     } else if days <= Some(90) {
+   |                       +++++  +
+
+error[E0308]: mismatched types
+  --> src/lib.rs:60:22
+   |
+60 |     } else if days > 730 {
+   |               ----   ^^^ expected `Option<i32>`, found integer
+   |               |
+   |               expected because this is `Option<i32>`
+   |
+   = note: expected enum `Option<i32>`
+              found type `{integer}`
+help: try wrapping the expression in `Some`
+   |
+60 |     } else if days > Some(730) {
+   |                      +++++   +
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `first-route` (lib) due to 4 previous errors

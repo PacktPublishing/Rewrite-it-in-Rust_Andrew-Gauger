@@ -1,0 +1,181 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get_schema",
+      "description": "Get the CREATE TABLE statement for one table.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "table": {
+            "type": "string",
+            "description": "Table name"
+          }
+        },
+        "required": [
+          "table"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_saved_query",
+      "description": "Get the SQL of one saved query.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Saved query name, e.g. qryQuoteTotals"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "read_vba",
+      "description": "Read lines of a VBA module. Stops early at a size limit and says where to continue.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "module": {
+            "type": "string",
+            "description": "Module name"
+          },
+          "start": {
+            "type": "integer",
+            "description": "First line, 1-based"
+          },
+          "end": {
+            "type": "integer",
+            "description": "Last line"
+          }
+        },
+        "required": [
+          "module"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "search_vba",
+      "description": "Regex search (case-insensitive) across the VBA modules.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "description": "Regular expression"
+          },
+          "module": {
+            "type": "string",
+            "description": "Optional: limit to one module"
+          }
+        },
+        "required": [
+          "pattern"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "sql",
+      "description": "Run one read-only SELECT against the database data. Returns at most 20 rows.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "A single SELECT statement"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "read_notes",
+      "description": "Read the notes saved for another unit.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "string",
+            "description": "Unit id, e.g. vba:CairnForms.NextNumber"
+          }
+        },
+        "required": [
+          "unit"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "save_notes",
+      "description": "Save this round's unit notes (at most 2000 characters) and name the units to visit later. Ends the round.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "What the unit does: each rule as a sentence, with line numbers or SQL as evidence"
+          },
+          "follow": {
+            "type": "array",
+            "description": "Unit ids worth visiting, from the references in the brief",
+            "items": {
+              "type": "string"
+            }
+          },
+          "has_rules": {
+            "type": "boolean",
+            "description": "true if this unit implements a business rule worth testing"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "save_tests",
+      "description": "Save this round's unit Rust test file (at most 6000 characters). Ends the round.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "One Rust test file"
+          },
+          "skip": {
+            "type": "string",
+            "description": "Instead of code: why this unit has nothing to test"
+          }
+        },
+        "required": [
+          "code"
+        ]
+      }
+    }
+  }
+]

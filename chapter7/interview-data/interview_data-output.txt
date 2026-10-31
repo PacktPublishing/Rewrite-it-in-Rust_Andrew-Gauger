@@ -1,0 +1,78 @@
+# Interview packet numbers, as of 2026-10-09
+
+## Priya Shah, sales manager
+- R22 September 2026 orders (not cancelled): 136
+- R22   of those, no payment yet: 82
+- R22   of those, a balance still owing: 131
+- R22   commission on them, all reps (statement): $183,280.48
+- R22   of which on orders still owing: $180,905.12
+- R22 Carla, September 2026: orders: 14
+- R22   commission statement total: $25,701.07
+- R22   still owed by her customers on those orders: $328,267.47
+- R22   orders with no payment yet: 8
+- R24 rep-months where the statement and Sales by Rep disagree: 397 of 818
+- R24   largest gap: $0.05
+- R24   Carla, September 2026: statement $25,701.07, Sales by Rep $25,701.06
+- P02 customers whose Notes say 'net 60 ok - per Priya': 16
+- P02   their terms field: {'Net 30': 10, 'Net 15': 3, 'Net 45': 1, 'Due on Receipt': 2}
+- P02 customers on Net 60 in the terms field: 17
+- P02   in both groups: 0
+- R27 customers with a Sent quote: 76
+- R27   with more than one, so 'open quote value' (the largest) understates the pipeline: 5
+- R27   pipeline left out by taking the largest: $46,470.92
+
+## Carla Mendes, rep
+- R28 customers by status: {'Active': 517, 'Prospect': 206, 'Inactive': 273, "'Prospect'": 4}
+- R28 prospects with a Director or Manager on file: 183 of 206
+- R28 qualified leads (qryQualifiedLeads): 39
+- R28   by quote of $5,000 or more: 13
+- R28   by 2+ touches in 90 days in a target industry only: 26
+- R28 customers who aren't prospects and so never qualify: 794
+- R28   of those, stored as 'Prospect' with quote marks (D01): 4
+- R28 customers with a contact titled Owner: 158
+- R28   prospects with an Owner but no Director or Manager, so they can't qualify: 7
+- P01 Notes matching \[DIST-15\]: 17
+- P01 Notes matching (?i)dist 15%: 26
+- P01 Notes matching (?i)net 60 ok: 16
+- P01 Notes matching \[GOV\]: 9
+- P01 Notes matching (?i)gov pricing: 2
+- P01 Notes matching KEY ACCT: 6
+- P01 customers with any pricing code: 76
+- P01 distributor code by assigned rep: {'Carla Mendes': {'dist 15%': 3, '[DIST-15]': 3}, 'Derek Liu': {'dist 15%': 3, '[DIST-15]': 4}, 'Elise Moreau': {'[DIST-15]': 1}, 'Lena Brandt': {'dist 15%': 4, '[DIST-15]': 1}, 'Marcus Doyle': {'dist 15%': 2}, 'Maya Torres': {'dist 15%': 5}, 'Nadia Petrova': {'dist 15%': 4, '[DIST-15]': 4}, 'Priya Shah': {'dist 15%': 2, '[DIST-15]': 1}, 'Victor Huang': {'[DIST-15]': 3, 'dist 15%': 3}}
+
+## Sam Okafor, inside sales and reception
+- R30 phone messages: 4638
+- R30   by status: {'New': 4, 'Returned': 4147, 'Closed': 487}
+- R40 sign-ins: 17
+- R40   with a plain-text password: 17
+- D06 sign-ins still active for reps who left: 3: rmalhotra, bhartley, tgrant
+- D06 shared sign-ins with no rep: sales, temp
+- R40 passwords used by more than one sign-in: 3
+- R40   sign-ins sharing reception's password: 3
+
+## Returns and service lead
+- R34 returns: 772
+- R34   by route: {'Manufacturer Repair': 441, 'Customer Pays Repair': 104, 'Advance Replacement': 103, 'Carrier Claim': 64, 'Scrap - Out of Warranty': 44, 'Account Manager': 16}
+- D08 routed to Bench Test: 0
+- D05 returns for orders not in the file: 29
+- D05   their routes (days in service is Null): {'Customer Pays Repair': 18, 'Carrier Claim': 6, 'Account Manager': 3, 'Advance Replacement': 2}
+
+## Whoever places manufacturer orders
+- R38 calls to the manufacturer's order API: 9054
+- R38   first call: 03/04/19
+- R38   by HTTP status: {'201': 8702, '500': 66, '(no answer)': 286}
+- R38   errors: {'The operation timed out': 206, 'The connection with the server was terminated abnormally': 80}
+- D07 orders sent: 8742
+- D07   by what Access logged (HTTP status per attempt): {'201': 8430, 'none then 201': 206, '500 then 201': 66, 'none then none': 40}
+- D07 orders whose first attempt got no answer (README's 'failed first attempt'): 246
+- D07   no answer, then a retry that worked: 206
+- D07   no answer twice, then nobody retried: 40
+- D07   a 500 error, then a retry that worked (the manufacturer created nothing): 66
+- D07 MFR- numbers recorded: 8702, MFR-100001 to MFR-108988
+- D07   numbers missing from that range (orders the manufacturer took that Access never recorded): 286
+
+## The sales team
+- D02 orders still Back Order: 31
+- D02 quotes still On Hold: 12
+- D01 quotes stored as 'Draft' with quote marks: 9
+- D04 quote lines whose quote is gone: 162

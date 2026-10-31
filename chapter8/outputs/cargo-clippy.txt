@@ -1,0 +1,3 @@
+    Checking cairn-core v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.11s
+exit 0

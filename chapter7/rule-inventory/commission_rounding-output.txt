@@ -1,0 +1,8 @@
+rep-months with orders: 818
+statement and month-end figures differ: 397
+largest gap: $0.05
+September 2026:
+  Victor Huang: statement $13330.97, Sales by Rep $13330.98
+  Marcus Doyle: statement $5105.19, Sales by Rep $5105.2
+  Carla Mendes: statement $25701.07, Sales by Rep $25701.06
+  Nadia Petrova: statement $37637.46, Sales by Rep $37637.45

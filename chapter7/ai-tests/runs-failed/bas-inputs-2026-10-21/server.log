@@ -1,0 +1,59 @@
+/Users/andy/venvs/mlx/lib/python3.12/site-packages/mlx_lm/server.py:1894: UserWarning: mlx_lm.server is not recommended for production as it only implements basic security checks.
+  warnings.warn(
+2026-10-21 13:07:59,280 - INFO - Starting httpd at 127.0.0.1 on port 8080...
+127.0.0.1 - - [21/Oct/2026 13:08:01] "GET /v1/models HTTP/1.1" 200 -
+127.0.0.1 - - [21/Oct/2026 13:08:01] "GET /v1/models HTTP/1.1" 200 -
+127.0.0.1 - - [21/Oct/2026 13:08:03] "POST /v1/chat/completions HTTP/1.1" 200 -
+2026-10-21 13:08:03,738 - INFO - Prompt Cache: 0 sequences, 0.00 GB
+2026-10-21 13:08:03,738 - INFO - - assistant: 0 sequences, 0.00 GB
+2026-10-21 13:08:03,738 - INFO - - user: 0 sequences, 0.00 GB
+2026-10-21 13:08:03,738 - INFO - - system: 0 sequences, 0.00 GB
+2026-10-21 13:08:03,747 - INFO - Prompt processing progress: 0/982
+2026-10-21 13:08:08,655 - INFO - Prompt processing progress: 512/982
+2026-10-21 13:08:13,230 - INFO - Prompt processing progress: 981/982
+2026-10-21 13:08:13,442 - INFO - Prompt processing progress: 982/982
+127.0.0.1 - - [21/Oct/2026 13:08:21] "POST /v1/chat/completions HTTP/1.1" 200 -
+2026-10-21 13:08:21,945 - INFO - Prompt Cache: 1 sequences, 0.24 GB
+2026-10-21 13:08:21,945 - INFO - - assistant: 1 sequences, 0.24 GB
+2026-10-21 13:08:21,945 - INFO - - user: 0 sequences, 0.00 GB
+2026-10-21 13:08:21,945 - INFO - - system: 0 sequences, 0.00 GB
+2026-10-21 13:08:21,948 - INFO - Prompt processing progress: 0/5089
+2026-10-21 13:08:26,782 - INFO - Prompt processing progress: 512/5089
+2026-10-21 13:08:31,639 - INFO - Prompt processing progress: 1024/5089
+2026-10-21 13:08:36,517 - INFO - Prompt processing progress: 1536/5089
+2026-10-21 13:08:41,417 - INFO - Prompt processing progress: 2048/5089
+2026-10-21 13:08:46,342 - INFO - Prompt processing progress: 2560/5089
+2026-10-21 13:08:51,290 - INFO - Prompt processing progress: 3072/5089
+2026-10-21 13:08:56,261 - INFO - Prompt processing progress: 3584/5089
+2026-10-21 13:09:01,256 - INFO - Prompt processing progress: 4096/5089
+2026-10-21 13:09:06,276 - INFO - Prompt processing progress: 4608/5089
+2026-10-21 13:09:11,024 - INFO - Prompt processing progress: 5088/5089
+2026-10-21 13:09:11,244 - INFO - Prompt processing progress: 5089/5089
+127.0.0.1 - - [21/Oct/2026 13:09:29] "POST /v1/chat/completions HTTP/1.1" 200 -
+2026-10-21 13:09:29,407 - INFO - Prompt Cache: 1 sequences, 0.34 GB
+2026-10-21 13:09:29,407 - INFO - - assistant: 1 sequences, 0.34 GB
+2026-10-21 13:09:29,407 - INFO - - user: 0 sequences, 0.00 GB
+2026-10-21 13:09:29,407 - INFO - - system: 0 sequences, 0.00 GB
+2026-10-21 13:09:29,410 - INFO - Prompt processing progress: 0/10701
+2026-10-21 13:09:34,256 - INFO - Prompt processing progress: 512/10701
+2026-10-21 13:09:39,122 - INFO - Prompt processing progress: 1024/10701
+2026-10-21 13:09:44,007 - INFO - Prompt processing progress: 1536/10701
+2026-10-21 13:09:48,908 - INFO - Prompt processing progress: 2048/10701
+2026-10-21 13:09:53,838 - INFO - Prompt processing progress: 2560/10701
+2026-10-21 13:09:58,803 - INFO - Prompt processing progress: 3072/10701
+2026-10-21 13:10:03,809 - INFO - Prompt processing progress: 3584/10701
+2026-10-21 13:10:08,836 - INFO - Prompt processing progress: 4096/10701
+2026-10-21 13:10:13,891 - INFO - Prompt processing progress: 4608/10701
+2026-10-21 13:10:18,969 - INFO - Prompt processing progress: 5120/10701
+2026-10-21 13:10:24,087 - INFO - Prompt processing progress: 5632/10701
+2026-10-21 13:10:29,226 - INFO - Prompt processing progress: 6144/10701
+2026-10-21 13:10:34,393 - INFO - Prompt processing progress: 6656/10701
+2026-10-21 13:10:39,584 - INFO - Prompt processing progress: 7168/10701
+2026-10-21 13:10:44,796 - INFO - Prompt processing progress: 7680/10701
+2026-10-21 13:10:50,040 - INFO - Prompt processing progress: 8192/10701
+2026-10-21 13:10:55,309 - INFO - Prompt processing progress: 8704/10701
+2026-10-21 13:11:00,605 - INFO - Prompt processing progress: 9216/10701
+2026-10-21 13:11:05,924 - INFO - Prompt processing progress: 9728/10701
+2026-10-21 13:11:11,271 - INFO - Prompt processing progress: 10240/10701
+2026-10-21 13:11:16,306 - INFO - Prompt processing progress: 10700/10701
+2026-10-21 13:11:16,538 - INFO - Prompt processing progress: 10701/10701

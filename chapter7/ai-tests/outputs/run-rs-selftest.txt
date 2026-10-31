@@ -1,0 +1,84 @@
+CairnReports: 720 lines
+CairnBuild: 801 lines
+CairnForms: 1202 lines
+--- units: 187 ({'vba': 145, 'query': 27, 'table': 15})
+--- vba:CairnForms.NextNumber: CairnForms lines 670-681; refs: table:Quotes, table:RMAs, table:Orders
+--- query:qryRMARouting refs: table:RMAs, table:Customers, table:Products, table:Orders
+--- largest unit: CairnBuild lines 497-690 (14684 characters)
+--- survey brief: 3308 characters, about 1103 tokens
+--- get_saved_query {"name":"qryQuoteTotals"}
+SELECT q.QuoteID,q.QuoteNumber,q.CustomerID,q.RepID,q.QuoteDate,q.QuoteStatus,CCur(Nz(Sum(l.LineTotal),0)),q.TaxRate,CCur(Round(Nz(Sum(l.LineTotal),0)*q.TaxRate,2)),q.ShippingCost,CCur(Nz(Sum(l.LineTotal),0) + Round(Nz(Sum(l.LineTotal),0)*q.TaxRate,2) + q.ShippingCost) FROM [Quotes],[qryQuoteLines]
+
+--- get_schema {"table":"RMAs"}
+CREATE TABLE IF NOT EXISTS "rmas"
+ (
+	"rmaid"			SERIAL, 
+	"rmanumber"			VARCHAR (20) NOT NULL, 
+	"customerid"			INTEGER, 
+	"orderid"			INTEGER, 
+	"productid"			INTEGER, 
+	"serialnumber"			VARCHAR (40), 
+	"openeddate"			TIMESTAMP WITHOUT TIME ZONE, 
+	"openedbyrepid"			INTEGER, 
+	"reason"			VARCHAR (4
+--- read_vba {"module":"CairnForms","start":1,"end":3}
+1: Attribute VB_Name = "CairnForms"
+2: '==============================================================================
+3: '  CAIRN SYSTEMS - FORMS BUILDER
+--- search_vba {"pattern":"Function NextNumber"}
+CairnForms:671: Public Function NextNumber(ByVal prefix As String) As String
+--- sql {"query":"SELECT OrderNumber FROM Orders WHERE Ord..."}
+OrderNumber
+SO-2026-0920
+SO-2026-0991
+--- sql {"query":"DELETE FROM Orders"}
+error: only a single SELECT statement is allowed
+--- sql {"query":"SELECT OrderNumber FROM Orders ORDER BY ..."}
+error: mdb-sql could not parse this query, so nothing ran. mdb-sql reads one table per query: SELECT [TOP n] columns, * or COUNT(*) FROM table [WHERE comparisons with =, <>, <, >, <=, >=, LIKE, joined by AND, OR, NOT] [LIMIT n]. It has no joins, AS aliases, DISTINCT, GROUP BY, ORDER BY, IN, IS NULL,
+--- sql {"query":"SELECT CustomerID FROM Customers WHERE N..."}
+error: mdb-sql cannot evaluate part of this WHERE clause and would have returned wrong rows, so nothing is shown. IS NULL and IS NOT NULL are among what it can't evaluate.
+--- sql {"query":"SELECT COUNT(*) FROM Orders WHERE OrderI..."}
+error: mdb-sql never returns from COUNT(*) with a WHERE clause. Select one column with the same WHERE instead; the result says how many rows matched.
+--- sql {"query":"SELECT OrderNumber FROM Orders WHERE Ord..."}
+OrderNumber
+(0 rows)
+--- sql {"query":"SELECT OrderNumber FROM Orders WHERE Ord..."}
+OrderNumber
+SO-2026-1200
+SO-2026-1201
+SO-2026-1202
+SO-2026-1203
+SO-2026-1204
+SO-2026-1205
+SO-2026-1206
+SO-2026-1207
+SO-2026-1208
+SO-2026-1209
+SO-2026-1210
+SO-2026-1211
+SO-2026-1212
+SO-2026-1213
+SO-2026-1214
+SO-2026-1215
+SO-2026-1216
+SO-2026-1217
+SO-2026-1218
+SO-2026-1219
+... [7 more rows not shown, 
+--- read_vba {"module":"README.md"}
+error: no module 'README.md'. Modules: CairnBuild, CairnForms, CairnReports
+--- read_vba {"module":"CairnHistory"}
+error: no module 'CairnHistory'. Modules: CairnBuild, CairnForms, CairnReports
+--- get_saved_query {"name":"x; rm -rf /"}
+error: no saved query 'x; rm -rf /'
+--- save_tests {"code":"#[test] fn t() {}"}
+error: tests come after the notes; save_notes for this unit.
+--- save_notes {"text":"x","follow":["vba:Nope.Nothing"]}
+error: unknown unit ids: vba:Nope.Nothing. Nothing saved; use ids from the brief.
+--- save_notes {"text":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx..."}
+error: 2001 characters; a unit's notes hold at most 2000, so cut at least 1 of them. Nothing saved. Sending the same text again saves only what fits.
+--- save_notes {"text":"Survey: a quoting and order system.","follow":["vba:CairnForms.NextNumber","query:qryRMARouting"]}
+saved 000-overview.md. Queued 2 new units; 2 waiting. This round is done.
+--- save_notes {"text":"again"}
+error: this unit's notes are already saved.
+--- next unit vba:CairnForms.NextNumber: brief 1416 characters, about 473 tokens

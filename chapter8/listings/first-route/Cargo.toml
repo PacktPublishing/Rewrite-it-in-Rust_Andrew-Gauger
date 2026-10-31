@@ -1,0 +1,15 @@
+[package]
+name = "first-route"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Chapter 8's first, literal port of qryRMARouting: days as a plain number, seven routes. Superseded by cairn-core's rma.rs."
+
+[workspace]
+
+[dependencies]
+cairn-core = { path = "../../../part 2/crate/cairn-core" }
+
+[dev-dependencies]
+csv = "1.4"
+rust_decimal = "1.43"

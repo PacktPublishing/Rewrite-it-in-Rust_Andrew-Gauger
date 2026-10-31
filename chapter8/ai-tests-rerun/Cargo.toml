@@ -1,0 +1,12 @@
+[package]
+name = "cairn-ai-tests-rerun"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dev-dependencies]
+chrono = "0.4"
+# Added for Chapter 8: the AI's tests, run against the real rules.
+cairn-core = { path = "../../part 2/crate/cairn-core" }
+rust_decimal = "1.43"

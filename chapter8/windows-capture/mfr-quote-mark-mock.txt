@@ -1,0 +1,4 @@
+Mock manufacturer API on http://localhost:8765/  (mode: normal, keep-alive: True, ledger: C:\Users\andre\AppData\Local\Temp\claude\C--Users-andre-OneDrive-cairn\039cf7e2-5ae1-4746-986f-1e1e6243e4bc\scratchpad\ledger.json)
+Ctrl+C to stop.
+16:49:55 400 malformed JSON
+16:49:57 400 malformed JSON

@@ -1,0 +1,15 @@
++ /Users/andy/venvs/mlx/bin/python -m mlx_lm.server --model /Users/andy/models/Qwen3.8-27B-4bit --port 8080 --prompt-cache-size 1 --kv-bits 8 --prefill-step-size 512
+[turn 1] list_tables({}) -> 150 chars
+[turn 1] list_saved_queries({}) -> 496 chars
+[turn 1] list_source_files({}) -> 80 chars
+[turn 1] get_schema({}) -> 12038 chars
+[turn 2] read_source({"file": "CairnBuild.bas", "start": 1, "end": 300}) -> 12038 chars
+[turn 2] read_source({"file": "CairnBuild.bas", "start": 301, "end": 600}) -> 12039 chars
+[turn 3] read_source({"file": "CairnBuild.bas", "start": 197, "end": 300}) -> 7138 chars
+[turn 3] read_source({"file": "CairnBuild.bas", "start": 430, "end": 700}) -> 12038 chars
+[turn 4] read_source({"file": "CairnBuild.bas", "start": 576, "end": 800}) -> 12038 chars
+[turn 5] read_source({"file": "CairnBuild.bas", "start": 763, "end": 800}) -> 2826 chars
+[turn 5] read_source({"file": "CairnForms.bas", "start": 1, "end": 300}) -> 12038 chars
+[turn 6] read_source({"file": "CairnForms.bas", "start": 232, "end": 530}) -> 12038 chars
+[turn 7] read_source({"file": "CairnForms.bas", "start": 444, "end": 740}) -> 12038 chars
+[turn 8] read_source({"file": "CairnForms.bas", "start": 637, "end": 930}) -> 12038 chars

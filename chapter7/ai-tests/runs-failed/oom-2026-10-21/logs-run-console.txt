@@ -1,0 +1,50 @@
++ /Users/andy/venvs/mlx/bin/python -m mlx_lm.server --model /Users/andy/models/Qwen3.8-27B-4bit --port 8080
+[turn 1] list_tables({}) -> 150 chars
+[turn 1] list_saved_queries({}) -> 496 chars
+[turn 1] list_source_files({}) -> 80 chars
+[turn 1] get_schema({}) -> 12038 chars
+[turn 2] read_source({"file": "CairnBuild.bas", "start": 1, "end": 300}) -> 12038 chars
+[turn 2] read_source({"file": "CairnBuild.bas", "start": 301, "end": 600}) -> 12039 chars
+[turn 3] read_source({"file": "CairnBuild.bas", "start": 198, "end": 300}) -> 6998 chars
+[turn 3] read_source({"file": "CairnBuild.bas", "start": 430, "end": 640}) -> 12038 chars
+[turn 4] read_source({"file": "CairnBuild.bas", "start": 576, "end": 800}) -> 12038 chars
+[turn 5] read_source({"file": "CairnBuild.bas", "start": 763, "end": 800}) -> 2826 chars
+[turn 5] read_source({"file": "CairnForms.bas", "start": 1, "end": 300}) -> 12038 chars
+[turn 6] read_source({"file": "CairnForms.bas", "start": 232, "end": 530}) -> 12038 chars
+Traceback (most recent call last):
+  File "/Users/andy/Users/andy/rewrite-it-rust/chapter7/ai-tests/run.py", line 399, in <module>
+    main()
+  File "/Users/andy/Users/andy/rewrite-it-rust/chapter7/ai-tests/run.py", line 395, in main
+    {"setup": setup, "run": run, "selftest": selftest}[args.command](args)
+  File "/Users/andy/Users/andy/rewrite-it-rust/chapter7/ai-tests/run.py", line 279, in run
+    resp = http("/chat/completions", {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andy/Users/andy/rewrite-it-rust/chapter7/ai-tests/run.py", line 232, in http
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1386, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1361, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1478, in getresponse
+    response.begin()
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 343, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 312, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response

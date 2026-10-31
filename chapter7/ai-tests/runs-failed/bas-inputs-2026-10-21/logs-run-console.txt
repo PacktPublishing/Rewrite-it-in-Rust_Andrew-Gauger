@@ -1,0 +1,7 @@
++ /Users/andy/venvs/mlx/bin/python -m mlx_lm.server --model /Users/andy/models/Qwen3.8-27B-4bit --port 8080 --prompt-cache-size 1 --kv-bits 8 --prefill-step-size 512
+[turn 1] list_tables({}) -> 150 chars
+[turn 1] list_saved_queries({}) -> 496 chars
+[turn 1] list_source_files({}) -> 53 chars
+[turn 1] get_schema({}) -> 12038 chars
+[turn 2] read_source({"file": "CairnForms.bas", "start": 1, "end": 300}) -> 12038 chars
+[turn 2] read_source({"file": "CairnReports.bas", "start": 1, "end": 108}) -> 5197 chars

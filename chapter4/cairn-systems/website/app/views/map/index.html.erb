@@ -1,0 +1,152 @@
+<% content_for :head do %>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<% end %>
+
+<header class="site-header">
+  <h1>Fleet Monitor</h1>
+  <nav class="scenario-picker">
+    <%= link_to "Agricultural sensors (cluster)", root_path(scenario: "cluster"),
+          class: @scenario == "cluster" ? "active" : "" %>
+    <%= link_to "Container fleet (highway)", root_path(scenario: "highway"),
+          class: @scenario == "highway" ? "active" : "" %>
+  </nav>
+  <p class="reading-count">
+    <strong><%= number_with_delimiter(@readings.size) %></strong> raw readings
+    from <strong><%= @readings.map { |r| r[:sensor_id] }.uniq.size %></strong> sensors
+    over the last 6 hours, one marker per reading &mdash; no clustering, no aggregation.
+  </p>
+  <div class="view-mode">
+    <label><input type="radio" name="view-mode" value="all" checked> Show all readings (overloaded)</label>
+    <label><input type="radio" name="view-mode" value="playback"> Time playback</label>
+  </div>
+  <div class="playback-controls" hidden>
+    <button type="button" id="play-pause">Play</button>
+    <input type="range" id="time-slider" min="0" max="0" value="0" step="1">
+    <span id="time-label"></span>
+  </div>
+</header>
+
+<div id="map"></div>
+
+<script type="application/json" id="sensor-data"><%= raw @readings.to_json %></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var readings = JSON.parse(document.getElementById("sensor-data").textContent);
+
+    var center = readings.length
+      ? [readings[0].lat, readings[0].lng]
+      : [41.05, -98.35];
+
+    var map = L.map("map").setView(center, 11);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    var markers = L.layerGroup().addTo(map);
+
+    function colorFor(vibrationG) {
+      return vibrationG > 1.0 ? "#d33" : vibrationG > 0.3 ? "#e8a33d" : "#3d8fe8";
+    }
+
+    function addMarker(r) {
+      var color = colorFor(r.vibration_g);
+      var marker = L.circleMarker([r.lat, r.lng], {
+        radius: 5,
+        color: color,
+        weight: 1,
+        fillColor: color,
+        fillOpacity: 0.6
+      });
+      marker.bindPopup(
+        "<strong>" + r.sensor_id + "</strong><br>" +
+        r.temperature_f + "&deg;F &middot; " + r.vibration_g + "g<br>" +
+        new Date(r.recorded_at).toLocaleString()
+      );
+      markers.addLayer(marker);
+    }
+
+    // Deliberately naive: every reading gets its own Leaflet marker, added
+    // straight to the map with no clustering, no canvas renderer, no
+    // virtualization. This is the "legacy" rendering path the book
+    // replaces with WASM/Rust.
+    function renderAll() {
+      markers.clearLayers();
+      readings.forEach(addMarker);
+    }
+
+    // Group readings into one frame per timestamp so "time playback" can
+    // show a single snapshot (one marker per sensor) instead of the full
+    // firehose. Still a plain linear scan per frame -- no indexing, no
+    // incremental diffing against the previous frame.
+    var framesByTime = {};
+    readings.forEach(function (r) {
+      (framesByTime[r.recorded_at] = framesByTime[r.recorded_at] || []).push(r);
+    });
+    var timestamps = Object.keys(framesByTime).sort();
+
+    var slider = document.getElementById("time-slider");
+    var timeLabel = document.getElementById("time-label");
+    var playPauseBtn = document.getElementById("play-pause");
+    var playbackControls = document.querySelector(".playback-controls");
+    slider.max = Math.max(timestamps.length - 1, 0);
+
+    var currentIdx = 0;
+    var playing = false;
+    var timer = null;
+
+    function renderFrame(idx) {
+      markers.clearLayers();
+      (framesByTime[timestamps[idx]] || []).forEach(addMarker);
+      timeLabel.textContent = timestamps[idx] ? new Date(timestamps[idx]).toLocaleString() : "";
+    }
+
+    function stopPlayback() {
+      playing = false;
+      playPauseBtn.textContent = "Play";
+      clearInterval(timer);
+    }
+
+    function startPlayback() {
+      playing = true;
+      playPauseBtn.textContent = "Pause";
+      timer = setInterval(function () {
+        currentIdx = (currentIdx + 1) % timestamps.length;
+        slider.value = currentIdx;
+        renderFrame(currentIdx);
+      }, 150);
+    }
+
+    playPauseBtn.addEventListener("click", function () {
+      playing ? stopPlayback() : startPlayback();
+    });
+
+    slider.addEventListener("input", function () {
+      stopPlayback();
+      currentIdx = parseInt(slider.value, 10);
+      renderFrame(currentIdx);
+    });
+
+    document.querySelectorAll('input[name="view-mode"]').forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        stopPlayback();
+        if (radio.value === "playback" && radio.checked) {
+          playbackControls.hidden = false;
+          currentIdx = 0;
+          slider.value = 0;
+          renderFrame(0);
+        } else if (radio.value === "all" && radio.checked) {
+          playbackControls.hidden = true;
+          renderAll();
+        }
+      });
+    });
+
+    renderAll();
+  });
+</script>

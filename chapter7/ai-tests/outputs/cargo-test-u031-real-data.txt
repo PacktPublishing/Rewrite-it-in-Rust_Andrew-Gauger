@@ -1,0 +1,33 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s
+     Running tests/u031_table_customers.rs (target/debug/deps/u031_table_customers-7738f44884eb3448)
+
+running 7 tests
+test sample_rows_match_observed_data ... ok
+test payment_terms_is_one_of_the_known_values ... FAILED
+test customer_ids_are_unique_and_within_1_to_1000 ... ok
+test taxexempt_is_a_boolean ... ok
+test every_customer_has_non_null_assigned_rep ... ok
+test customer_status_is_one_of_active_prospect_inactive ... FAILED
+test no_customer_is_assigned_to_an_inactive_rep ... ok
+
+failures:
+
+---- payment_terms_is_one_of_the_known_values stdout ----
+
+thread 'payment_terms_is_one_of_the_known_values' (10613258) panicked at tests/u031_table_customers.rs:120:9:
+customer 194 has unexpected paymentterms "Net 60"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- customer_status_is_one_of_active_prospect_inactive stdout ----
+
+thread 'customer_status_is_one_of_active_prospect_inactive' (10613255) panicked at tests/u031_table_customers.rs:109:9:
+customer 877 has unexpected customerstatus "'Prospect'"
+
+
+failures:
+    customer_status_is_one_of_active_prospect_inactive
+    payment_terms_is_one_of_the_known_values
+
+test result: FAILED. 5 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `--test u031_table_customers`

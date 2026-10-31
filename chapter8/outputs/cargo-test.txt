@@ -1,0 +1,81 @@
+running 57 tests
+test date::tests::days_since_counts_across_months_and_leap_years ... ok
+test date::tests::add_days_round_trips ... ok
+test commission::tests::rounding_each_order_and_rounding_the_month_can_differ_by_a_cent ... ok
+test commission::tests::cancelled_orders_and_other_months_dont_count ... ok
+test commission::tests::commission_is_paid_on_orders_nobody_has_paid_for ... ok
+test defaults::tests::a_rep_already_on_the_document_stays ... ok
+test defaults::tests::the_contact_is_the_primary_contact ... ok
+test date::tests::rejects_dates_that_dont_exist ... ok
+test defaults::tests::tax_exempt_customers_pay_no_tax ... ok
+test leads::tests::a_4999_quote_does_not ... ok
+test leads::tests::a_business_whose_contact_is_the_owner_never_qualifies ... ok
+test leads::tests::a_prospect_with_a_5000_quote_and_a_manager_qualifies ... ok
+test leads::tests::an_existing_customer_never_qualifies ... ok
+test leads::tests::open_quote_value_is_the_largest_sent_quote ... ok
+test leads::tests::titles_match_regardless_of_case ... ok
+test leads::tests::touches_count_the_last_90_days_including_day_90 ... ok
+test leads::tests::two_touches_qualify_only_in_three_industries ... ok
+test manufacturer::tests::a_blank_ship_to_name_is_refused ... ok
+test manufacturer::tests::a_saved_order_rebuilds_with_its_id ... ok
+test manufacturer::tests::a_zero_quantity_is_refused ... ok
+test manufacturer::tests::a_retry_carries_the_same_correlation_id ... ok
+test manufacturer::tests::an_order_with_only_service_is_refused ... ok
+test manufacturer::tests::a_quote_mark_and_a_backslash_in_a_name_still_make_valid_json ... ok
+test manufacturer::tests::only_hardware_goes_to_the_manufacturer ... ok
+test manufacturer::tests::two_new_orders_never_share_an_id ... ok
+test quote_to_order::tests::a_quote_with_no_lines_is_refused ... ok
+test quote_to_order::tests::a_second_order_from_one_quote_is_refused_with_the_first ... ok
+test manufacturer::tests::keeps_v1s_field_names_on_the_wire ... ok
+test quote_to_order::tests::copies_the_header_and_every_line_into_an_open_order ... ok
+test receipt::tests::paid_to_date_counts_earlier_days_and_lower_ids_on_the_same_day ... ok
+test receipt::tests::receipt_numbers_are_five_digits ... ok
+test rma::tests::a_service_line_goes_to_the_account_manager ... ok
+test rma::tests::a_tax_exempt_customer_after_a_year_goes_to_the_account_manager ... ok
+test rma::tests::damaged_in_shipping_goes_to_the_carrier_whatever_its_age ... ok
+test rma::tests::days_run_from_ship_date_or_order_date ... ok
+test rma::tests::dead_on_arrival_after_30_days_is_repaired_within_a_year ... ok
+test rma::tests::dead_on_arrival_after_a_year_still_gets_a_replacement ... ok
+test rma::tests::dead_on_arrival_with_no_order_is_unknown_not_a_replacement ... ok
+test rma::tests::dead_on_arrival_within_30_days_gets_a_replacement ... ok
+test rma::tests::extended_warranty_is_repaired_at_any_age ... ok
+test rma::tests::extended_warranty_is_repaired_even_with_no_order_on_file ... ok
+test rma::tests::manufacturer_repairs_anything_up_to_a_year ... ok
+test rma::tests::no_order_on_file_is_unknown_not_customer_pays ... ok
+test rma::tests::nothing_reaches_bench_test ... ok
+test rma::tests::reasons_parse_from_v1_text_only ... ok
+test rma::tests::routes_print_v1_text ... ok
+test rma::tests::scrap_starts_after_730_days ... ok
+test rma::tests::tax_exempt_with_no_order_is_unknown_not_the_account_manager ... ok
+test rounding::tests::exact_halves_go_to_the_even_cent ... ok
+test rounding::tests::so_2026_1053_tax_is_877_10_not_877_11 ... ok
+test status::tests::quoted_prospect_is_not_a_prospect ... ok
+test status::tests::retired_statuses_are_refused ... ok
+test status::tests::v1_text_round_trips ... ok
+test totals::tests::a_line_is_quantity_times_price_less_discount ... ok
+test totals::tests::no_lines_is_a_zero_subtotal ... ok
+test totals::tests::shipping_is_never_taxed ... ok
+test totals::tests::unpaid_orders_owe_their_whole_total ... ok
+test result: ok. 57 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+running 1 test
+test flags_md_matches_the_flag_comments ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+running 4 tests
+test of_29_returns_with_no_order_6_are_carrier_claims_and_23_are_unknown ... ok
+test v1s_rules_reproduce_what_access_routes ... ok
+test rma_2025_0045_has_no_order_and_v1_billed_the_customer ... ok
+test v2_routes_23_returns_as_unknown_order_and_everything_else_as_v1 ... ok
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+running 4 tests
+test so_2026_1053_is_taxed_877_10 ... ok
+test sales_by_rep_says_25_701_06_for_the_same_month ... ok
+test carlas_september_statement_is_25_701_07_with_328_267_47_unpaid ... ok
+test septembers_commission_is_183_280_48_on_136_orders_82_of_them_unpaid ... ok
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+running 3 tests
+test v1s_request_for_harlow_is_not_json ... ok
+test cairn_cores_request_for_the_same_order_parses_back_to_the_same_name ... ok
+test apart_from_the_name_and_the_new_id_v2_sends_what_v1_meant_to ... ok
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

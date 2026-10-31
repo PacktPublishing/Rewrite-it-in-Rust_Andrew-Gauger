@@ -1,0 +1,18 @@
+[package]
+name = "ai-tests-run"
+version = "0.1.0"
+edition = "2021"
+description = "Chapter 7 AI test-suite run: a Rust port of run.py"
+publish = false
+
+[[bin]]
+name = "run"
+path = "src/main.rs"
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+clap = { version = "4", features = ["derive"] }
+regex = "1"
+# preserve_order keeps message and tool-spec keys in the order the model sent or we wrote them
+serde_json = { version = "1", features = ["preserve_order"] }
+ureq = { version = "2", features = ["json"] }

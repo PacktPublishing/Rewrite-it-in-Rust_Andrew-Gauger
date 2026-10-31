@@ -1,0 +1,20 @@
+CairnReports: 720 lines
+CairnBuild: 801 lines
+CairnForms: 1202 lines
++ /Users/andy/venvs/mlx/bin/python -m mlx_lm.server --model /Users/andy/models/Qwen3.8-27B-4bit --port 8080 --prompt-cache-size 1 --kv-bits 8 --prefill-step-size 512
+[turn 1] list_tables({}) -> 150 chars
+[turn 1] get_schema({}) -> 12038 chars
+[turn 1] list_saved_queries({}) -> 496 chars
+[turn 1] list_vba_modules({}) -> 68 chars
+[turn 2] read_vba({"module": "CairnBuild", "start": 1, "end": 300}) -> 12038 chars
+[turn 2] read_vba({"module": "CairnBuild", "start": 301, "end": 600}) -> 12039 chars
+[turn 3] read_vba({"module": "CairnBuild", "start": 198, "end": 300}) -> 6998 chars
+[turn 3] read_vba({"module": "CairnBuild", "start": 430, "end": 640}) -> 12038 chars
+[turn 4] read_vba({"module": "CairnBuild", "start": 576, "end": 801}) -> 12038 chars
+[turn 5] read_vba({"module": "CairnBuild", "start": 763, "end": 801}) -> 2832 chars
+[turn 5] read_vba({"module": "CairnForms", "start": 1, "end": 300}) -> 12038 chars
+[turn 6] read_vba({"module": "CairnForms", "start": 232, "end": 530}) -> 12038 chars
+[turn 7] read_vba({"module": "CairnForms", "start": 444, "end": 740}) -> 12038 chars
+[turn 8] read_vba({"module": "CairnForms", "start": 637, "end": 930}) -> 12038 chars
+[turn 9] read_vba({"module": "CairnForms", "start": 879, "end": 1202}) -> 12038 chars
+[turn 10] read_vba({"module": "CairnReports", "start": 1, "end": 300}) -> 12038 chars

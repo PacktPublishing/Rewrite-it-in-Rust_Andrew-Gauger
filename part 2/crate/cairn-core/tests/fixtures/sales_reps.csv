@@ -1,0 +1,15 @@
+RepID,FirstName,LastName,Title,Email,Phone,Extension,CommissionRate,HireDate,Active
+1,Maya,Torres,Account Executive,maya.torres@cairnsystems.example,555-0101,101,0.06,03/14/22 00:00:00,1
+2,Derek,Liu,Account Executive,derek.liu@cairnsystems.example,555-0102,102,0.06,06/05/23 00:00:00,1
+3,Priya,Shah,Sales Manager,priya.shah@cairnsystems.example,555-0100,100,0.04,09/01/20 00:00:00,1
+4,Sam,Okafor,Inside Sales / Reception,sam.okafor@cairnsystems.example,555-0110,110,0.03,01/08/24 00:00:00,1
+5,Raj,Malhotra,Sales Director,raj.malhotra@cairnsystems.example,555-0160,166,0.04,03/01/13 00:00:00,0
+6,Ben,Hartley,Account Executive,ben.hartley@cairnsystems.example,555-0195,198,0.06,02/03/14 00:00:00,0
+7,Carla,Mendes,Senior Account Executive,carla.mendes@cairnsystems.example,555-0175,163,0.065,05/11/15 00:00:00,1
+8,Owen,Fitch,Account Executive,owen.fitch@cairnsystems.example,555-0178,197,0.06,01/04/16 00:00:00,0
+9,Nadia,Petrova,Senior Account Executive,nadia.petrova@cairnsystems.example,555-0199,128,0.065,08/21/17 00:00:00,1
+10,Tessa,Grant,Account Executive,tessa.grant@cairnsystems.example,555-0194,189,0.06,04/09/18 00:00:00,0
+11,Victor,Huang,Account Executive,victor.huang@cairnsystems.example,555-0198,143,0.06,10/14/19 00:00:00,1
+12,Lena,Brandt,Account Executive,lena.brandt@cairnsystems.example,555-0128,150,0.06,01/11/21 00:00:00,1
+13,Marcus,Doyle,Account Executive,marcus.doyle@cairnsystems.example,555-0171,123,0.055,07/15/24 00:00:00,1
+14,Elise,Moreau,Account Executive,elise.moreau@cairnsystems.example,555-0121,157,0.055,03/03/25 00:00:00,1

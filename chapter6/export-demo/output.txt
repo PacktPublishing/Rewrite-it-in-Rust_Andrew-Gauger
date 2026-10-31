@@ -1,0 +1,58 @@
+== mdbtools version
+mdbtools v1.0.1
+== 1. Schema
+FOREIGN KEY statements in the export: 23
+psql:schema.sql:250: ERROR:  relation "Activities" does not exist
+psql:schema.sql:251: ERROR:  relation "Activities" does not exist
+Foreign keys Postgres actually has: 0
+== 2. Rows, first attempt
+Activities: ERROR:  column "completed" is of type boolean but expression is of type integer
+Contacts: ERROR:  column "isprimary" is of type boolean but expression is of type integer
+Customers: ERROR:  column "taxexempt" is of type boolean but expression is of type integer
+PhoneMessages: ERROR:  column "urgent" is of type boolean but expression is of type integer
+Products: ERROR:  column "active" is of type boolean but expression is of type integer
+SalesReps: ERROR:  column "active" is of type boolean but expression is of type integer
+== 2b. Rows, retrying the refused tables with -B (booleans as TRUE/FALSE)
+     table     | rows  
+---------------+-------
+ activities    | 68257
+ companyinfo   |     1
+ contacts      |  1959
+ customers     |   986
+ orderlines    | 49767
+ orders        | 13531
+ payments      | 17374
+ phonemessages |  4638
+ products      |    21
+ quotelines    | 78632
+ quotes        | 19427
+ salesreps     |    14
+(12 rows)
+
+total rows: 254607
+== 3. Writing to it
+ERROR:  duplicate key value violates unique constraint "orders_pkey"
+DETAIL:  Key (orderid)=(1) already exists.
+ orderid | customerid | orderstatus 
+---------+------------+-------------
+   13532 |      99999 | 
+(1 row)
+
+INSERT 0 1
+== 4. A saved query, verbatim from the Access file
+psql:qryOrderLines.sql:1: ERROR:  function nz(character varying, character varying) does not exist
+LINE 1: ...eID, ol.OrderID, ol.ProductID, p.SKU, p.Category, Nz(ol.Line...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+== 5. September 2026 commission, Access's rule translated by hand
+ orders_counted | cancelled | net_sales  | commission | orders_unpaid | commission_on_unpaid 
+----------------+-----------+------------+------------+---------------+----------------------
+            136 |         5 | 3157086.90 |  183280.55 |            82 |            101665.31
+(1 row)
+
+== 6. Postgres rounding SO-2026-1053's tax (net sales 12098.00 x 7.25%)
+  tax   
+--------
+ 877.11
+(1 row)
+

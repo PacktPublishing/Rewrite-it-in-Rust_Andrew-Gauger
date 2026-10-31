@@ -1,0 +1,40 @@
+
+running 4 tests
+. 1/4
+carlas_september_statement_is_25_701_07_with_328_267_47_unpaid --- FAILED
+septembers_commission_is_183_280_48_on_136_orders_82_of_them_unpaid --- FAILED
+so_2026_1053_is_taxed_877_10 --- FAILED
+
+failures:
+
+---- carlas_september_statement_is_25_701_07_with_328_267_47_unpaid stdout ----
+
+thread 'carlas_september_statement_is_25_701_07_with_328_267_47_unpaid' (12356284) panicked at cairn-core/tests/september_2026.rs:29:5:
+assertion `left == right` failed
+  left: 25701.08
+ right: 25701.07
+
+---- septembers_commission_is_183_280_48_on_136_orders_82_of_them_unpaid stdout ----
+
+thread 'septembers_commission_is_183_280_48_on_136_orders_82_of_them_unpaid' (12356286) panicked at cairn-core/tests/september_2026.rs:43:5:
+assertion `left == right` failed
+  left: 183280.55
+ right: 183280.48
+
+---- so_2026_1053_is_taxed_877_10 stdout ----
+
+thread 'so_2026_1053_is_taxed_877_10' (12356287) panicked at cairn-core/tests/september_2026.rs:53:5:
+assertion `left == right` failed
+  left: 877.11
+ right: 877.10
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    carlas_september_statement_is_25_701_07_with_328_267_47_unpaid
+    septembers_commission_is_183_280_48_on_136_orders_82_of_them_unpaid
+    so_2026_1053_is_taxed_877_10
+
+test result: FAILED. 1 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `--test september_2026`

@@ -1,0 +1,161 @@
+{
+  "1x": {
+    "isolated": {
+      "readingCount": 7200,
+      "sensorCount": 20,
+      "nCalls": 2000,
+      "wasmRange": {
+        "totalMs": 472,
+        "perCallMs": 0.236,
+        "lastLen": 43200
+      },
+      "jsRange": {
+        "totalMs": 309.10000002384186,
+        "perCallMs": 0.15455000001192093,
+        "lastLen": 7200
+      },
+      "wasmSnapshot": {
+        "totalMs": 12,
+        "perCallMs": 0.006,
+        "lastLen": 120
+      },
+      "jsSnapshot": {
+        "totalMs": 5.199999988079071,
+        "perCallMs": 0.0025999999940395356,
+        "lastLen": 20
+      }
+    },
+    "onPage": {
+      "wasmAllReadout": "WASM query: 108.70 ms · 7,200 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+      "wasmPlayback": [
+        "WASM query: 0.60 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 0.50 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 0.90 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 0.50 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 0.50 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 0.70 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 0.50 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 0.40 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 0.50 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)"
+      ],
+      "legacyAllReadout": "Legacy JS (show all): 98.30 ms · 7,200 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+      "legacyPlayback": [
+        "Legacy JS (playback): 0.40 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 0.80 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 0.40 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 0.60 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 0.80 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 0.60 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 0.80 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 0.80 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 0.50 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)"
+      ]
+    }
+  },
+  "4x": {
+    "isolated": {
+      "readingCount": 7200,
+      "sensorCount": 20,
+      "nCalls": 2000,
+      "wasmRange": {
+        "totalMs": 2013.300000011921,
+        "perCallMs": 1.0066500000059604,
+        "lastLen": 43200
+      },
+      "jsRange": {
+        "totalMs": 1328.5999999940395,
+        "perCallMs": 0.6642999999970197,
+        "lastLen": 7200
+      },
+      "wasmSnapshot": {
+        "totalMs": 41.099999994039536,
+        "perCallMs": 0.020549999997019768,
+        "lastLen": 120
+      },
+      "jsSnapshot": {
+        "totalMs": 21.899999976158142,
+        "perCallMs": 0.010949999988079072,
+        "lastLen": 20
+      }
+    },
+    "onPage": {
+      "wasmAllReadout": "WASM query: 541.50 ms · 7,200 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+      "wasmPlayback": [
+        "WASM query: 4.70 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 2.60 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 2.80 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 2.20 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 2.20 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 3.80 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 3.20 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 2.90 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 4.20 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)"
+      ],
+      "legacyAllReadout": "Legacy JS (show all): 591.10 ms · 7,200 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+      "legacyPlayback": [
+        "Legacy JS (playback): 2.10 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 3.50 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 8.30 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 5.00 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 2.10 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 3.30 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 2.50 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 3.40 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 2.60 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)"
+      ]
+    }
+  },
+  "6x": {
+    "isolated": {
+      "readingCount": 7200,
+      "sensorCount": 20,
+      "nCalls": 2000,
+      "wasmRange": {
+        "totalMs": 3488.399999976158,
+        "perCallMs": 1.744199999988079,
+        "lastLen": 43200
+      },
+      "jsRange": {
+        "totalMs": 2174.300000011921,
+        "perCallMs": 1.0871500000059604,
+        "lastLen": 7200
+      },
+      "wasmSnapshot": {
+        "totalMs": 74.7000000178814,
+        "perCallMs": 0.0373500000089407,
+        "lastLen": 120
+      },
+      "jsSnapshot": {
+        "totalMs": 28.200000017881393,
+        "perCallMs": 0.014100000008940697,
+        "lastLen": 20
+      }
+    },
+    "onPage": {
+      "wasmAllReadout": "WASM query: 925.20 ms · 7,200 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+      "wasmPlayback": [
+        "WASM query: 5.40 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 5.10 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 5.60 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 5.90 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 3.20 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 3.10 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 5.20 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 3.70 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)",
+        "WASM query: 7.60 ms · 20 points rendered of 7,200 resident (rough client-side timing, not a device benchmark)"
+      ],
+      "legacyAllReadout": "Legacy JS (show all): 944.30 ms · 7,200 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+      "legacyPlayback": [
+        "Legacy JS (playback): 5.10 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 3.80 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 5.40 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 14.70 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 5.00 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 7.70 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 7.40 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 6.90 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)",
+        "Legacy JS (playback): 6.80 ms · 20 markers rendered of 7,200 total (rough client-side timing, not a device benchmark)"
+      ]
+    }
+  }
+}

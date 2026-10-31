@@ -1,0 +1,73 @@
+001	false	largest 2026 quote number	said: Q-2026-1699	data: Q-2026-1713
+001	false	largest 2026 order number	said: SO-2026-0999	data: SO-2026-1226
+001	true	largest 2026 RMA number	said: RMA-2026-0069	data: RMA-2026-0069
+002	true	quote 1 number and status	said: Q-2026-1346 Accepted	data: Q-2026-1346 Accepted
+002	true	order 1 comes from quote 1	said: SO-2026-0920 from quote 1	data: SO-2026-0920 from quote 1
+002	true	quote 1's 4 lines copied 1:1 to order 1	said: True	data: True
+003	true	ofitch is UserID 9 and inactive	said: 9 inactive	data: 9 inactive
+003	true	admin, sales and temp have no RepID	said: True	data: True
+005	false	RMAs table is empty	said: 0	data: 772	D05
+006	true	product 1	said: CS-TH100 89.00 active	data: CS-TH100 89.00 active
+006	true	product 5	said: CS-GW800 649.00 active	data: CS-GW800 649.00 active
+006	true	product 11	said: CS-TH050 79.00 inactive	data: CS-TH050 79.00 inactive
+006	true	product 12	said: CS-GW400 449.00 inactive	data: CS-GW400 449.00 inactive
+007	true	customer 1	said: Northfield Water District exempt rep 11	data: Northfield Water District exempt rep 11
+007	true	customer 2	said: Bluepine Cold Storage taxed rep 1	data: Bluepine Cold Storage taxed rep 1
+007	true	customer 3	said: Harlow Manufacturing taxed rep 1	data: Harlow Manufacturing taxed rep 1
+007	true	default tax rate	said: 0.0825	data: 0.0825
+009	true	every customer has exactly one primary contact	said: True	data: True
+010	true	customer 1 and 2 phones	said: 555-2100 555-3300	data: 555-2100 555-3300
+012	false	ManufacturerOrders table is empty	said: 0	data: 9054	D07
+015	false	orders with two payments on the same date	said: 0	data: 6	R10
+016	true	quote 1 subtotal, tax, total	said: 12374.00 0.00 12524.00	data: 12374.00 0.00 12524.00
+016	true	quote 2 subtotal, tax, total	said: 14373.00 1185.77 15633.77	data: 14373.00 1185.77 15633.77
+016	true	quote 3 subtotal, tax, total	said: 4912.00 380.68 5332.68	data: 4912.00 380.68 5332.68
+017	true	Maya, Priya, Carla rates	said: 0.06 0.04 0.065	data: 0.06 0.04 0.065
+018	true	order 1 paid and last payment	said: 12524.00 09/24/26	data: 12524.00 09/24/26
+019	false	qryOrderBalances joins qryOrderPayments with	said: INNER JOIN	data: LEFT JOIN
+019	false	unpaid open orders the claim would drop from receivables	said: 0	data: 232	R08
+019	incomplete	payment terms seen	said: Net 30, Net 45	data: Due on Receipt, Net 15, Net 30, Net 45, Net 60	P02
+020	true	quote 3 is customer 4's, Sent	said: 4 Sent	data: 4 Sent
+020	true	customer 4's open quote value	said: 5332.68	data: 5332.68
+021	true	RMA 1 days in service	said: 374	data: 374
+022	true	order 1 subtotal, cost, total, paid	said: 12374.00 5112.00 12524.00 12524.00	data: 12374.00 5112.00 12524.00 12524.00
+025	false	qryMonthEnd_CashReceived joins its tables with	said: nothing (a cross join)	data: INNER JOIN
+027	true	quote count	said: 19389	data: 19389
+027	true	quotes whose ValidUntil isn't QuoteDate + 30	said: 0	data: 0
+027	false	quote statuses	said: Accepted, Declined, Draft, Expired, Sent	data: 'Draft', Accepted, Declined, Draft, Expired, On Hold, Sent	R19, D01, D02
+027	incomplete	quote tax rates	said: 0, 0.0725, 0.0775, 0.0825	data: 0, 0.0725, 0.0775, 0.0825, 0.08749999999999999, 0.095
+028	true	order numbers not shaped SO-YYYY-NNNN	said: 0	data: 0
+028	false	order statuses	said: Cancelled, Closed, In Production, Invoiced, Open, Shipped	data: Back Order, Cancelled, Closed, In Production, Invoiced, Open, Shipped	R19, D02
+028	incomplete	order tax rates	said: 0, 0.0725, 0.0825	data: 0, 0.0725, 0.0775, 0.0825, 0.08749999999999999, 0.095
+029	true	activity count	said: ~68148	data: 68257
+029	true	activity types seen	said: Call, Email, Meeting, Note	data: Call, Email, Meeting, Note
+030	true	product count	said: 21	data: 21
+030	true	active / inactive products	said: 19/2	data: 19/2
+030	false	products with no firmware version	said: 7,8,9,20,21	data: 7,8,9,19,20,21
+031	incomplete	payment terms seen	said: Due on Receipt, Net 15, Net 30, Net 45	data: Due on Receipt, Net 15, Net 30, Net 45, Net 60	P02
+031	true	customer ids	said: 1..1000	data: 1..1000
+031	true	customers with no assigned rep	said: 0	data: 0
+031	true	customers assigned to an inactive rep	said: 0	data: 0
+031	incomplete	customer statuses	said: Active, Inactive, Prospect	data: 'Prospect', Active, Inactive, Prospect	D01
+031	true	customer 500	said: Ridgeline Industries Inactive Net 15	data: Ridgeline Industries Inactive Net 15
+031	true	customer 1000	said: ALDER TRANSIT Active Net 30	data: ALDER TRANSIT Active Net 30
+031	true	tax-exempt among customers 1-11	said: 1, 6, 8, 11	data: 1, 6, 8, 11
+032	true	CompanyInfo rows	said: 1	data: 1
+032	true	manufacturer API URL	said: http://localhost:8765/orders	data: http://localhost:8765/orders
+033	true	contacts / customers	said: 1973/1000	data: 1973/1000
+035	true	line totals of quote lines 1-11	said: 7164.00 1298.00 1512.00 2400.00 10146.00 1947.00 2280.00 2670.00 1194.00 649.00 399.00	data: 7164.00 1298.00 1512.00 2400.00 10146.00 1947.00 2280.00 2670.00 1194.00 649.00 399.00
+036	true	rep count	said: 14	data: 14
+036	true	inactive reps	said: Ben Hartley, Owen Fitch, Raj Malhotra, Tessa Grant	data: Ben Hartley, Owen Fitch, Raj Malhotra, Tessa Grant
+036	true	rate range	said: 0.03-0.065	data: 0.03-0.065
+037	true	order 2 paid and last payment	said: 7000.00 09/12/26	data: 7000.00 09/12/26
+037	true	order 5 paid and last payment	said: 86878.72 03/25/16	data: 86878.72 03/25/16
+037	true	order 7 paid and last payment	said: 40042.08 02/15/16	data: 40042.08 02/15/16
+037	true	payments with no date or amount	said: 0	data: 0
+039	true	payment count	said: 17374	data: 17374
+039	true	payment methods seen	said: ACH, Check, Credit Card, Wire	data: ACH, Check, Credit Card, Wire
+040	true	quote lines with a LineDescription	said: 0	data: 0
+040	true	quote lines with quantity <= 0	said: 0	data: 0
+040	false	largest QuoteID on a line	said: ~17319	data: 19427	D04
+040	true	quote line count	said: ~78623	data: 78632
+
+71 claims in 30 notes: 54 true, 12 false, 5 incomplete

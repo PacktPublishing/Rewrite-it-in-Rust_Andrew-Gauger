@@ -1,0 +1,15 @@
+[package]
+name = "rustfib-arm"
+version = "0.1.0"
+edition = "2024"
+
+# Same program as ../rustfib. The only difference is the num-bigint it links:
+# ../num-bigint-arm is num-bigint 0.5.1 with one character changed in its
+# non-x86 add-with-carry: `b || d` becomes `b | d`.
+# See ../README.md, "ARM optimization".
+
+[dependencies]
+num-bigint = "0.5.1"
+
+[patch.crates-io]
+num-bigint = { path = "../num-bigint-arm" }

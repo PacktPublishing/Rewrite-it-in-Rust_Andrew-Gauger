@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>heatmap-bench harness</title>
+<!--
+  Deliberately bare. Every measurement runs inside page.evaluate() in
+  bench.mjs; this page only exists to give that code a real same-origin
+  document to import /wasm/viz_core.js from and real <canvas> elements to
+  paint onto. No Leaflet, no app chrome -- the chapter-3 bench's "isolated
+  call cost" pass, extended to the chapter-5 paint pipeline.
+-->
+<body>
+  <canvas id="heatmap" width="8" height="8"></canvas>
+  <canvas id="labels" width="8" height="8"></canvas>
+  <pre id="out">ready</pre>
+</body>

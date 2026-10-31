@@ -1,0 +1,16 @@
+returns: 772
+  Manufacturer Repair: 441
+  Customer Pays Repair: 104
+  Advance Replacement: 103
+  Carrier Claim: 64
+  Scrap - Out of Warranty: 44
+  Account Manager: 16
+  Bench Test: 0
+returns whose order isn't in the file: 29
+  OrderID blank: 13
+  OrderID points at no order: 16
+  Customer Pays Repair (rested on Null): 18
+  Carrier Claim: 6
+  Account Manager (rested on Null): 3
+  Advance Replacement (rested on Null): 2
+orphans whose route rested on Null: 23
