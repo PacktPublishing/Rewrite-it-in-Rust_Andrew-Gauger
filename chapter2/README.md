@@ -17,3 +17,5 @@ On ARM64 machines such as Apple Silicon, the Rust build runs slower than Node on
 ```sh
 cd gil-demo/rustfib-arm && cargo build --release && ./target/release/rustfib-arm one
 ```
+
+The changes have been submitted upstream https://github.com/rust-num/num-bigint/pull/362
