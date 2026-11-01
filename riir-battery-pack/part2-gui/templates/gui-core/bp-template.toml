@@ -1,0 +1,11 @@
+# Questions `cargo bp new` asks (or `-d form_kit -d derive_macro` answers).
+
+[placeholders.form_kit]
+type = "bool"
+prompt = "Add a form kit crate (records, fields, Undo), like the book's cairn-forms?"
+default = "false"
+
+[placeholders.derive_macro]
+type = "bool"
+prompt = "Add a #[derive(Form)] macro crate, like the book's cairn-forms-derive? (adds the form kit too)"
+default = "false"

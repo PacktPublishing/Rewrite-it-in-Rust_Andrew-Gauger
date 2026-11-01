@@ -1,0 +1,59 @@
+[package]
+name = "riir-gui-battery-pack"
+version = "0.1.0"
+edition = "2021"
+description = "Part 2 of the riir battery pack: an egui GUI (desktop first, tablets later) backed by Postgres over sqlx -- companion crate curation for Rewrite It in Rust, Part II (The Database)"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/PacktPublishing/Rewrite-it-in-Rust_Andrew-Gauger"
+keywords = ["battery-pack", "egui", "gui", "sqlx"]
+
+[package.metadata.battery.templates]
+gui-core = { path = "templates/gui-core", description = "A minimal eframe app: one window, drawn every frame from its own state" }
+
+[package.metadata.battery-pack]
+hidden = ["battery-pack"]
+
+# --- Categories (purely organizational) ---
+
+[package.metadata.battery-pack.categories.ui]
+title = "Immediate-Mode UI"
+description = "egui widgets and the eframe app shell"
+
+[package.metadata.battery-pack.categories.data]
+title = "Data Access"
+description = "Async Postgres access, kept off the UI thread"
+
+[package.metadata.battery-pack.categories.docs]
+title = "Document Generation"
+description = "Turning form data into an invoice or order document"
+
+# --- Feature metadata ---
+
+[package.metadata.battery-pack.features.forms]
+description = "egui_extras and egui_form -- tables with virtualized rows for datasheets, and a label-and-error wrapper for validated fields (egui_form's garde/validator adapters are off)"
+categories = ["ui"]
+
+[package.metadata.battery-pack.features.templating]
+description = "handlebars -- rendering invoice/order data into HTML before handing it to an external PDF renderer (this pack does not curate the renderer itself -- the outline's WeasyPrint is a Python tool, not a Cargo dependency)"
+categories = ["docs"]
+
+[dependencies]
+egui = { version = "0.37", optional = true }
+eframe = { version = "0.37", optional = true }
+tokio = { version = "1", features = ["rt-multi-thread", "macros"], optional = true }
+sqlx = { version = "0.9", features = ["postgres", "runtime-tokio", "tls-rustls"], optional = true }
+handlebars = { version = "6", optional = true }
+egui_extras = { version = "0.37", optional = true }
+egui_form = { version = "0.11", default-features = false, optional = true }
+
+[build-dependencies]
+battery-pack = { version = "0.6.1", features = ["build"] }
+
+[dev-dependencies]
+battery-pack = { version = "0.6.1", features = ["cli"] }
+
+[features]
+default = ["egui", "eframe", "tokio", "sqlx", "forms"]
+forms = ["egui_extras", "egui_form"]
+templating = ["handlebars"]

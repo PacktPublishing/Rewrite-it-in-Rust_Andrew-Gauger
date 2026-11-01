@@ -1,0 +1,7 @@
+{% if form_kit or derive_macro %}
+version = 1
+
+[[battery-pack]]
+name = "riir-gui"
+features = ["default"]
+{% endif %}

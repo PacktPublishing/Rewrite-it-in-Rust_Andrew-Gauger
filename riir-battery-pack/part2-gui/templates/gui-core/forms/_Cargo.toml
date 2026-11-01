@@ -1,0 +1,14 @@
+{% if form_kit or derive_macro %}
+[package]
+name = "{{ project_name }}-forms"
+version = "0.1.0"
+edition = "2021"
+description = "{{ project_name }}'s form kit"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+egui.bp-managed = true
+{%- if derive_macro %}
+{{ crate_name }}_forms_derive = { path = "../forms-derive", package = "{{ project_name }}-forms-derive" }
+{%- endif %}
+{% endif %}
