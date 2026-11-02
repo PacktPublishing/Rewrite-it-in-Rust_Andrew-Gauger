@@ -1,0 +1,13 @@
+$ cargo test -p cairn-app --test keyboard
+
+running 7 tests
+test enter_moves_to_the_next_field ... ok
+test picking_a_customer_fills_rep_contact_and_tax_like_v1 ... ok
+test a_name_not_in_the_list_is_refused ... ok
+test a_bad_tax_rate_is_outlined_and_blocks_the_save ... ok
+test tab_follows_v1s_field_order_and_skips_the_locked_number ... ok
+test esc_undoes_the_field_then_the_record ... ok
+test a_whole_quote_line_goes_in_without_the_mouse ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+

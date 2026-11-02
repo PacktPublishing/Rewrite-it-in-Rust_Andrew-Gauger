@@ -1,0 +1,224 @@
+$ cargo expand -p cairn-app --lib forms::company
+(the Form impl only; the Debug, Clone and PartialEq impls and the module trimmed)
+
+impl ::cairn_forms::Form for CompanyDraft {
+    type Context = AppContext;
+    const FIELDS: &'static [::cairn_forms::FieldSpec] = &[
+        ::cairn_forms::FieldSpec {
+            name: "company_name",
+            label: "Company Name",
+            kind: ::cairn_forms::Kind::Text,
+            column: 0u8,
+            read_only: false,
+            required: true,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "address1",
+            label: "Address 1",
+            kind: ::cairn_forms::Kind::Text,
+            column: 0u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "address2",
+            label: "Address 2",
+            kind: ::cairn_forms::Kind::Text,
+            column: 0u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "city",
+            label: "City",
+            kind: ::cairn_forms::Kind::Text,
+            column: 0u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "state",
+            label: "State",
+            kind: ::cairn_forms::Kind::Text,
+            column: 0u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "zip",
+            label: "Zip",
+            kind: ::cairn_forms::Kind::Text,
+            column: 0u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "country",
+            label: "Country",
+            kind: ::cairn_forms::Kind::Text,
+            column: 0u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "phone",
+            label: "Phone",
+            kind: ::cairn_forms::Kind::Text,
+            column: 1u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "email",
+            label: "Email",
+            kind: ::cairn_forms::Kind::Text,
+            column: 1u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "website",
+            label: "Website",
+            kind: ::cairn_forms::Kind::Text,
+            column: 1u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "default_tax_rate",
+            label: "Default Tax Rate",
+            kind: ::cairn_forms::Kind::Percent,
+            column: 1u8,
+            read_only: false,
+            required: false,
+            lines: 1u8,
+            width: 0f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "quote_terms",
+            label: "Quote Terms",
+            kind: ::cairn_forms::Kind::Text,
+            column: 1u8,
+            read_only: false,
+            required: false,
+            lines: 4u8,
+            width: 260f32,
+            hint: "",
+            hidden: false,
+        },
+        ::cairn_forms::FieldSpec {
+            name: "receipt_footer",
+            label: "Receipt Footer",
+            kind: ::cairn_forms::Kind::Text,
+            column: 1u8,
+            read_only: false,
+            required: false,
+            lines: 2u8,
+            width: 260f32,
+            hint: "",
+            hidden: false,
+        },
+    ];
+    fn field(&self, i: usize) -> &dyn ::cairn_forms::FieldValue {
+        match i {
+            0usize => &self.company_name,
+            1usize => &self.address1,
+            2usize => &self.address2,
+            3usize => &self.city,
+            4usize => &self.state,
+            5usize => &self.zip,
+            6usize => &self.country,
+            7usize => &self.phone,
+            8usize => &self.email,
+            9usize => &self.website,
+            10usize => &self.default_tax_rate,
+            11usize => &self.quote_terms,
+            12usize => &self.receipt_footer,
+            _ => {
+                ::core::panicking::panic_fmt(format_args!("no field {0}", i));
+            }
+        }
+    }
+    fn field_mut(&mut self, i: usize) -> &mut dyn ::cairn_forms::FieldValue {
+        match i {
+            0usize => &mut self.company_name,
+            1usize => &mut self.address1,
+            2usize => &mut self.address2,
+            3usize => &mut self.city,
+            4usize => &mut self.state,
+            5usize => &mut self.zip,
+            6usize => &mut self.country,
+            7usize => &mut self.phone,
+            8usize => &mut self.email,
+            9usize => &mut self.website,
+            10usize => &mut self.default_tax_rate,
+            11usize => &mut self.quote_terms,
+            12usize => &mut self.receipt_footer,
+            _ => {
+                ::core::panicking::panic_fmt(format_args!("no field {0}", i));
+            }
+        }
+    }
+    fn check(&self, i: usize) -> Result<(), String> {
+        match i {
+            10usize => fraction(&self.default_tax_rate),
+            _ => Ok(()),
+        }
+    }
+    fn after_update(
+        &mut self,
+        i: usize,
+        ctx: &Self::Context,
+    ) -> Vec<::cairn_forms::Cmd<Self>> {
+        match i {
+            _ => Vec::new(),
+        }
+    }
+    fn placeholder(&self, i: usize, ctx: &Self::Context) -> Option<String> {
+        match i {
+            _ => None,
+        }
+    }
+}
