@@ -1,0 +1,17 @@
+[package]
+name = "{{ project_name }}"
+version = "0.1.0"
+edition = "2021"
+description = "A Rust core compiled to WebAssembly"
+license = "MIT OR Apache-2.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen.bp-managed = true
+js-sys.bp-managed = true
+
+[profile.release]
+opt-level = "s"
+lto = true

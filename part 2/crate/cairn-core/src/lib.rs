@@ -15,6 +15,7 @@ pub mod quote_to_order;
 pub mod receipt;
 pub mod rma;
 pub mod rounding;
+pub mod rules;
 pub mod status;
 pub mod totals;
 

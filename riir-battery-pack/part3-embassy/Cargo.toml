@@ -1,0 +1,69 @@
+[package]
+name = "riir-embassy-battery-pack"
+version = "0.1.0"
+edition = "2021"
+description = "Part 3 of the riir battery pack: no_std async firmware on STM32 with Embassy -- companion crate curation for Rewrite It in Rust, Part III (The Devices)"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/PacktPublishing/Rewrite-it-in-Rust_Andrew-Gauger"
+keywords = ["battery-pack", "embassy", "stm32", "embedded", "no_std"]
+
+[package.metadata.battery.templates]
+stm32-core = { path = "templates/stm32-core", description = "no_std/no_main Embassy skeleton: one async task, RTT logging over defmt, a probe-rs-driven panic handler" }
+
+[package.metadata.battery-pack]
+hidden = ["battery-pack"]
+
+# --- Categories (purely organizational) ---
+
+[package.metadata.battery-pack.categories.runtime]
+title = "Async Runtime"
+description = "Embassy's executor and chip HAL"
+
+[package.metadata.battery-pack.categories.data]
+title = "no_std Data Structures"
+description = "Fixed-capacity collections and interrupt-safe shared state, in place of Vec/Mutex"
+
+[package.metadata.battery-pack.categories.debug]
+title = "Debugging"
+description = "Logging and panic handling over probe-rs/RTT instead of a UART println"
+
+# --- Feature metadata ---
+
+[package.metadata.battery-pack.features.time]
+description = "embassy-time -- async delays and timeouts driven by the executor instead of a busy-wait loop"
+categories = ["runtime"]
+
+[dependencies]
+embassy-executor = { version = "0.10", features = ["platform-cortex-m", "executor-thread"], optional = true }
+embassy-stm32 = { version = "0.6", optional = true }
+embassy-time = { version = "0.5", optional = true }
+embedded-hal = { version = "1", optional = true }
+heapless = { version = "0.9", optional = true }
+critical-section = { version = "1", optional = true }
+defmt = { version = "1", optional = true }
+defmt-rtt = { version = "1", optional = true }
+panic-probe = { version = "1", features = ["print-defmt"], optional = true }
+
+[build-dependencies]
+# TODO: this pack isn't published yet, so the real currently-released
+# battery-pack version hasn't been confirmed against crates.io. Run
+# `cargo add battery-pack --build --features build` in this directory
+# to resolve and pin the real version before relying on `cargo bp show`.
+battery-pack = { version = "0.6", features = ["build"] }
+
+[dev-dependencies]
+battery-pack = { version = "0.6", features = ["cli"] }
+
+[features]
+default = [
+    "embassy-executor",
+    "embassy-stm32",
+    "embedded-hal",
+    "heapless",
+    "critical-section",
+    "defmt",
+    "defmt-rtt",
+    "panic-probe",
+]
+time = ["embassy-time"]

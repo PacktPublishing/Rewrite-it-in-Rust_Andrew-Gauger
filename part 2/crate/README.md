@@ -1,16 +1,17 @@
 # Cairn Systems V2
 
 The Rust replacement for the Access database in this folder, built in the
-book's chapter order. Three members so far:
+book's chapter order. Seven members so far:
 
 | Crate | Job | Chapter |
 |---|---|---|
 | `cairn-core` | Business rules: no user interface, no database, no network | 8 |
 | `migration` | The Postgres schema, as reversible Rust migrations | 9 |
 | `cairn-auth` | Sign-in through Entra ID; hands the app a Postgres login that expires on its own | 9 |
-
-Chapters 10–13 add `cairn-forms`, `cairn-forms-derive` and `cairn-app`
-beside them.
+| `company-by-hand` | V1's Company Info form drawn with plain egui, no kit, no database: the chapter's first screen | 10 |
+| `cairn-forms` | The form kit: Access-style bound forms, lookups and datasheets on egui | 10 |
+| `cairn-forms-derive` | `#[derive(Form)]` | 10 |
+| `cairn-app` | The desktop app | 10–14 |
 
 ## Running it
 
@@ -22,7 +23,10 @@ sh dev-db.sh                                 # a local Postgres in .pgdata/, on 
 export DATABASE_URL=postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5433/cairn
 cargo run -p migration -- up                 # or down, fresh, status
 sh dev-seed.sh yournamegmail.onmicrosoft.com # a few of V1's rows, reps linked to Entra
-cargo test --workspace                       # 80 tests
+sh dev-ipsum.sh                              # placeholder rows at V1's volumes, for screens
+cargo test --workspace                       # 97 tests
+cargo run -p cairn-app                       # the app, over whatever the database holds
+cargo run -p company-by-hand                 # Chapter 10's first screen, no database
 cargo clippy --all-targets --workspace -- -D warnings
 ```
 
@@ -111,3 +115,62 @@ Resolved versions (2026-10-31): sea-orm-migration 2.0.4, sqlx 0.9.0, axum
 0.8.9, openidconnect 4.0.1, tokio 1.54.1, postgres-protocol 0.6.12, sha2
 0.11.1, base64 0.23.1, rand 0.10.3, url 2.5.8, tracing 0.1.44,
 tracing-subscriber 0.3.23, async-trait 0.1.92.
+
+## cairn-forms, cairn-forms-derive and cairn-app
+
+V1 built its 20 forms from a handful of VBA helpers (`Txt`, `Cbo`, `Chk`,
+`TotalBox`, `SubF`, `FindBox` in `../CairnForms.bas`). The form kit is
+those helpers on egui:
+
+- **`RecordForm<T>`** edits one record as a bound form does: the record as
+  loaded and the draft, so it knows when there are unsaved changes and can
+  undo. Tab follows the fields' order, and locked fields are skipped.
+  Enter moves to the next field, and arriving by keyboard selects the
+  field. Esc undoes the field, and a second Esc the record. AfterUpdate
+  runs when a changed field is left.
+- **`#[derive(Form)]`** reads each field's `#[field(...)]`: label, lookup,
+  `after_update` handler, `validate` rule, `required`, `read_only`, column.
+  Handlers are ordinary functions that never do input or output; they
+  return commands for the app.
+- **Lookups** are egui 0.37's `CompletionPopup` plus a ranked list and
+  V1's limit-to-list rule. One widget serves every combo box.
+- **Validation** shows through `egui_form` (default features off): a red
+  outline, a message under the field, and focus on the first bad field
+  when a save is refused. The rules are plain functions in
+  `cairn-core::rules`.
+- **Datasheets** are `egui_extras::TableBuilder`: editable ones (a
+  `RecordForm` per row, arrows up and down, a blank row for a new line,
+  Ctrl+Minus to delete) and read-only lists that build only the rows in
+  view.
+
+`cairn-app` reads everything once, before its window opens (`data.rs`),
+and saves only into that copy; Chapter 11 moves the database work to
+background workers. Every V1 form is there except the two `cairn-auth`
+replaced (sign-in and Users): the main menu and its two lists,
+Customers (with Contacts, Activities, Quotes and Orders tabs), Quotes,
+Sales Orders (with lines and payments, and a datasheet view of all
+orders), Products, Sales Reps, Company Info, Activities, Phone Messages
+and RMAs. Each is in `src/forms/`, field for field and in V1's Tab order.
+Single-table forms share `screens/record.rs`, with Access's navigation
+bar; moving to another record saves this one first, as Access did.
+Buttons for later chapters (printing, month-end, quote to order, the
+manufacturer) are there, disabled, naming the chapter. It connects as
+`cairn_owner` on the dev database unless `CAIRN_DATABASE_URL` says
+otherwise; signing in through `cairn-auth` arrives with Chapter 11.
+
+```sh
+sh dev-ipsum.sh                              # placeholder rows to look at
+cargo run -p cairn-app
+cargo test -p cairn-app --test keyboard      # V1's keystrokes, no database
+cargo test -p cairn-app --test forms         # navigation, V1's buttons, no database
+UPDATE_SNAPSHOTS=1 cargo test -p cairn-app --test screens -- --ignored
+cargo test --release -p cairn-app --test scroll_timing -- --ignored --nocapture
+cargo check --target aarch64-linux-android -p cairn-core -p cairn-forms
+```
+
+The screenshots are taken at 1180 × 760 and at 1024 × 768 (an iPad in
+landscape): tablets are a target for later, so nothing in `cairn-core` or
+`cairn-forms` may be desktop-only.
+
+Resolved versions (2026-10-31): egui, eframe, egui_extras and egui_kittest
+0.37.0, egui_form 0.11.0, syn 2.0.119, quote 1.0.47, proc-macro2 1.0.107.

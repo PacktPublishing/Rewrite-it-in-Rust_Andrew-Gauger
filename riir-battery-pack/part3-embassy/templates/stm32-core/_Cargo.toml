@@ -1,0 +1,22 @@
+[package]
+name = "{{ project_name }}"
+version = "0.1.0"
+edition = "2021"
+description = "no_std Embassy firmware for STM32"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+embassy-executor.bp-managed = true
+embassy-stm32.bp-managed = true
+embassy-time.bp-managed = true
+embedded-hal.bp-managed = true
+heapless.bp-managed = true
+critical-section.bp-managed = true
+defmt.bp-managed = true
+defmt-rtt.bp-managed = true
+panic-probe.bp-managed = true
+
+[profile.release]
+debug = 2
+lto = true
+opt-level = "s"

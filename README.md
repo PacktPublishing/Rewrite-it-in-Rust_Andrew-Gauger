@@ -19,6 +19,15 @@ Every benchmark, test result, and compiler error printed in the book came from t
 | 7 | Reading the Ruins | [chapter7](chapter7/): rule inventory, interview data, and the AI test-drafting harness |
 | 8 | Modeling the Rules in Rust | [chapter8](chapter8/): the `cairn-core` crate as of this chapter, in [`chapter8/crate`](chapter8/crate/) |
 | 9 | Building the Replacement: Strategy, Identity, and Schema | [chapter9](chapter9/): the workspace as of this chapter, with the `migration` and `cairn-auth` crates, in [`chapter9/crate`](chapter9/crate/), and the test Entra tenant |
+| 10 | Make It Feel Like a Datasheet | [chapter10](chapter10/): the workspace as of this chapter, with the form kit (`cairn-forms`, `cairn-forms-derive`) and the desktop app (`cairn-app`), in [`chapter10/crate`](chapter10/crate/) |
+
+## Battery packs
+
+[`riir-battery-pack/`](riir-battery-pack/) holds one [battery pack](https://battery-pack-rs.github.io/battery-pack/) per Part: the crates each Part depends on, with a starter template. Install the tool with `cargo install cargo-bp`, then, from this repository's root, start a Part II app with:
+
+```sh
+cargo bp new riir-gui --path riir-battery-pack/part2-gui --template gui-core --name my-back-office
+```
 
 ## The Part II database
 
@@ -42,10 +51,11 @@ Everyone in the database, and the company itself, is fictional. The sample passw
 | 3, 5 | Node.js and Playwright | For the browser benchmarks |
 | 2 | Python 3.14, Ruby 3.4, Node.js 23 | For the interpreter-lock comparison |
 | 6 to 8 | `mdbtools` (`mdb-export`) | Reads the Access database on macOS and Linux |
-| 6, 9 | PostgreSQL (17.11 for Chapter 9) | `initdb`, `pg_ctl`, and `psql` on your `PATH` |
+| 6, 9, 10 | PostgreSQL (17.11 for Chapter 9) | `initdb`, `pg_ctl`, and `psql` on your `PATH` |
 | 6 to 8 | Microsoft Access 2010 or later on Windows | Only to open the database interactively |
 | 7 | Python 3, plus an Apple Silicon Mac for a local model run | Only to re-run the AI harness itself |
 | 9 | Azure CLI (`az`) 2.91 or later | `brew install azure-cli`. Only to set up the test Entra tenant; see [`chapter9/cairn-auth`](chapter9/cairn-auth/) |
+| 10 | `cargo-expand` | `cargo install cargo-expand`. Only to reproduce the derive's expansion |
 
 Run a chapter's commands from inside that chapter's folder unless its README says otherwise.
 

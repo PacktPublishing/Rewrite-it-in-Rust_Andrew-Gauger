@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["cairn-auth","cairn-core", "migration"]
+members = ["cairn-app","cairn-auth","cairn-core", "cairn-forms", "cairn-forms-derive", "company-by-hand", "migration"]
 
 [workspace.package]
 edition = "2021"

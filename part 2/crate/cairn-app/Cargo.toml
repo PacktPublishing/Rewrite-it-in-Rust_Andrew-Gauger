@@ -1,0 +1,19 @@
+[package]
+name = "cairn-app"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+description = "Cairn V2, the desktop app."
+
+[dependencies]
+cairn-core = { version = "0.1.0", path = "../cairn-core" }
+cairn-forms = { version = "0.1.0", path = "../cairn-forms" }
+eframe = "0.37"
+egui = "0.37"
+egui_extras = "0.37"
+rust_decimal = "1.43"
+sqlx = { version = "0.9", default-features = false, features = ["postgres", "runtime-tokio", "tls-rustls", "rust_decimal"] }
+tokio = { version = "1", features = ["rt-multi-thread"] }
+
+[dev-dependencies]
+egui_kittest = { version = "0.37", features = ["wgpu", "snapshot"] }

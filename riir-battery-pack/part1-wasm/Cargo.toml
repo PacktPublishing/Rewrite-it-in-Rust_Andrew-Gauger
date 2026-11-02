@@ -1,0 +1,56 @@
+[package]
+name = "riir-wasm-battery-pack"
+version = "0.1.0"
+edition = "2021"
+description = "Part 1 of the riir battery pack: compiling a Rust core to WebAssembly with wasm-bindgen -- companion crate curation for Rewrite It in Rust, Part I (The Dashboard)"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/PacktPublishing/Rewrite-it-in-Rust_Andrew-Gauger"
+readme = "README.md"
+keywords = ["battery-pack", "wasm", "wasm-bindgen", "webassembly"]
+
+[package.metadata.battery.templates]
+wasm-core = { path = "templates/wasm-core", description = "Minimal wasm-bindgen crate: cdylib+rlib, one exported function" }
+
+[package.metadata.battery-pack]
+hidden = ["battery-pack"]
+
+# --- Categories (purely organizational) ---
+
+[package.metadata.battery-pack.categories.bridge]
+title = "JS/WASM Bridge"
+description = "Typed bindings across the JS/WASM boundary"
+
+[package.metadata.battery-pack.categories.debug]
+title = "Debugging"
+description = "Readable panics and logging from inside a WASM module"
+
+# --- Feature metadata ---
+
+[package.metadata.battery-pack.features.dom]
+description = "web-sys DOM/Canvas bindings -- for painting a density grid onto a <canvas>, once one exists (Chapter 5)"
+categories = ["bridge"]
+
+[package.metadata.battery-pack.features.panic-hook]
+description = "console_error_panic_hook -- readable Rust panic messages in the browser console instead of an opaque 'unreachable' trap"
+categories = ["debug"]
+
+[dependencies]
+wasm-bindgen = { version = "=0.2.126", optional = true }
+js-sys = { version = "0.3", optional = true }
+web-sys = { version = "0.3", optional = true }
+console_error_panic_hook = { version = "0.1", optional = true }
+
+[build-dependencies]
+# TODO: this pack isn't published yet, so the real currently-released
+# battery-pack version hasn't been confirmed against crates.io. Run
+# `cargo add battery-pack --build --features build` in this directory
+# to resolve and pin the real version before relying on `cargo bp show`.
+battery-pack = { version = "0.6", features = ["build"] }
+
+[dev-dependencies]
+battery-pack = { version = "0.6", features = ["cli"] }
+
+[features]
+default = ["wasm-bindgen", "js-sys"]
+dom = ["web-sys"]
+panic-hook = ["console_error_panic_hook"]

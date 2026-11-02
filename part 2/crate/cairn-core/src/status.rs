@@ -28,6 +28,11 @@ macro_rules! value_list {
         #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
         pub enum $name { $($variant),* }
 
+        impl $name {
+            /// Every value, in the order V1's list offers them.
+            pub const ALL: &'static [$name] = &[$($name::$variant),*];
+        }
+
         impl TryFrom<&str> for $name {
             type Error = UnknownStatus;
             fn try_from(s: &str) -> Result<Self, UnknownStatus> {
