@@ -11,7 +11,7 @@
 //   work time   the sum of the render calls alone (query + Leaflet
 //               markers), which the refresh rate does not cap.
 
-export function attachFullSpeedRun({ button, readout, frameCount, renderFrame, beforeRun }) {
+export function attachFullSpeedRun({ button, readout, frameCount, renderFrame, beforeRun, afterRun = () => {} }) {
   readout.hidden = false;
   readout.textContent = `full-speed run: ${frameCount} frames, press "Run full speed"`;
 
@@ -45,6 +45,7 @@ export function attachFullSpeedRun({ button, readout, frameCount, renderFrame, b
         `full-speed run: ${frameCount} frames in ${(wallMs / 1000).toFixed(2)} s ` +
         `(${((frameCount * 1000) / wallMs).toFixed(1)} fps) · work ${workMs.toFixed(0)} ms total, ` +
         `${(workMs / frameCount).toFixed(2)} ms avg, ${worstWorkMs.toFixed(1)} ms worst`;
+      afterRun();
       button.disabled = false;
     }
     requestAnimationFrame(step);
