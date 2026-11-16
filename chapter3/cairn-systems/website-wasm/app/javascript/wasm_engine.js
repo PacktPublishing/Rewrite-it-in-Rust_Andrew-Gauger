@@ -1,3 +1,6 @@
+import { startFpsMeter } from "fps_meter";
+import { attachFullSpeedRun } from "playback_run";
+
 // The whole point of this engine: the point cloud crosses into WASM linear
 // memory exactly once (the Float64Array built below, handed to
 // PointCloud::new). Every later interaction -- dragging the time slider,
@@ -63,8 +66,10 @@ function buildSensorPicker(sensorIds, onChange) {
   let maxTs = -Infinity;
   const flat = new Float64Array(readings.length * 6);
   let cursor = 0;
+  const instantSet = new Set();
   for (const r of readings) {
     const ts = Date.parse(r.recorded_at);
+    instantSet.add(ts);
     if (ts < minTs) minTs = ts;
     if (ts > maxTs) maxTs = ts;
     flat[cursor++] = idxOf.get(r.sensor_id);
@@ -141,18 +146,21 @@ function buildSensorPicker(sensorIds, onChange) {
   slider.step = 60000;
   slider.value = 0;
 
+  const fps = startFpsMeter(document.getElementById("fps-readout"));
   let mode = "all";
   let playing = false;
   let timer = null;
 
-  function renderCurrent() {
+  // atTsOverride lets the full-speed run hit each reading's exact timestamp;
+  // the slider would snap it to its one-minute step.
+  function renderCurrent(atTsOverride) {
     const [minLat, minLng, maxLat, maxLng] = currentBounds();
     const mask = getMask();
     const start = performance.now();
     let rows;
 
     if (mode === "playback") {
-      const atTs = minTs + parseInt(slider.value, 10);
+      const atTs = atTsOverride ?? minTs + parseInt(slider.value, 10);
       rows = cloud.snapshot_at(atTs, mask, minLat, minLng, maxLat, maxLng);
       timeLabel.textContent = new Date(atTs).toLocaleString();
     } else {
@@ -182,8 +190,24 @@ function buildSensorPicker(sensorIds, onChange) {
       if (next > durationMs) next = 0;
       slider.value = next;
       renderCurrent();
+      fps.update();
     }, 100);
   }
+
+  // The same instants the legacy engine steps through: every distinct
+  // reading timestamp, in order.
+  const instants = Array.from(instantSet).sort((a, b) => a - b);
+  attachFullSpeedRun({
+    button: document.getElementById("run-full-speed"),
+    readout: document.getElementById("run-readout"),
+    frameCount: instants.length,
+    beforeRun: stopPlayback,
+    renderFrame(i) {
+      slider.value = instants[i] - minTs;
+      renderCurrent(instants[i]);
+      fps.update();
+    }
+  });
 
   playPauseBtn.addEventListener("click", () => (playing ? stopPlayback() : startPlayback()));
 

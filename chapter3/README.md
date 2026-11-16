@@ -25,6 +25,30 @@ bundle install
 bin/rails server
 ```
 
+## Measure on a real device
+
+Bind the server to your network so a phone or tablet on the same Wi-Fi can
+reach it:
+
+```sh
+bin/rails server -b 0.0.0.0 -p 3737
+```
+
+Then open `http://<your computer's IP>:3737/?engine=wasm` and
+`?engine=legacy` on the device. Both engines show the same three readouts:
+
+- the existing per-update timing,
+- a frames-per-second line (`paint fps`, `playback updates/s`,
+  `worst frame`),
+- under **Time playback**, a **Run full speed** button that steps through
+  every reading timestamp in order, one per animation frame, and reports the
+  wall time for the whole playback plus the total render work.
+
+Use **Run full speed** to compare engines. The ordinary **Play** button
+ticks at different rates in the two engines (legacy every 150 ms, one
+timestamp per tick; Wasm every 100 ms, two minutes per tick), so its speed
+is not a fair comparison.
+
 ## Run the tests and the benchmark
 
 ```sh

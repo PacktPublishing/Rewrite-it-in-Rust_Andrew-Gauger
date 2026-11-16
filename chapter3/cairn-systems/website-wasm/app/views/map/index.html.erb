@@ -32,6 +32,7 @@
 
   <div class="playback-controls" hidden>
     <button type="button" id="play-pause">Play</button>
+    <button type="button" id="run-full-speed">Run full speed</button>
     <input type="range" id="time-slider" min="0" max="0" value="0" step="1">
     <span id="time-label"></span>
   </div>
@@ -39,6 +40,8 @@
   <div class="sensor-picker" id="sensor-picker" hidden></div>
 
   <p class="perf-readout" id="perf-readout" hidden></p>
+  <p class="perf-readout" id="fps-readout" hidden></p>
+  <p class="perf-readout" id="run-readout" hidden></p>
 </header>
 
 <div id="map" data-scenario="<%= @scenario %>"></div>
