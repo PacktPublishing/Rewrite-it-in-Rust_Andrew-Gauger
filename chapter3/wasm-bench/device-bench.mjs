@@ -17,8 +17,9 @@
 //   --play-seconds N  how long Play runs before it is sampled (default 10)
 //   --label NAME      used in the output file name
 //
-// Writes results-<label>-<timestamp>.json (every sample, every frame) and
-// prints one Markdown table per scenario, median across attempts.
+// Writes results-<label>-<timestamp>.json (every sample, every frame,
+// updated after each attempt) and
+// prints one Markdown table per scenario, mean across attempts.
 
 import { execFileSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
@@ -101,17 +102,14 @@ async function runOnce(context, scenario, engine) {
   return { play, fullSpeed, errors };
 }
 
-const median = (xs) => {
-  const s = [...xs].sort((a, b) => a - b);
-  const m = Math.floor(s.length / 2);
-  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
-};
 const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
 
-// The six rows of the chapter's table, from one attempt's raw results.
+// The rows of the chapter's table, from one attempt's raw results. Each
+// table cell is the mean across attempts.
 const metrics = [
   ["Play: average FPS", (r) => mean(r.play.map((s) => s.fps)), 1],
   ["Play: worst frame (ms)", (r) => Math.max(...r.play.map((s) => s.worstFrameMs)), 1],
+  ["Full speed: average FPS", (r) => r.fullSpeed.fps, 1],
   ["Full speed: 360 frames (s)", (r) => r.fullSpeed.wallMs / 1000, 2],
   ["Full speed: p99 frame (ms)", (r) => r.fullSpeed.frame.p99, 1],
   ["Full speed: worst frame (ms)", (r) => r.fullSpeed.frame.worst, 1],
@@ -122,6 +120,10 @@ const { context, describe, close } = await openBrowser();
 console.log(`# ${describe}\n# ${base}, ${attempts} attempts, Play sampled for ${playSeconds} s\n`);
 
 const results = [];
+// Saved after every attempt, so a run that stops partway keeps what it has.
+const file = `results-${label}-${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
+const save = () =>
+  writeFileSync(file, JSON.stringify({ describe, base, attempts, playSeconds, throttle, results }, null, 2));
 for (const scenario of scenarios) {
   for (const engine of engines) {
     for (let attempt = 1; attempt <= attempts; attempt++) {
@@ -129,14 +131,15 @@ for (const scenario of scenarios) {
       const r = await runOnce(context, scenario, engine);
       process.stderr.write(`${r.fullSpeed.fps.toFixed(1)} fps full speed\n`);
       results.push({ scenario: scenario.title, engine, attempt, ...r });
+      save();
     }
   }
 
-  console.log(`## ${scenario.title}, median of ${attempts}\n`);
+  console.log(`## ${scenario.title}, mean of ${attempts}\n`);
   console.log("| metric | JavaScript | Wasm |\n|---|---|---|");
   for (const [name, pick, digits] of metrics) {
     const cell = (engine) =>
-      median(results.filter((r) => r.scenario === scenario.title && r.engine === engine).map(pick)).toFixed(digits);
+      mean(results.filter((r) => r.scenario === scenario.title && r.engine === engine).map(pick)).toFixed(digits);
     console.log(`| ${name} | ${cell("legacy")} | ${cell("wasm")} |`);
   }
   console.log();
@@ -145,7 +148,5 @@ for (const scenario of scenarios) {
 const errors = results.flatMap((r) => r.errors);
 if (errors.length) console.log(`Page errors: ${errors.join("; ")}`);
 
-const file = `results-${label}-${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
-writeFileSync(file, JSON.stringify({ describe, base, attempts, playSeconds, throttle, results }, null, 2));
 console.log(`Raw results: ${file}`);
 await close();

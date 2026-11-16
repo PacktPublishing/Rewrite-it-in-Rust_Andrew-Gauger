@@ -55,7 +55,7 @@ and the container fleet at the default zoom and zoomed in two levels),
 both engines, three fresh page loads each. It records the page's own
 readouts: Play's frames per second and worst frame, and the **Run full
 speed** wall time, p99 and worst frame time, and average render work. It
-prints one table per scenario (median of the attempts) and writes every
+prints one table per scenario (mean of the attempts) and writes every
 sample and every frame to `results-<label>-<timestamp>.json`.
 
 An Android emulator or an Android Docker image cannot stand in for this:
@@ -89,3 +89,14 @@ as `localhost` over the cable; no Wi-Fi needed. Leave the device plugged
 in, other apps closed, and screen on. Without `--android` it drives desktop
 Chrome instead (`--throttle 4` for 4x), which is useful for trying the
 script out.
+
+`device-output-sm-t290.json` (every sample and frame) and
+`device-output-sm-t290.md` (the printed tables) are the run the chapter's
+tablet numbers come from: 2026-11-16, Samsung Galaxy Tab A 8.0 (SM-T290,
+Snapdragon 429, 2 GB, Android 11), Chrome 149.0.7827.200, 961x433 viewport,
+over USB from an Apple M3 Pro. In the container-fleet scenario the Wasm
+engine draws only the 0-5 markers inside the viewport (`range` and
+`snapshot_at` filter by bounding box) while the legacy engine draws all
+20, so those two tables compare different amounts of Leaflet work. The
+agriculture scenario, 20 markers on screen for both, is the like-for-like
+comparison.
