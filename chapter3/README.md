@@ -44,10 +44,10 @@ Then open `http://<your computer's IP>:3737/?engine=wasm` and
   every reading timestamp in order, one per animation frame, and reports the
   wall time for the whole playback plus the total render work.
 
-Use **Run full speed** to compare engines. The ordinary **Play** button
-asks both engines for 60 updates a second, but they cover different amounts
-of data per update (legacy one timestamp, about a minute; Wasm two minutes),
-so its speed is not a fair comparison.
+**Play** asks both engines for 60 updates a second, one sample (one reading
+timestamp) per update, so the two cover the same data at the same rate.
+**Run full speed** steps through the same samples with no timer at all, one
+per animation frame.
 
 ## Run the tests and the benchmark
 
