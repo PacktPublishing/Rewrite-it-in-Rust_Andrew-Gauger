@@ -13,6 +13,8 @@
 
 export function startFpsMeter(el) {
   el.hidden = false;
+  // Every one-second sample, for a script driving the page to collect.
+  window.fpsSamples = [];
 
   let frames = 0;
   let updates = 0;
@@ -29,6 +31,7 @@ export function startFpsMeter(el) {
     if (elapsed >= 1000) {
       const fps = (frames * 1000) / elapsed;
       const ups = (updates * 1000) / elapsed;
+      window.fpsSamples.push({ fps, ups, worstFrameMs: worstGap });
       el.textContent =
         `paint ${fps.toFixed(1)} fps · playback ${ups.toFixed(1)} updates/s · ` +
         `worst frame ${worstGap.toFixed(0)} ms`;

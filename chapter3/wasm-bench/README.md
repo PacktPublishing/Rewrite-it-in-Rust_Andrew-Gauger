@@ -45,3 +45,47 @@ node bench.mjs
 come from. `bench.mjs` prints the same shape fresh each time; run-to-run
 noise on a shared dev machine (not an isolated benchmark rig) should be
 expected, especially under throttling.
+
+## On a real device: `device-bench.mjs`
+
+CPU throttling scales a desktop processor; it does not reproduce a
+phone's. `device-bench.mjs` drives the real app in Chrome on a real
+Android device over USB, through each scenario (the agriculture cluster,
+and the container fleet at the default zoom and zoomed in two levels),
+both engines, three fresh page loads each. It records the page's own
+readouts: Play's frames per second and worst frame, and the **Run full
+speed** wall time, p99 and worst frame time, and average render work. It
+prints one table per scenario (median of the attempts) and writes every
+sample and every frame to `results-<label>-<timestamp>.json`.
+
+An Android emulator or an Android Docker image cannot stand in for this:
+the emulator runs on the host's processor, so its numbers describe the
+host.
+
+One-time setup:
+
+1. On the device, open **Settings → About tablet → Software information**
+   and tap **Build number** seven times. In **Settings → Developer
+   options**, turn on **USB debugging**.
+2. In the device's Chrome, open `chrome://flags`, enable **Enable command
+   line on non-rooted devices**, and relaunch Chrome.
+3. On the computer: `brew install android-platform-tools`. Connect the
+   USB cable, accept the **Allow USB debugging?** prompt on the device,
+   and check that `adb devices` lists it.
+
+Then:
+
+```sh
+# from cairn-systems/website-wasm/
+bin/rails server -p 3737
+
+# from this directory
+npm install playwright
+node device-bench.mjs --android --label sm-t290
+```
+
+The script runs `adb reverse`, so the device reaches the computer's server
+as `localhost` over the cable; no Wi-Fi needed. Leave the device plugged
+in, other apps closed, and screen on. Without `--android` it drives desktop
+Chrome instead (`--throttle 4` for 4x), which is useful for trying the
+script out.
