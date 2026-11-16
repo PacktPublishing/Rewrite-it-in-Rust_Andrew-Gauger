@@ -162,6 +162,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.4-arm-linux-musl)
       racc (~> 1.4)
+    nokogiri (1.19.4-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.19.4-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.4-x86_64-linux-gnu)
@@ -278,6 +280,7 @@ GEM
     thor (1.5.0)
     thruster (0.1.23)
     thruster (0.1.23-aarch64-linux)
+    thruster (0.1.23-arm64-darwin)
     thruster (0.1.23-x86_64-darwin)
     thruster (0.1.23-x86_64-linux)
     timeout (0.6.1)
@@ -308,6 +311,7 @@ PLATFORMS
   aarch64-linux-musl
   arm-linux-gnu
   arm-linux-musl
+  arm64-darwin-23
   x86_64-darwin
   x86_64-linux
   x86_64-linux-gnu
@@ -388,6 +392,7 @@ CHECKSUMS
   nokogiri (1.19.4-aarch64-linux-musl) sha256=35c65b9ce72b3bb03207bdbe7067915019dc18c1b9b59139684bd6690fdd01af
   nokogiri (1.19.4-arm-linux-gnu) sha256=a301313e38bb065d68239e79734bcd6f56fb6efaacebde29e9abf2a4735340ca
   nokogiri (1.19.4-arm-linux-musl) sha256=588923c101bcfa78869734d247d25b598674323e7f22474fc468f6e5647311eb
+  nokogiri (1.19.4-arm64-darwin)
   nokogiri (1.19.4-x86_64-darwin) sha256=7fd17057d3e1f00e9954a74b3cd76595d3d4a5ef233b7ed9599047c204f70551
   nokogiri (1.19.4-x86_64-linux-gnu) sha256=379fae440b28915e3f19d752ce2dcf8465ed2b2fbefd2a7ca0dd497bc981a06a
   nokogiri (1.19.4-x86_64-linux-musl) sha256=17dfb7c1fa194ae02fbf7c51a7afc8d278045ab3fdacfd86f91d02d7b274470b
@@ -426,6 +431,7 @@ CHECKSUMS
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   thruster (0.1.23) sha256=ad3081e8ff3b5cb413768292c367f1e015c423bb6b35919b9b9f533af50d639f
   thruster (0.1.23-aarch64-linux) sha256=042a05581dd1d750d1583d83817460b1f7fde254ed0b2bcd7ec56f9bed278c7a
+  thruster (0.1.23-arm64-darwin)
   thruster (0.1.23-x86_64-darwin) sha256=2b22a951f6ac1218c9f461bfc6004b61854147308649475a07bc05fae2e69869
   thruster (0.1.23-x86_64-linux) sha256=9cd7265bf54e954575c8442e42d050ed8eb55df4f9d7da8fd6f94fcc0339baa5
   timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb

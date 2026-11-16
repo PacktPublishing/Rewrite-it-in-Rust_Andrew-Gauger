@@ -168,6 +168,27 @@ function buildSensorPicker(sensorIds, onChange) {
 
   map.on("moveend zoomend", () => renderCurrent());
 
+  // Device measurement (see chapter3/README.md). Everything above this line
+  // keeps its line numbers: the book's code references point into it.
+  const fps = startFpsMeter(document.getElementById("fps-readout"));
+
+  // The same samples the legacy engine steps through: every distinct reading
+  // timestamp, in order. Play and Run full speed both advance one sample per
+  // update, so the two engines cover the same data per update. The slider's
+  // one-minute step would round a sample's timestamp, so it is lifted.
+  const instants = Array.from(new Set(readings.map((r) => Date.parse(r.recorded_at)))).sort(
+    (a, b) => a - b
+  );
+  slider.step = "any";
+  let playIdx = 0;
+
+  function showSample(idx) {
+    playIdx = idx;
+    slider.value = instants[idx] - minTs;
+    renderCurrent();
+    fps.update();
+  }
+
   function stopPlayback() {
     playing = false;
     playPauseBtn.textContent = "Play";
@@ -178,17 +199,27 @@ function buildSensorPicker(sensorIds, onChange) {
     playing = true;
     playPauseBtn.textContent = "Pause";
     timer = setInterval(() => {
-      let next = parseInt(slider.value, 10) + 120000;
-      if (next > durationMs) next = 0;
-      slider.value = next;
-      renderCurrent();
-    }, 100);
+      showSample((playIdx + 1) % instants.length);
+    }, 1000 / 60); // 60 updates a second
   }
+
+  attachFullSpeedRun({
+    button: document.getElementById("run-full-speed"),
+    readout: document.getElementById("run-readout"),
+    frameCount: instants.length,
+    beforeRun: stopPlayback,
+    renderFrame: showSample
+  });
 
   playPauseBtn.addEventListener("click", () => (playing ? stopPlayback() : startPlayback()));
 
+  // Dragging can land between samples (snapshot_at interpolates); Play
+  // carries on from the last sample at or before that point.
   slider.addEventListener("input", () => {
     stopPlayback();
+    const at = minTs + parseFloat(slider.value);
+    const next = instants.findIndex((ts) => ts > at);
+    playIdx = next === -1 ? instants.length - 1 : Math.max(next - 1, 0);
     renderCurrent();
   });
 
@@ -198,6 +229,7 @@ function buildSensorPicker(sensorIds, onChange) {
       if (radio.value === "playback" && radio.checked) {
         mode = "playback";
         playbackControls.hidden = false;
+        playIdx = 0;
         slider.value = 0;
         renderCurrent();
       } else if (radio.value === "all" && radio.checked) {
@@ -210,3 +242,8 @@ function buildSensorPicker(sensorIds, onChange) {
 
   renderCurrent();
 })();
+
+// Hoisted like any ES module import; kept at the bottom so the code above
+// keeps the line numbers the book cites.
+import { startFpsMeter } from "fps_meter";
+import { attachFullSpeedRun } from "playback_run";

@@ -12,4 +12,4 @@ cd viz-core
 cargo test        # includes the mercator:: and density:: tests the chapter prints
 ```
 
-Build the Wasm module and run a site the same way as in [Chapter 3](../chapter3/README.md).
+Build the Wasm module and run a site the same way as in [Chapter 3](../chapter3/README.md). Both sites carry the same device-measurement readouts and **Run full speed** button; see [Measure on a real device](../chapter3/README.md#measure-on-a-real-device). In `website-heatmap/`, Play and **Run full speed** also drive the Heatmap view, one sample per repaint.

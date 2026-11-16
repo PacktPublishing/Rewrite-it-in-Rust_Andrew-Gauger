@@ -11,4 +11,4 @@
 cd viz-core && cargo test
 ```
 
-Build the Wasm module and run the site the same way as in [Chapter 3](../chapter3/README.md). See [`heatmap-bench/README.md`](heatmap-bench/README.md) for the benchmark.
+Build the Wasm module and run the site the same way as in [Chapter 3](../chapter3/README.md), including [measuring on a real device](../chapter3/README.md#measure-on-a-real-device). Play and **Run full speed** also drive the Heatmap view, one sample per repaint. See [`heatmap-bench/README.md`](heatmap-bench/README.md) for the benchmark.

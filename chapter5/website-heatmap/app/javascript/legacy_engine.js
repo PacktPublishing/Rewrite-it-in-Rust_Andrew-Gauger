@@ -1,3 +1,6 @@
+import { startFpsMeter } from "fps_meter";
+import { attachFullSpeedRun } from "playback_run";
+
 // A plain top-level async IIFE, not a DOMContentLoaded listener: this file
 // is loaded as an ES module after the surrounding HTML has already parsed,
 // and each engine switch is a full page load (see the `data-turbo="false"`
@@ -79,6 +82,7 @@
   const playbackControls = document.querySelector(".playback-controls");
   slider.max = Math.max(timestamps.length - 1, 0);
 
+  const fps = startFpsMeter(document.getElementById("fps-readout"));
   let currentIdx = 0;
   let playing = false;
   let timer = null;
@@ -105,8 +109,22 @@
       currentIdx = (currentIdx + 1) % timestamps.length;
       slider.value = currentIdx;
       renderFrame(currentIdx);
-    }, 150);
+      fps.update();
+    }, 1000 / 60); // 60 updates a second
   }
+
+  attachFullSpeedRun({
+    button: document.getElementById("run-full-speed"),
+    readout: document.getElementById("run-readout"),
+    frameCount: timestamps.length,
+    beforeRun: stopPlayback,
+    renderFrame(idx) {
+      currentIdx = idx;
+      slider.value = idx;
+      renderFrame(idx);
+      fps.update();
+    }
+  });
 
   playPauseBtn.addEventListener("click", () => (playing ? stopPlayback() : startPlayback()));
 
