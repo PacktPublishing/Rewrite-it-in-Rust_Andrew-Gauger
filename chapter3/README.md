@@ -45,9 +45,9 @@ Then open `http://<your computer's IP>:3737/?engine=wasm` and
   wall time for the whole playback plus the total render work.
 
 Use **Run full speed** to compare engines. The ordinary **Play** button
-ticks at different rates in the two engines (legacy every 150 ms, one
-timestamp per tick; Wasm every 100 ms, two minutes per tick), so its speed
-is not a fair comparison.
+asks both engines for 60 updates a second, but they cover different amounts
+of data per update (legacy one timestamp, about a minute; Wasm two minutes),
+so its speed is not a fair comparison.
 
 ## Run the tests and the benchmark
 

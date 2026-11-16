@@ -187,7 +187,7 @@ function buildSensorPicker(sensorIds, onChange) {
       slider.value = next;
       renderCurrent();
       fps.update();
-    }, 100);
+    }, 1000 / 60); // 60 updates a second
   }
 
   // The same instants the legacy engine steps through: every distinct

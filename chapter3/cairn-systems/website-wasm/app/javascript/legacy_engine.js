@@ -110,7 +110,7 @@ import { attachFullSpeedRun } from "playback_run";
       slider.value = currentIdx;
       renderFrame(currentIdx);
       fps.update();
-    }, 150);
+    }, 1000 / 60); // 60 updates a second
   }
 
   attachFullSpeedRun({
