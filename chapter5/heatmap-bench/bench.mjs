@@ -17,18 +17,35 @@
 //
 // Usage:  node bench.mjs          (writes JSON to stdout)
 //         node bench.mjs --quick  (one throttle, fewer iterations -- smoke test)
+//         node bench.mjs --android --attempts 3 > bench-output-sm-t290.json
+//
+// --android runs the same page in Chrome on a phone or tablet over USB
+// (the one-time setup is in chapter3/wasm-bench/README.md). The harness
+// server's port is reversed over adb, so the device loads it as
+// localhost. There is no throttling on a device: the device is the slow
+// CPU. --attempts N repeats each scenario on a fresh page and reports the
+// mean per call, with every attempt kept under "attempts".
 
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join, normalize } from "node:path";
-import { chromium } from "playwright";
+import { execFileSync } from "node:child_process";
+import { chromium, _android as android } from "playwright";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const QUICK = process.argv.includes("--quick");
+const ON_ANDROID = process.argv.includes("--android");
+const argValue = (name, fallback) => {
+  const i = process.argv.indexOf(`--${name}`);
+  return i === -1 ? fallback : process.argv[i + 1];
+};
+const ATTEMPTS = Number(argValue("attempts", 1));
+const DEVICE_PORT = 3740; // fixed on Android, so adb can reverse it
 
 const SCENARIOS = ["cluster", "highway"];
-const THROTTLES = QUICK ? [4] : [1, 4, 6]; // CPU slowdown multipliers (1x = unthrottled)
+// CPU slowdown multipliers (1x = unthrottled). A device runs as it is.
+const THROTTLES = ON_ANDROID ? [1] : QUICK ? [4] : [1, 4, 6];
 const N_LIGHT = QUICK ? 400 : 2000; // range / snapshot_at
 const N_HEAVY = QUICK ? 60 : 300; // density_grid / paint_heatmap / labels
 const TARGET_VIEWPORT_PX = 1024; // fit each scenario's data to ~this wide, then snap zoom to an integer
@@ -64,7 +81,7 @@ function startServer() {
     }
   });
   return new Promise((resolve) => {
-    server.listen(0, "127.0.0.1", () => {
+    server.listen(ON_ANDROID ? DEVICE_PORT : 0, "127.0.0.1", () => {
       const { port } = server.address();
       resolve({ url: `http://127.0.0.1:${port}`, close: () => server.close() });
     });
@@ -362,53 +379,98 @@ async function main() {
     )
   );
 
-  let browser;
-  try {
-    browser = await chromium.launch({ channel: "chrome" });
-  } catch {
-    browser = await chromium.launch(); // fall back to bundled chromium if present
+  // desktop Chrome, or Chrome on an Android device over adb
+  let browser, newPage, describe, closeBrowser;
+  if (ON_ANDROID) {
+    execFileSync("adb", ["reverse", `tcp:${DEVICE_PORT}`, `tcp:${DEVICE_PORT}`]);
+    const [device] = await android.devices();
+    if (!device) throw new Error("no Android device found: check `adb devices`");
+    await device.shell("am force-stop com.android.chrome");
+    const context = await device.launchBrowser();
+    newPage = () => context.newPage();
+    const probe = await context.newPage();
+    describe = `${device.model()} · ${await probe.evaluate(() => navigator.userAgent)}`;
+    await probe.close();
+    closeBrowser = async () => {
+      await context.close();
+      await device.close();
+    };
+  } else {
+    try {
+      browser = await chromium.launch({ channel: "chrome" });
+    } catch {
+      browser = await chromium.launch(); // fall back to bundled chromium if present
+    }
+    newPage = () => browser.newPage();
+    describe = `desktop Chrome ${browser.version()}`;
+    closeBrowser = () => browser.close();
   }
 
-  const results = { meta: {}, runs: {} };
+  const results = { meta: {}, runs: {}, attempts: {} };
   results.meta = {
     started: new Date().toISOString(),
     node: process.version,
+    device: describe,
     scenarios: SCENARIOS,
     throttles: THROTTLES,
+    throttle: ON_ANDROID ? "none: a real device" : "Chrome DevTools CPU throttling",
+    attempts: ATTEMPTS,
     nLight: N_LIGHT,
     nHeavy: N_HEAVY,
     targetViewportPx: TARGET_VIEWPORT_PX,
     cellSizePx: CELL_SIZE_PX,
-    browser: browser.version?.() ?? "unknown",
     note:
       "Isolated call cost only (chapter 3 bench's pass 1), extended to the " +
       "chapter 5 paint pipeline. No Leaflet / no Rails app; served from a " +
       "static harness. Data is the real SensorDataGenerator output.",
   };
 
-  for (const throttle of THROTTLES) {
-    const page = await browser.newPage();
-    const client = await page.context().newCDPSession(page);
-    await client.send("Emulation.setCPUThrottlingRate", { rate: throttle });
-    for (const scenario of SCENARIOS) {
-      const out = await measure(page, {
-        url: srv.url,
-        readings: fixtures[scenario],
-        nLight: N_LIGHT,
-        nHeavy: N_HEAVY,
-        targetPx: TARGET_VIEWPORT_PX,
-        cellPx: CELL_SIZE_PX,
-      });
-      results.runs[`${scenario}@${throttle}x`] = out;
-      process.stderr.write(
-        `  ${scenario} @ ${throttle}x  grid ${out.shape.wasmGrid.join("x")}  ` +
-          `paint wasm ${out.wasmPaintHeatmap.perCallMs}ms  js ${out.jsPaintHeatmap.perCallMs}ms\n`
-      );
+  // the mean per call across attempts, shape from the first
+  const meanOf = (outs) => {
+    const merged = { shape: outs[0].shape };
+    for (const key of Object.keys(outs[0]).filter((k) => k !== "shape")) {
+      const per = outs.map((o) => o[key].perCallMs);
+      merged[key] = {
+        perCallMs: +(per.reduce((a, b) => a + b, 0) / per.length).toFixed(5),
+        n: outs[0][key].n,
+        attempts: per,
+      };
     }
-    await page.close();
+    return merged;
+  };
+
+  for (const throttle of THROTTLES) {
+    for (const scenario of SCENARIOS) {
+      const outs = [];
+      for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
+        const page = await newPage();
+        if (!ON_ANDROID) {
+          const client = await page.context().newCDPSession(page);
+          await client.send("Emulation.setCPUThrottlingRate", { rate: throttle });
+        }
+        const out = await measure(page, {
+          url: ON_ANDROID ? `http://localhost:${DEVICE_PORT}` : srv.url,
+          readings: fixtures[scenario],
+          nLight: N_LIGHT,
+          nHeavy: N_HEAVY,
+          targetPx: TARGET_VIEWPORT_PX,
+          cellPx: CELL_SIZE_PX,
+        });
+        await page.close();
+        outs.push(out);
+        process.stderr.write(
+          `  ${scenario} @ ${throttle}x  attempt ${attempt}/${ATTEMPTS}  grid ${out.shape.wasmGrid.join("x")}  ` +
+            `density_grid wasm ${out.wasmDensityGrid.perCallMs}ms js ${out.jsDensityGrid.perCallMs}ms  ` +
+            `paint wasm ${out.wasmPaintHeatmap.perCallMs}ms js ${out.jsPaintHeatmap.perCallMs}ms\n`
+        );
+      }
+      const key = `${scenario}@${throttle}x`;
+      results.runs[key] = ATTEMPTS > 1 ? meanOf(outs) : outs[0];
+      if (ATTEMPTS > 1) results.attempts[key] = outs;
+    }
   }
 
-  await browser.close();
+  await closeBrowser();
   srv.close();
   results.meta.finished = new Date().toISOString();
   console.log(JSON.stringify(results, null, 2));

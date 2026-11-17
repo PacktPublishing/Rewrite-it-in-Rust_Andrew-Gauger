@@ -60,8 +60,27 @@ decides grid size — `cluster` is tight and tall (~198x202 cells at zoom
 ./run.sh --quick   # smoke test: 4x only, fewer iterations
 ```
 
+### On a real device
+
+```sh
+./run.sh --android --attempts 3    # writes bench-output-android.json
+```
+
+`--android` runs the same harness page in Chrome on a USB-connected Android
+phone or tablet. The one-time setup (developer options, USB debugging,
+`adb`) is in [`chapter3/wasm-bench/README.md`](../../chapter3/wasm-bench/README.md).
+The harness server's port (3740) is reversed over `adb`, so the device
+loads it as `localhost`. There is no CPU throttling on a device: the device
+is the slow CPU, which is the point. DevTools throttling slows a fast
+desktop CPU by time-slicing it; it does not model an ARM core, its caches,
+memory bandwidth, or thermal limits. `--attempts 3` runs each scenario on
+three fresh pages and records the mean per call, with every attempt kept
+under `attempts` in the JSON.
+
 `run.sh` regenerates the fixtures, rebuilds the wasm from the current
-`../viz-core` source (`wasm-pack build --no-opt`, same flags as Chapter 3),
+`../viz-core` source (`wasm-pack build --no-opt`, same flags as Chapter 3;
+without `wasm-pack` it runs the equivalent `cargo build --release` plus
+`wasm-bindgen --target web`, whose version must match the crate's),
 `npm install`s Playwright once (browser download skipped — it drives the
 system Google Chrome via `channel: "chrome"`), and writes
 `bench-output.json`. Node 20+; Ruby 3.x for the generator.
@@ -105,3 +124,28 @@ Rust path the faster one.
 
 `paint_heatmap_labels` has no JS baseline on purpose — it exists to price
 the `core::fmt` float-formatting the chapter flags, not to race anything.
+
+## On the stand-in device, and a second desktop
+
+2026-11-16, Samsung Galaxy Tab A 8.0 (SM-T290, the stand-in device from
+Chapter 3), Chrome 157 on Android 10, no throttle, the same harness and
+`wasm-bindgen` 0.2.126 build. Mean `ms/call` of three runs; the paint rows'
+runs agreed within 2%, every row within 7%. Raw: `bench-output-android.json`.
+
+```
+                   cluster (198x202)            highway (215x30)
+                   wasm    js     JS ÷ wasm      wasm    js     JS ÷ wasm
+  range           2.527   1.734    0.69x        2.519   1.750    0.69x
+  snapshot_at     0.029   0.046    1.57x        0.029   0.045    1.55x
+  density_grid    1.571   1.104    0.70x        3.365   3.351    1.00x
+  paint_heatmap   5.614   4.531    0.81x        4.284   4.242    0.99x
+  paint_labels    2.327     -        -          2.386     -        -
+```
+
+On the device, painting from Rust does not win: JavaScript paints the
+cluster grid 1.24x faster and the highway grid ties. The same day, the
+desktop bench on an Apple M3 Pro (`bench-output-desktop-2026-11-16.json`)
+repeated August's cluster result (Wasm 2.0x at 1x, 4x, and 6x) but not the
+highway one (JavaScript ahead, 0.89x to 0.92x). Which side wins the paint
+step depends on the machine. The bench measures it; it does not explain
+it. That needs a profile taken on the device.

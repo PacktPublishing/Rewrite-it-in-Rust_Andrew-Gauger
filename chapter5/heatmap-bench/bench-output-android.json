@@ -1,0 +1,662 @@
+{
+  "meta": {
+    "started": "2026-11-17T00:22:47.452Z",
+    "node": "v20.20.2",
+    "device": "SM-T290 · Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+    "scenarios": [
+      "cluster",
+      "highway"
+    ],
+    "throttles": [
+      1
+    ],
+    "throttle": "none: a real device",
+    "attempts": 3,
+    "nLight": 2000,
+    "nHeavy": 300,
+    "targetViewportPx": 1024,
+    "cellSizePx": 4,
+    "note": "Isolated call cost only (chapter 3 bench's pass 1), extended to the chapter 5 paint pipeline. No Leaflet / no Rails app; served from a static harness. Data is the real SensorDataGenerator output.",
+    "finished": "2026-11-17T00:24:34.084Z"
+  },
+  "runs": {
+    "cluster@1x": {
+      "shape": {
+        "readingCount": 7200,
+        "sensorCount": 20,
+        "zoom": 17,
+        "rawZoom": 17.38,
+        "bbox": [
+          41.04693,
+          -98.34888,
+          41.05346,
+          -98.34042
+        ],
+        "cellSizePx": 4,
+        "activeSensors": 20,
+        "wasmGrid": [
+          198,
+          202
+        ],
+        "jsGrid": [
+          198,
+          202
+        ],
+        "gridCellsMatch": true
+      },
+      "wasmRange": {
+        "perCallMs": 2.52687,
+        "n": 2000,
+        "attempts": [
+          2.5473,
+          2.5108,
+          2.5225
+        ]
+      },
+      "jsRange": {
+        "perCallMs": 1.73422,
+        "n": 2000,
+        "attempts": [
+          1.73085,
+          1.7398,
+          1.732
+        ]
+      },
+      "wasmSnapshot": {
+        "perCallMs": 0.02918,
+        "n": 2000,
+        "attempts": [
+          0.03,
+          0.02935,
+          0.0282
+        ]
+      },
+      "jsSnapshot": {
+        "perCallMs": 0.04573,
+        "n": 2000,
+        "attempts": [
+          0.0463,
+          0.0456,
+          0.0453
+        ]
+      },
+      "wasmDensityGrid": {
+        "perCallMs": 1.57056,
+        "n": 300,
+        "attempts": [
+          1.584,
+          1.57767,
+          1.55
+        ]
+      },
+      "jsDensityGrid": {
+        "perCallMs": 1.10411,
+        "n": 300,
+        "attempts": [
+          1.10867,
+          1.1,
+          1.10367
+        ]
+      },
+      "wasmPaintHeatmap": {
+        "perCallMs": 5.61411,
+        "n": 300,
+        "attempts": [
+          5.56533,
+          5.66067,
+          5.61633
+        ]
+      },
+      "jsPaintHeatmap": {
+        "perCallMs": 4.53122,
+        "n": 300,
+        "attempts": [
+          4.56467,
+          4.51933,
+          4.50967
+        ]
+      },
+      "wasmPaintLabels": {
+        "perCallMs": 2.327,
+        "n": 300,
+        "attempts": [
+          2.30033,
+          2.328,
+          2.35267
+        ]
+      }
+    },
+    "highway@1x": {
+      "shape": {
+        "readingCount": 7200,
+        "sensorCount": 20,
+        "zoom": 8,
+        "rawZoom": 8.26,
+        "bbox": [
+          40.66553,
+          -101.0904,
+          41.15782,
+          -96.37831
+        ],
+        "cellSizePx": 4,
+        "activeSensors": 20,
+        "wasmGrid": [
+          215,
+          30
+        ],
+        "jsGrid": [
+          215,
+          30
+        ],
+        "gridCellsMatch": true
+      },
+      "wasmRange": {
+        "perCallMs": 2.51938,
+        "n": 2000,
+        "attempts": [
+          2.51985,
+          2.5232,
+          2.5151
+        ]
+      },
+      "jsRange": {
+        "perCallMs": 1.75037,
+        "n": 2000,
+        "attempts": [
+          1.7823,
+          1.73565,
+          1.73315
+        ]
+      },
+      "wasmSnapshot": {
+        "perCallMs": 0.0293,
+        "n": 2000,
+        "attempts": [
+          0.0296,
+          0.02915,
+          0.02915
+        ]
+      },
+      "jsSnapshot": {
+        "perCallMs": 0.04537,
+        "n": 2000,
+        "attempts": [
+          0.0442,
+          0.04555,
+          0.04635
+        ]
+      },
+      "wasmDensityGrid": {
+        "perCallMs": 3.365,
+        "n": 300,
+        "attempts": [
+          3.351,
+          3.37467,
+          3.36933
+        ]
+      },
+      "jsDensityGrid": {
+        "perCallMs": 3.35078,
+        "n": 300,
+        "attempts": [
+          3.376,
+          3.33933,
+          3.337
+        ]
+      },
+      "wasmPaintHeatmap": {
+        "perCallMs": 4.28434,
+        "n": 300,
+        "attempts": [
+          4.28467,
+          4.28167,
+          4.28667
+        ]
+      },
+      "jsPaintHeatmap": {
+        "perCallMs": 4.242,
+        "n": 300,
+        "attempts": [
+          4.26133,
+          4.245,
+          4.21967
+        ]
+      },
+      "wasmPaintLabels": {
+        "perCallMs": 2.38556,
+        "n": 300,
+        "attempts": [
+          2.38567,
+          2.38367,
+          2.38733
+        ]
+      }
+    }
+  },
+  "attempts": {
+    "cluster@1x": [
+      {
+        "shape": {
+          "readingCount": 7200,
+          "sensorCount": 20,
+          "zoom": 17,
+          "rawZoom": 17.38,
+          "bbox": [
+            41.04693,
+            -98.34888,
+            41.05346,
+            -98.34042
+          ],
+          "cellSizePx": 4,
+          "activeSensors": 20,
+          "wasmGrid": [
+            198,
+            202
+          ],
+          "jsGrid": [
+            198,
+            202
+          ],
+          "gridCellsMatch": true
+        },
+        "wasmRange": {
+          "totalMs": 5094.6,
+          "perCallMs": 2.5473,
+          "n": 2000
+        },
+        "jsRange": {
+          "totalMs": 3461.7,
+          "perCallMs": 1.73085,
+          "n": 2000
+        },
+        "wasmSnapshot": {
+          "totalMs": 60,
+          "perCallMs": 0.03,
+          "n": 2000
+        },
+        "jsSnapshot": {
+          "totalMs": 92.6,
+          "perCallMs": 0.0463,
+          "n": 2000
+        },
+        "wasmDensityGrid": {
+          "totalMs": 475.2,
+          "perCallMs": 1.584,
+          "n": 300
+        },
+        "jsDensityGrid": {
+          "totalMs": 332.6,
+          "perCallMs": 1.10867,
+          "n": 300
+        },
+        "wasmPaintHeatmap": {
+          "totalMs": 1669.6,
+          "perCallMs": 5.56533,
+          "n": 300
+        },
+        "jsPaintHeatmap": {
+          "totalMs": 1369.4,
+          "perCallMs": 4.56467,
+          "n": 300
+        },
+        "wasmPaintLabels": {
+          "totalMs": 690.1,
+          "perCallMs": 2.30033,
+          "n": 300
+        }
+      },
+      {
+        "shape": {
+          "readingCount": 7200,
+          "sensorCount": 20,
+          "zoom": 17,
+          "rawZoom": 17.38,
+          "bbox": [
+            41.04693,
+            -98.34888,
+            41.05346,
+            -98.34042
+          ],
+          "cellSizePx": 4,
+          "activeSensors": 20,
+          "wasmGrid": [
+            198,
+            202
+          ],
+          "jsGrid": [
+            198,
+            202
+          ],
+          "gridCellsMatch": true
+        },
+        "wasmRange": {
+          "totalMs": 5021.6,
+          "perCallMs": 2.5108,
+          "n": 2000
+        },
+        "jsRange": {
+          "totalMs": 3479.6,
+          "perCallMs": 1.7398,
+          "n": 2000
+        },
+        "wasmSnapshot": {
+          "totalMs": 58.7,
+          "perCallMs": 0.02935,
+          "n": 2000
+        },
+        "jsSnapshot": {
+          "totalMs": 91.2,
+          "perCallMs": 0.0456,
+          "n": 2000
+        },
+        "wasmDensityGrid": {
+          "totalMs": 473.3,
+          "perCallMs": 1.57767,
+          "n": 300
+        },
+        "jsDensityGrid": {
+          "totalMs": 330,
+          "perCallMs": 1.1,
+          "n": 300
+        },
+        "wasmPaintHeatmap": {
+          "totalMs": 1698.2,
+          "perCallMs": 5.66067,
+          "n": 300
+        },
+        "jsPaintHeatmap": {
+          "totalMs": 1355.8,
+          "perCallMs": 4.51933,
+          "n": 300
+        },
+        "wasmPaintLabels": {
+          "totalMs": 698.4,
+          "perCallMs": 2.328,
+          "n": 300
+        }
+      },
+      {
+        "shape": {
+          "readingCount": 7200,
+          "sensorCount": 20,
+          "zoom": 17,
+          "rawZoom": 17.38,
+          "bbox": [
+            41.04693,
+            -98.34888,
+            41.05346,
+            -98.34042
+          ],
+          "cellSizePx": 4,
+          "activeSensors": 20,
+          "wasmGrid": [
+            198,
+            202
+          ],
+          "jsGrid": [
+            198,
+            202
+          ],
+          "gridCellsMatch": true
+        },
+        "wasmRange": {
+          "totalMs": 5045,
+          "perCallMs": 2.5225,
+          "n": 2000
+        },
+        "jsRange": {
+          "totalMs": 3464,
+          "perCallMs": 1.732,
+          "n": 2000
+        },
+        "wasmSnapshot": {
+          "totalMs": 56.4,
+          "perCallMs": 0.0282,
+          "n": 2000
+        },
+        "jsSnapshot": {
+          "totalMs": 90.6,
+          "perCallMs": 0.0453,
+          "n": 2000
+        },
+        "wasmDensityGrid": {
+          "totalMs": 465,
+          "perCallMs": 1.55,
+          "n": 300
+        },
+        "jsDensityGrid": {
+          "totalMs": 331.1,
+          "perCallMs": 1.10367,
+          "n": 300
+        },
+        "wasmPaintHeatmap": {
+          "totalMs": 1684.9,
+          "perCallMs": 5.61633,
+          "n": 300
+        },
+        "jsPaintHeatmap": {
+          "totalMs": 1352.9,
+          "perCallMs": 4.50967,
+          "n": 300
+        },
+        "wasmPaintLabels": {
+          "totalMs": 705.8,
+          "perCallMs": 2.35267,
+          "n": 300
+        }
+      }
+    ],
+    "highway@1x": [
+      {
+        "shape": {
+          "readingCount": 7200,
+          "sensorCount": 20,
+          "zoom": 8,
+          "rawZoom": 8.26,
+          "bbox": [
+            40.66553,
+            -101.0904,
+            41.15782,
+            -96.37831
+          ],
+          "cellSizePx": 4,
+          "activeSensors": 20,
+          "wasmGrid": [
+            215,
+            30
+          ],
+          "jsGrid": [
+            215,
+            30
+          ],
+          "gridCellsMatch": true
+        },
+        "wasmRange": {
+          "totalMs": 5039.7,
+          "perCallMs": 2.51985,
+          "n": 2000
+        },
+        "jsRange": {
+          "totalMs": 3564.6,
+          "perCallMs": 1.7823,
+          "n": 2000
+        },
+        "wasmSnapshot": {
+          "totalMs": 59.2,
+          "perCallMs": 0.0296,
+          "n": 2000
+        },
+        "jsSnapshot": {
+          "totalMs": 88.4,
+          "perCallMs": 0.0442,
+          "n": 2000
+        },
+        "wasmDensityGrid": {
+          "totalMs": 1005.3,
+          "perCallMs": 3.351,
+          "n": 300
+        },
+        "jsDensityGrid": {
+          "totalMs": 1012.8,
+          "perCallMs": 3.376,
+          "n": 300
+        },
+        "wasmPaintHeatmap": {
+          "totalMs": 1285.4,
+          "perCallMs": 4.28467,
+          "n": 300
+        },
+        "jsPaintHeatmap": {
+          "totalMs": 1278.4,
+          "perCallMs": 4.26133,
+          "n": 300
+        },
+        "wasmPaintLabels": {
+          "totalMs": 715.7,
+          "perCallMs": 2.38567,
+          "n": 300
+        }
+      },
+      {
+        "shape": {
+          "readingCount": 7200,
+          "sensorCount": 20,
+          "zoom": 8,
+          "rawZoom": 8.26,
+          "bbox": [
+            40.66553,
+            -101.0904,
+            41.15782,
+            -96.37831
+          ],
+          "cellSizePx": 4,
+          "activeSensors": 20,
+          "wasmGrid": [
+            215,
+            30
+          ],
+          "jsGrid": [
+            215,
+            30
+          ],
+          "gridCellsMatch": true
+        },
+        "wasmRange": {
+          "totalMs": 5046.4,
+          "perCallMs": 2.5232,
+          "n": 2000
+        },
+        "jsRange": {
+          "totalMs": 3471.3,
+          "perCallMs": 1.73565,
+          "n": 2000
+        },
+        "wasmSnapshot": {
+          "totalMs": 58.3,
+          "perCallMs": 0.02915,
+          "n": 2000
+        },
+        "jsSnapshot": {
+          "totalMs": 91.1,
+          "perCallMs": 0.04555,
+          "n": 2000
+        },
+        "wasmDensityGrid": {
+          "totalMs": 1012.4,
+          "perCallMs": 3.37467,
+          "n": 300
+        },
+        "jsDensityGrid": {
+          "totalMs": 1001.8,
+          "perCallMs": 3.33933,
+          "n": 300
+        },
+        "wasmPaintHeatmap": {
+          "totalMs": 1284.5,
+          "perCallMs": 4.28167,
+          "n": 300
+        },
+        "jsPaintHeatmap": {
+          "totalMs": 1273.5,
+          "perCallMs": 4.245,
+          "n": 300
+        },
+        "wasmPaintLabels": {
+          "totalMs": 715.1,
+          "perCallMs": 2.38367,
+          "n": 300
+        }
+      },
+      {
+        "shape": {
+          "readingCount": 7200,
+          "sensorCount": 20,
+          "zoom": 8,
+          "rawZoom": 8.26,
+          "bbox": [
+            40.66553,
+            -101.0904,
+            41.15782,
+            -96.37831
+          ],
+          "cellSizePx": 4,
+          "activeSensors": 20,
+          "wasmGrid": [
+            215,
+            30
+          ],
+          "jsGrid": [
+            215,
+            30
+          ],
+          "gridCellsMatch": true
+        },
+        "wasmRange": {
+          "totalMs": 5030.2,
+          "perCallMs": 2.5151,
+          "n": 2000
+        },
+        "jsRange": {
+          "totalMs": 3466.3,
+          "perCallMs": 1.73315,
+          "n": 2000
+        },
+        "wasmSnapshot": {
+          "totalMs": 58.3,
+          "perCallMs": 0.02915,
+          "n": 2000
+        },
+        "jsSnapshot": {
+          "totalMs": 92.7,
+          "perCallMs": 0.04635,
+          "n": 2000
+        },
+        "wasmDensityGrid": {
+          "totalMs": 1010.8,
+          "perCallMs": 3.36933,
+          "n": 300
+        },
+        "jsDensityGrid": {
+          "totalMs": 1001.1,
+          "perCallMs": 3.337,
+          "n": 300
+        },
+        "wasmPaintHeatmap": {
+          "totalMs": 1286,
+          "perCallMs": 4.28667,
+          "n": 300
+        },
+        "jsPaintHeatmap": {
+          "totalMs": 1265.9,
+          "perCallMs": 4.21967,
+          "n": 300
+        },
+        "wasmPaintLabels": {
+          "totalMs": 716.2,
+          "perCallMs": 2.38733,
+          "n": 300
+        }
+      }
+    ]
+  }
+}
