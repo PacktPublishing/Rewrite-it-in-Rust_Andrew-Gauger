@@ -48,7 +48,17 @@ pub fn form_style(ctx: &egui::Context) {
         let hover = if panel > 128 { edge - 60 } else { edge + 60 };
         v.widgets.hovered.bg_stroke =
             Stroke::new(1.0, Color32::from_gray(hover));
+        // A form waiting on its save is disabled, and egui draws a
+        // disabled widget at half strength: grey text on a grey form.
+        // Keep it readable; the status line says why it's waiting.
+        v.disabled_alpha = 0.75;
     };
-    ctx.style_mut_of(Theme::Light, |s| tune(s, 232, 255, 175, 150));
+    ctx.style_mut_of(Theme::Light, |s| {
+        tune(s, 232, 255, 160, 120);
+        // egui's light text is mid-grey (80 and 60). Access's is black.
+        let v = &mut s.visuals.widgets;
+        v.noninteractive.fg_stroke.color = Color32::from_gray(25);
+        v.inactive.fg_stroke.color = Color32::from_gray(15);
+    });
     ctx.style_mut_of(Theme::Dark, |s| tune(s, 32, 12, 70, 95));
 }

@@ -226,8 +226,11 @@ fn product_form(price: &str) -> (Harness<'static, CairnApp>, Fake) {
     let (o, worker) = fake();
     let mut app = CairnApp::new(common::context()).with(o);
     app.open(Target::Product(None));
+    // Sized to the form, at twice the pixels, so the figure prints
+    // the form at a readable size instead of shrinking empty window.
     let mut h = Harness::builder()
-        .with_size([1180.0, 760.0])
+        .with_size([820.0, 410.0])
+        .with_pixels_per_point(2.0)
         .with_theme(egui::Theme::Light)
         .build_ui_state(|ui, app: &mut CairnApp| app.show(ui), app);
     h.run_steps(4);
@@ -290,6 +293,7 @@ fn sent_once() -> (Harness<'static, CairnApp>, Fake, Request) {
     app.open(Target::Order(Some(OrderId(2))));
     let mut h = Harness::builder()
         .with_size([1180.0, 760.0])
+        .with_pixels_per_point(2.0)
         .with_theme(egui::Theme::Light)
         .build_ui_state(|ui, app: &mut CairnApp| app.show(ui), app);
     h.run_steps(4);
