@@ -1,0 +1,31 @@
+# latency_probe through dev-latency. Delays are injected values, not a measurement of Cairn's VPN.
+# 2026-11-03 08:33 PST, Darwin arm64, debug build, local Postgres 17 on 127.0.0.1:5433
+# working directory: part 2/crate
+$ psql postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5433/cairn -Atc show ssl
+off
+$ cargo build -q -p cairn-app --bin dev-latency --example latency_probe
+$ ./target/debug/dev-latency --delay-ms 0 &
+dev-latency: 127.0.0.1:5434 -> 127.0.0.1:5433, +0 ms each way (jitter up to 0 ms)
+$ ./target/debug/examples/latency_probe postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5434/cairn
+query: SELECT company_name FROM customers ORDER BY id LIMIT 1
+row: "Excepteur Veniam Group"
+first run (prepare + execute)       5.7 ms
+open conn, cached statement    median      2.5 ms   max      2.5 ms   (n=7)
+new conn: connect only         median     37.8 ms   max     40.1 ms   (n=7)
+new conn: connect + query      median     43.4 ms   max     45.6 ms   (n=7)
+$ ./target/debug/dev-latency --delay-ms 300 &
+dev-latency: 127.0.0.1:5434 -> 127.0.0.1:5433, +300 ms each way (jitter up to 0 ms)
+$ ./target/debug/examples/latency_probe postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5434/cairn
+query: SELECT company_name FROM customers ORDER BY id LIMIT 1
+row: "Excepteur Veniam Group"
+first run (prepare + execute)    1211.5 ms
+open conn, cached statement    median    604.9 ms   max    605.3 ms   (n=7)
+new conn: connect only         median   2465.0 ms   max   2471.7 ms   (n=7)
+new conn: connect + query      median   3675.0 ms   max   3685.5 ms   (n=7)
+$ ./target/debug/examples/latency_probe postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5434/cairn?sslmode=disable
+query: SELECT company_name FROM customers ORDER BY id LIMIT 1
+row: "Excepteur Veniam Group"
+first run (prepare + execute)    1209.9 ms
+open conn, cached statement    median    604.8 ms   max    604.9 ms   (n=7)
+new conn: connect only         median   1860.0 ms   max   1870.1 ms   (n=7)
+new conn: connect + query      median   3071.1 ms   max   3080.8 ms   (n=7)

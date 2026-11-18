@@ -1,0 +1,150 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, quote_number, quote_date::text AS \"quote_date!\",\n                valid_until::text, quote_status, rep_id, customer_id,\n                contact_id, tax_rate, shipping_cost, notes, terms\n         FROM quotes\n         WHERE $1::int4 IS NULL OR id = $1\n         ORDER BY quote_number DESC",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "quote_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "quote_number"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "quote_date!",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 3,
+        "name": "valid_until",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 4,
+        "name": "quote_status",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "quote_status"
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "rep_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "rep_id"
+          }
+        }
+      },
+      {
+        "ordinal": 6,
+        "name": "customer_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "customer_id"
+          }
+        }
+      },
+      {
+        "ordinal": 7,
+        "name": "contact_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "contact_id"
+          }
+        }
+      },
+      {
+        "ordinal": 8,
+        "name": "tax_rate",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "tax_rate"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "shipping_cost",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "shipping_cost"
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "notes",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "notes"
+          }
+        }
+      },
+      {
+        "ordinal": 11,
+        "name": "terms",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "terms"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      null,
+      null,
+      false,
+      false,
+      false,
+      true,
+      false,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "bce7c0e22d3a5c3bed507145f09286531d64778cf1932f99304b55c4a4cfd863"
+}

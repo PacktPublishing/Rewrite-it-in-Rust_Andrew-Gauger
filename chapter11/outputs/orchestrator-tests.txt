@@ -1,0 +1,25 @@
+# H4: the App Orchestrator against a fake worker (the test holds the far ends of both channels). No database, no network, no runtime.
+# 2026-11-03 09:10 PST, Darwin arm64; DATABASE_URL unset
+# working directory: part 2/crate
+$ SQLX_OFFLINE=true cargo test -p cairn-app --test orchestrator -- --nocapture --test-threads 1
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s
+     Running tests/orchestrator.rs (target/debug/deps/orchestrator-a99873dacf9d6eb7)
+
+running 5 tests
+test a_failed_save_shows_and_can_be_sent_again ... status line: Couldn't save: pool timed out while waiting for an open connection
+Try again: RequestId(2), the same record
+ok
+test a_save_waits_a_refresh_coalesces_a_lookup_replaces ... 10 saves: 8 in the channel, 2 waiting; "Saving 10 records…"
+two refreshes: RequestId(11) and RequestId(11), 3 waiting
+two lookups: 4 waiting
+sent: 10 saves, then ["RequestId(11) Table(Customers)", "RequestId(14) Record(Customers, 767)"]
+ok
+test a_slow_answer_overtaken_by_a_newer_one_is_dropped ... sent RequestId(1) and RequestId(2)
+RequestId(2) arrives: ["Bay Dairy"]
+RequestId(1) arrives late: ["Bay Dairy"], 1 answer dropped as stale
+ok
+test snapshots_in_flight_and_failed ... ok
+test the_form_waits_for_its_save ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.83s
+

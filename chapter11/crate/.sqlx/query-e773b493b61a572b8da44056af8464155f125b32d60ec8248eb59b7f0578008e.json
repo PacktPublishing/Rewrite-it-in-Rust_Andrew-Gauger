@@ -1,0 +1,66 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE orders\n                SET customer_id = $2, contact_id = $3, rep_id = $4,\n                    quote_id = $5, customer_po = $6,\n                    order_date = $7::text::date,\n                    required_date = $8::text::date,\n                    ship_date = $9::text::date, order_status = $10,\n                    tax_rate = $11, shipping_cost = $12, ship_via = $13,\n                    tracking_number = $14, notes = $15,\n                    version = version + 1\n              WHERE id = $1\n             RETURNING id, order_number, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "order_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "order_number"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Int4",
+        "Int4",
+        "Int4",
+        "Varchar",
+        "Text",
+        "Text",
+        "Text",
+        "Varchar",
+        "Numeric",
+        "Numeric",
+        "Varchar",
+        "Varchar",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "e773b493b61a572b8da44056af8464155f125b32d60ec8248eb59b7f0578008e"
+}

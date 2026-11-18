@@ -1,0 +1,186 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, rma_number, opened_date::text AS \"opened_date!\",\n                rma_status, opened_by_rep_id, closed_date::text,\n                customer_id, order_id, product_id, serial_number, reason,\n                extended_warranty, disposition, manufacturer_ref,\n                description\n         FROM rmas\n         WHERE $1::int4 IS NULL OR id = $1\n         ORDER BY rma_number DESC",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "rma_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "rma_number"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "opened_date!",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 3,
+        "name": "rma_status",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "rma_status"
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "opened_by_rep_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "opened_by_rep_id"
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "closed_date",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 6,
+        "name": "customer_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "customer_id"
+          }
+        }
+      },
+      {
+        "ordinal": 7,
+        "name": "order_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "order_id"
+          }
+        }
+      },
+      {
+        "ordinal": 8,
+        "name": "product_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "product_id"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "serial_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "serial_number"
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "reason",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "reason"
+          }
+        }
+      },
+      {
+        "ordinal": 11,
+        "name": "extended_warranty",
+        "type_info": "Bool",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "extended_warranty"
+          }
+        }
+      },
+      {
+        "ordinal": 12,
+        "name": "disposition",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "disposition"
+          }
+        }
+      },
+      {
+        "ordinal": 13,
+        "name": "manufacturer_ref",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "manufacturer_ref"
+          }
+        }
+      },
+      {
+        "ordinal": 14,
+        "name": "description",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "description"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      null,
+      false,
+      true,
+      null,
+      false,
+      true,
+      false,
+      true,
+      false,
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "af80be5f15a0739ce8c119562345c345db181e66150f8a3bafdc14a6715df515"
+}

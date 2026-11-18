@@ -1,0 +1,34 @@
+# Chapter 11, H4: the two ways a Cairn login runs out (both SQLSTATE class 28).
+# 2026-11-03 08:24 PST, dev Postgres on 127.0.0.1:5433, PostgreSQL 17.11 (Homebrew), aarch64-apple-darwin
+# Each test issues a 2-second login with cairn_auth::session::issue, waits 3 s, then tries.
+
+$ cargo test -p cairn-auth --test postgres expired_session -- --nocapture --test-threads 1
+
+running 3 tests
+test a_new_connection_after_valid_until_is_an_expired_session ... A new connection after VALID UNTIL:
+  Display:  error returned from database: password authentication failed for user "rep_22c70b9707dd49cba4c2627d36b068f8" at line 332
+  SQLSTATE: 28P01
+  hint:     (none)
+  session_expired: Some(NewConnection)
+ok
+test an_open_connection_after_expires_at_is_an_expired_session ... An open connection after users.expires_at:
+  Display:  error returned from database: Cairn session for rep_0819d01a8cf540929e9bf1c325819ab0 has expired at line 3911
+  SQLSTATE: 28000
+  hint:     Sign in again.
+  session_expired: Some(OpenConnection)
+ok
+test other_refusals_are_not_an_expired_session ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 6.33s
+
+
+# The same two refusals in the server log. The client gets only 28P01 and the
+# message; Postgres keeps the reason (an expired password) to itself.
+
+$ sed -n 443,448p .pgdata/server.log
+2026-11-03 08:24:53.825 PST [88383] FATAL:  password authentication failed for user "rep_22c70b9707dd49cba4c2627d36b068f8"
+2026-11-03 08:24:53.825 PST [88383] DETAIL:  User "rep_22c70b9707dd49cba4c2627d36b068f8" has an expired password.
+	Connection matched file "/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/.pgdata/pg_hba.conf" line 119: "host    all             all             127.0.0.1/32            scram-sha-256"
+2026-11-03 08:24:56.921 PST [88387] ERROR:  Cairn session for rep_0819d01a8cf540929e9bf1c325819ab0 has expired
+2026-11-03 08:24:56.921 PST [88387] HINT:  Sign in again.
+2026-11-03 08:24:56.921 PST [88387] CONTEXT:  PL/pgSQL function cairn_session_check() line 6 at RAISE

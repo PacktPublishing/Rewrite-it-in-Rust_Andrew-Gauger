@@ -1,0 +1,6 @@
+9,054 calls for 8,742 orders, 03/04/19 12:06:00 to 10/09/26 14:08:00
+312 orders whose first attempt was not accepted:
+   206  no answer  The operation timed out                                     accepted on attempt 2
+    66  500        -                                                           accepted on attempt 2
+    40  no answer  The connection with the server was terminated abnormally    never confirmed
+orders with two manufacturer order numbers in the log: 0

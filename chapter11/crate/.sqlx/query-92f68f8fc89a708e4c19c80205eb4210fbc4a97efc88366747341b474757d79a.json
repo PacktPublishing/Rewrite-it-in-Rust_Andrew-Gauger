@@ -1,0 +1,23 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE activities AS a\n                SET contact_id = u.contact_id, rep_id = u.rep_id,\n                    activity_date = u.activity_date::timestamptz,\n                    activity_type = u.activity_type,\n                    subject = u.subject, details = u.details,\n                    follow_up_date = u.follow_up_date::date,\n                    completed = u.completed, version = a.version + 1\n               FROM UNNEST($2::int4[], $3::int4[], $4::int4[],\n                           $5::text[], $6::text[], $7::text[],\n                           $8::text[], $9::text[], $10::bool[])\n                    AS u(id, contact_id, rep_id, activity_date,\n                         activity_type, subject, details,\n                         follow_up_date, completed)\n              WHERE a.id = u.id AND a.customer_id = $1\n                AND (a.contact_id, a.rep_id, a.activity_date,\n                     a.activity_type, a.subject, a.details,\n                     a.follow_up_date, a.completed)\n                    IS DISTINCT FROM\n                    (u.contact_id, u.rep_id,\n                     u.activity_date::timestamptz, u.activity_type,\n                     u.subject, u.details, u.follow_up_date::date,\n                     u.completed)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4Array",
+        "Int4Array",
+        "Int4Array",
+        "TextArray",
+        "TextArray",
+        "TextArray",
+        "TextArray",
+        "TextArray",
+        "BoolArray"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "92f68f8fc89a708e4c19c80205eb4210fbc4a97efc88366747341b474757d79a"
+}

@@ -1,0 +1,33 @@
+# H3 P3: the size of the worker's future, with std::mem::size_of_val. A tokio task is one allocation this size; a thread's default stack is 2 MiB (std::thread docs). No database: the pool never connects. Recaptured after worker::handle took the shared Workers (the sign-in, the pool it rebuilds, the manufacturer) instead of a pool.
+# 2026-11-03 13:48 PST, Darwin arm64, rustc 1.99.0, tokio 1.54.1, sqlx 0.9.0; DATABASE_URL unset
+# working directory: part 2/crate
+$ SQLX_OFFLINE=true cargo test -p cairn-app --test worker the_size -- --nocapture
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.29s
+     Running tests/worker.rs (target/debug/deps/worker-ef2010a614df43cf)
+
+running 1 test
+worker::handle future: 3584 bytes
+  of which save::save: 3480 bytes, data::read: 1376 bytes
+Request: 24 bytes, Response: 56 bytes, Snapshot: 760 bytes
+a thread's default stack: 2097152 bytes (2 MiB)
+test the_size_of_a_worker_task ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+
+$ SQLX_OFFLINE=true cargo test --release -p cairn-app --test worker the_size -- --nocapture
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Finished `release` profile [optimized] target(s) in 2.90s
+     Running tests/worker.rs (target/release/deps/worker-72fda825ad7c0b7b)
+
+running 1 test
+worker::handle future: 10264 bytes
+  of which save::save: 10160 bytes, data::read: 1376 bytes
+Request: 24 bytes, Response: 56 bytes, Snapshot: 760 bytes
+a thread's default stack: 2097152 bytes (2 MiB)
+test the_size_of_a_worker_task ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+

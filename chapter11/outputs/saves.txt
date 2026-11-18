@@ -1,0 +1,24 @@
+# H3: saves through the workers to the dev database, signed in as a rep (a member of cairn_app with a live users row, issued as cairn-auth issues one), never cairn_owner. Each test removes its rep, rows and audit entries.
+# 2026-11-03 09:15 PST, Darwin arm64, local Postgres 17 on 127.0.0.1:5433; DATABASE_URL unset (the build reads .sqlx)
+# working directory: part 2/crate
+$ SQLX_OFFLINE=true cargo test -p cairn-app --test saves -- --ignored --nocapture --test-threads 1
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s
+     Running tests/saves.rs (target/debug/deps/saves-194015bda138aba9)
+
+running 6 tests
+test a_customer_save_writes_only_the_subform_rows_that_changed ... [("customers", "INSERT"), ("contacts", "INSERT"), ("contacts", "INSERT"), ("customers", "UPDATE"), ("contacts", "DELETE"), ("contacts", "UPDATE")]
+ok
+test a_new_order_gets_its_number_and_version_from_postgres ... inserted: Stored { key: 13540, number: Some("SO-2026-1109"), version: 1 }
+updated:  Stored { key: 13540, number: Some("SO-2026-1109"), version: 2 }
+ok
+test now_is_the_servers_clock ... server 2026-11-03 17:15, app 11/3/2026 5:15 PM
+ok
+test shift_enter_saves_through_the_worker ... Shift+Enter to Saved: 26 ms
+ok
+test the_audit_row_carries_the_reps_identity ... audit_log for orders 13541: INSERT by rep_d5ce3a1c562a4d5e8669fadcf823bde4 (Test Rep, Entra d5ce3a1c-562a-4d5e-8669-fadcf823bde4)
+ok
+test the_window_opens_before_its_rows ... first frame: Connecting…; rows after 1496 ms: 1012 customers, 13531 orders, 68257 activities
+ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.62s
+

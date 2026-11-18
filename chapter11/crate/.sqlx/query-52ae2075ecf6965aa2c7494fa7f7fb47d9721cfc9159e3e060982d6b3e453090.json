@@ -1,0 +1,54 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE phone_messages\n                    SET received_at = $2::text::timestamptz,\n                        for_rep_id = $3, taken_by_rep_id = $4,\n                        customer_id = $5, caller_name = $6,\n                        caller_company = $7, caller_phone = $8,\n                        message = $9, urgent = $10,\n                        please_call_back = $11, will_call_again = $12,\n                        message_status = $13,\n                        returned_at = $14::text::timestamptz,\n                        return_notes = $15, version = version + 1\n                  WHERE id = $1\n                 RETURNING id, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Text",
+        "Int4",
+        "Int4",
+        "Int4",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Text",
+        "Bool",
+        "Bool",
+        "Bool",
+        "Varchar",
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "52ae2075ecf6965aa2c7494fa7f7fb47d9721cfc9159e3e060982d6b3e453090"
+}

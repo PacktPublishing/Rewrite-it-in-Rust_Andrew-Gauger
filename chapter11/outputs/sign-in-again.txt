@@ -1,0 +1,43 @@
+# H4 P6: the rep's login runs out mid-edit, once each way. A stand-in sign-in (no browser) issues the login as cairn-auth does (session::issue), the first good for 4 s, the next for an hour, and takes half a second, as a person at a browser would. New connection: only VALID UNTIL passes, the open connection is dropped, and the pool's next login is refused (28P01). Open connection: users.expires_at passes and cairn_session_check() refuses the INSERT (28000). Either way the draft stays, the status line asks to sign in again, the sign-in runs, the pool is rebuilt, and the save is sent again.
+# 2026-11-03 13:42 PST, Darwin arm64, debug build, local Postgres 17 on 127.0.0.1:5433; DATABASE_URL unset, SQLX_OFFLINE=true (the build reads .sqlx)
+# working directory: part 2/crate
+$ cargo test -p cairn-app --test sign_in -- --ignored --nocapture --test-threads 1
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.23s
+     Running tests/sign_in.rs (target/debug/deps/sign_in-cac37ad8a4c43cf6)
+
+running 2 tests
+test a_new_connection_after_valid_until_signs_in_again_and_saves ...   0.0 s signed in, the login good for 4 s
+  0.1 s Unit Price typed: 85
+  5.0 s the login has run out; its connection dropped
+  5.1 s Shift+Enter: refused (NewConnection); status line: "Your sign-in ran out. Sign in again to carry on…"; held: 1
+  5.1 s the draft while signing in: Unit Price $85.00
+  5.7 s signed in again (2 sign-ins), save sent again: "Saved"
+  5.7 s in Postgres: unit_price 85.0000
+ok
+test an_open_connection_after_expires_at_signs_in_again_and_saves ...   0.0 s signed in, the login good for 4 s
+  0.1 s Unit Price typed: 85
+  5.0 s the login has run out; its connection is open
+  5.0 s Shift+Enter: refused (OpenConnection); status line: "Your sign-in ran out. Sign in again to carry on…"; held: 1
+  5.0 s the draft while signing in: Unit Price $85.00
+  5.6 s signed in again (2 sign-ins), save sent again: "Saved"
+  5.6 s in Postgres: unit_price 85.0000
+ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 11.49s
+
+
+$ cargo test -p cairn-auth --test postgres 28000 -- --nocapture
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.14s
+     Running tests/postgres.rs (target/debug/deps/postgres-621bbebdd8d180f8)
+
+running 1 test
+A role made NOLOGIN, connecting:
+  Display:  error returned from database: role "rep_d281b4a63b444f91aad3f81850c58321" is not permitted to log in at line 854
+  SQLSTATE: 28000
+  hint:     (none)
+  session_expired: None
+test a_28000_while_connecting_is_not_an_expired_session ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.11s
+
+

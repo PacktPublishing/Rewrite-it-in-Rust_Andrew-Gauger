@@ -1,0 +1,27 @@
+# Terminal 1, in part 2/crate: the mock, after the drop-then-Retry run in manufacturer-drop-retry.txt (part 3)
+$ cargo run -q -p mock-manufacturer -- --mode drop --times 1 --ledger target/mfr-ledger-ch11.json
+Mock manufacturer API on http://localhost:8765/  (mode: drop for 1 order(s), ledger: target/mfr-ledger-ch11.json)
+POST /control?mode=stop or Ctrl+C to stop.
+08:42:27 created MFR-200001 for SO-2026-1100 (28cefe5a-93b9-4d4e-8205-32fb5c63ac38), then DROPPED the connection
+08:42:27 409 SO-2026-1100 (28cefe5a-93b9-4d4e-8205-32fb5c63ac38) is already MFR-200001, created nothing
+08:42:28 lookup 28cefe5a-93b9-4d4e-8205-32fb5c63ac38: 1 order(s)
+08:42:28 lookup 28cefe5a-93b9-4d4e-8205-32fb5c63ac38: 1 order(s)
+08:42:28 Mock manufacturer API stopped.
+
+# Terminal 2, in part 2/crate:
+$ cargo run -q -p cairn-app --example send_order -- SO-2026-1100
+SO-2026-1100, correlationId 28cefe5a-93b9-4d4e-8205-32fb5c63ac38
+attempt 1: Unconfirmed { reason: "error sending request for url (http://localhost:8765/orders): client error (SendRequest): connection closed before message completed" }
+Retry (same correlationId)
+attempt 2: Confirmed { mfr_order_id: "MFR-200001", repeat: true }
+
+$ cargo run -q -p cairn-app --bin mfr-status -- 28cefe5a-93b9-4d4e-8205-32fb5c63ac38
+manufacturer (http://localhost:8765/orders), correlationId 28cefe5a-93b9-4d4e-8205-32fb5c63ac38:
+  MFR-200001  received 2026-11-03T08:42:27  SO-2026-1100  Vista Bakery  2 line(s), 393 unit(s)
+
+$ DATABASE_URL=postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5433/cairn cargo run -q -p cairn-app --bin mfr-status -- 28cefe5a-93b9-4d4e-8205-32fb5c63ac38
+manufacturer (http://localhost:8765/orders), correlationId 28cefe5a-93b9-4d4e-8205-32fb5c63ac38:
+  MFR-200001  received 2026-11-03T08:42:27  SO-2026-1100  Vista Bakery  2 line(s), 393 unit(s)
+manufacturer_orders:
+  attempt 1  2026-11-03 16:42:27 UTC  order 13531  http -  ref -  error sending request for url (http://localhost:8765/orders): client error (SendRequest): connection closed before message completed
+  attempt 2  2026-11-03 16:42:27 UTC  order 13531  http 409  ref MFR-200001

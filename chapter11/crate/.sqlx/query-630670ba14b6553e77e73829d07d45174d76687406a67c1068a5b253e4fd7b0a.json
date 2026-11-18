@@ -1,0 +1,40 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT http_status, manufacturer_ref FROM manufacturer_orders\n          WHERE correlation_id = $1\n          ORDER BY attempt DESC LIMIT 1",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "http_status",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "manufacturer_orders",
+            "name": "http_status"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "manufacturer_ref",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "manufacturer_orders",
+            "name": "manufacturer_ref"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      true,
+      true
+    ]
+  },
+  "hash": "630670ba14b6553e77e73829d07d45174d76687406a67c1068a5b253e4fd7b0a"
+}

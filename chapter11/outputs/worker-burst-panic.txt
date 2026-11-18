@@ -1,0 +1,29 @@
+# H3 P5 and H4 P5: the channels and the worker loop, with handlers standing in for Postgres. No database, no network.
+# 2026-11-03 09:10 PST, Darwin arm64; DATABASE_URL unset
+# working directory: part 2/crate
+$ SQLX_OFFLINE=true cargo test -p cairn-app --test worker -- --nocapture --test-threads 1
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.17s
+     Running tests/worker.rs (target/debug/deps/worker-8c27f29b89b91f99)
+
+running 4 tests
+test a_full_channel_says_so_at_once ... bounded, capacity 8: 50 try_send, 8 accepted, 42 Full (the first Full was #9), slowest call 5.625µs
+unbounded: 50 send, 50 accepted, 50 held in memory, and nothing told the sender to slow down
+ok
+test a_panicking_task_is_answered_and_the_rest_carry_on ... 
+thread 'tokio-rt-worker' (16488446) panicked at cairn-app/tests/worker.rs:57:21:
+a bug in the read
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+RequestId(1): Failed: task 14 panicked with message "a bug in the read"
+RequestId(2): answered
+ok
+test fifty_saves_in_one_frame ... after one frame: 4 running, 8 in the channel, 38 waiting in the orchestrator; status "Saving 50 records…"
+all 50 saved after 6 frames (113 ms); status None, 0 failures
+ok
+test the_size_of_a_worker_task ... worker::handle future: 4032 bytes
+  of which save::save: 3944 bytes, data::read: 1328 bytes
+Request: 24 bytes, Response: 56 bytes, Snapshot: 712 bytes
+a thread's default stack: 2097152 bytes (2 MiB)
+ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+

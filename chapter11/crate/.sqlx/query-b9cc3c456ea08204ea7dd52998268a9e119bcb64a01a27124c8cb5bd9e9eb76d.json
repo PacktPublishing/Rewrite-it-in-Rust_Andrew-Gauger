@@ -1,0 +1,61 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE customers\n                    SET company_name = $2, industry = $3, phone = $4,\n                        email = $5, website = $6, bill_address = $7,\n                        bill_city = $8, bill_state = $9, bill_zip = $10,\n                        bill_country = $11, ship_address = $12,\n                        ship_city = $13, ship_state = $14,\n                        ship_zip = $15, ship_country = $16,\n                        assigned_rep_id = $17, payment_terms = $18,\n                        tax_exempt = $19, customer_status = $20,\n                        customer_since = $21::text::date, notes = $22,\n                        version = version + 1\n                  WHERE id = $1\n                 RETURNING id, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Int4",
+        "Varchar",
+        "Bool",
+        "Varchar",
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "b9cc3c456ea08204ea7dd52998268a9e119bcb64a01a27124c8cb5bd9e9eb76d"
+}

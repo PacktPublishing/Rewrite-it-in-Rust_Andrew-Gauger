@@ -1,0 +1,127 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, customer_id, contact_id, rep_id,\n                to_char(activity_date, 'YYYY-MM-DD HH24:MI')\n                    AS \"activity_date!\",\n                activity_type, follow_up_date::text, completed, subject,\n                details\n         FROM activities\n         WHERE ($1::int4 IS NULL OR id = $1)\n           AND ($2::int4 IS NULL OR customer_id = $2)\n         ORDER BY activity_date DESC, id DESC",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "customer_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "customer_id"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "contact_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "contact_id"
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "rep_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "rep_id"
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "activity_date!",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 5,
+        "name": "activity_type",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "activity_type"
+          }
+        }
+      },
+      {
+        "ordinal": 6,
+        "name": "follow_up_date",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 7,
+        "name": "completed",
+        "type_info": "Bool",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "completed"
+          }
+        }
+      },
+      {
+        "ordinal": 8,
+        "name": "subject",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "subject"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "details",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "details"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      false,
+      null,
+      true,
+      null,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "4633de0f4386070d2d0eff2f0a96278b7b36f7c9763305c8c7164b44f22b60e0"
+}

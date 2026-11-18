@@ -1,0 +1,27 @@
+# Terminal 1, in part 2/crate: the mock
+$ cargo run -q -p mock-manufacturer -- --mode drop --times 1 --ledger target/mfr-ledger.json
+Mock manufacturer API on http://localhost:8765/  (mode: drop for 1 order(s), ledger: target/mfr-ledger.json)
+POST /control?mode=stop or Ctrl+C to stop.
+08:26:47 created MFR-200001 for SO-2026-1226 (ea84e631-6ed0-4c53-8ba5-04cb47187355), then DROPPED the connection
+08:26:47 409 SO-2026-1226 (ea84e631-6ed0-4c53-8ba5-04cb47187355) is already MFR-200001, created nothing
+08:26:47 lookup ea84e631-6ed0-4c53-8ba5-04cb47187355: 1 order(s)
+08:26:47 Mock manufacturer API stopped.
+
+# Terminal 2, in part 2/crate: the client
+$ cat target/order.json
+{"correlationId":"ea84e631-6ed0-4c53-8ba5-04cb47187355","dealer":"CAIRN","po":"SO-2026-1226","customerPo":"","shipTo":{"name":"Vista Bakery","address":"6503 Enterprise Rd","city":"Lubbock","state":"TX","zip":"76161"},"lines":[{"sku":"CS-TH100","qty":385},{"sku":"CS-GW400","qty":8}]}
+
+$ curl -sS -i -X POST -H "Content-Type: application/json" -d @target/order.json http://localhost:8765/orders
+curl: (52) Empty reply from server
+
+$ curl -sS -i -X POST -H "Content-Type: application/json" -d @target/order.json http://localhost:8765/orders
+HTTP/1.1 409 Conflict
+content-type: application/json
+content-length: 61
+date: Tue, 03 Nov 2026 16:26:47 GMT
+
+{"error":"duplicate correlationId","mfrOrderId":"MFR-200001"}
+$ curl -sS "http://localhost:8765/orders?correlationId=ea84e631-6ed0-4c53-8ba5-04cb47187355"
+[{"mfrOrderId":"MFR-200001","receivedAt":"2026-11-03T08:26:47","correlationId":"ea84e631-6ed0-4c53-8ba5-04cb47187355","dealerPo":"SO-2026-1226","customer":"Vista Bakery","lines":[{"sku":"CS-TH100","qty":385},{"sku":"CS-GW400","qty":8}]}]
+$ curl -sS -X POST "http://localhost:8765/control?mode=stop"
+{"ok":true,"stopping":true}

@@ -1,0 +1,61 @@
+# 1. CustomerRow.industry declared String; customers.industry is nullable.
+#    Edit: `industry: Option<String>,` -> `industry: String,` and
+#    `industry: r.industry.unwrap_or_default(),` -> `industry: r.industry,`
+# DATABASE_URL=postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5433/cairn
+$ cargo build -p cairn-app
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+error[E0277]: the trait bound `std::string::String: From<Option<std::string::String>>` is not satisfied
+   --> cairn-app/src/data.rs:205:19
+    |
+205 |       d.customers = sqlx::query_as!(
+    |  ___________________^
+206 | |         CustomerRow,
+207 | |         "SELECT id, company_name, industry, customer_status,
+208 | |                 assigned_rep_id, payment_terms, customer_since::text,
+...   |
+213 | |          FROM customers ORDER BY company_name"
+214 | |     )
+    | |_____^ the trait `From<Option<std::string::String>>` is not implemented for `std::string::String`
+    |
+    = help: `std::string::String` implements trait `From<T>`:
+              From<&mut str>
+              From<&std::string::String>
+              From<&str>
+              From<Box<str>>
+              From<Cow<'_, str>>
+              From<PgCiText>
+              From<Uuid>
+              From<char>
+            and 4 others
+    = note: required for `Option<std::string::String>` to implement `Into<std::string::String>`
+    = note: this error originates in the macro `$crate::sqlx_macros::expand_query` which comes from the expansion of the macro `sqlx::query_as` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `cairn-app` (lib) due to 1 previous error
+
+# 2. to_char(activity_date, ...) without the "!" override in the activities query.
+#    Edit: `AS "activity_date!",` -> `AS activity_date,`
+$ cargo build -p cairn-app
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+error[E0308]: mismatched types
+   --> cairn-app/src/data.rs:431:21
+    |
+431 |         date: stamp(r.activity_date),
+    |               ----- ^^^^^^^^^^^^^^^ expected `String`, found `Option<String>`
+    |               |
+    |               arguments to this function are incorrect
+    |
+    = note: expected struct `String`
+                 found enum `Option<String>`
+note: function defined here
+   --> cairn-app/src/data.rs:112:4
+    |
+112 | fn stamp(text: String) -> DateTime {
+    |    ^^^^^ ------------
+help: consider using `Option::expect` to unwrap the `Option<std::string::String>` value, panicking if the value is an `Option::None`
+    |
+431 |         date: stamp(r.activity_date.expect("REASON")),
+    |                                    +++++++++++++++++
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `cairn-app` (lib) due to 1 previous error

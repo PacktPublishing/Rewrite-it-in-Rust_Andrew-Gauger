@@ -1,0 +1,50 @@
+# 1. The test, in part 2/crate: the mock in-process on an ephemeral port
+$ cargo test -q -p cairn-app --test manufacturer a_drop -- --nocapture
+
+running 1 test
+correlationId 7dc26a5a-836b-4073-b672-1a189d7a1641
+08:42:25 created MFR-200001 for SO-2026-1100 (7dc26a5a-836b-4073-b672-1a189d7a1641), then DROPPED the connection
+attempt 1: Unconfirmed { reason: "error sending request for url (http://127.0.0.1:60591/orders): client error (SendRequest): connection closed before message completed" }
+08:42:25 409 SO-2026-1100 (7dc26a5a-836b-4073-b672-1a189d7a1641) is already MFR-200001, created nothing
+attempt 2: Confirmed { mfr_order_id: "MFR-200001", repeat: true }
+08:42:25 lookup 7dc26a5a-836b-4073-b672-1a189d7a1641: 1 order(s)
+ledger: 1 order(s); lookup: [Held { mfr_order_id: "MFR-200001", received_at: "2026-11-03T08:42:25", correlation_id: Some(7dc26a5a-836b-4073-b672-1a189d7a1641), dealer_po: Some("SO-2026-1100"), customer: Some("Vista Bakery"), lines: [HeldLine { sku: "CS-TH100", qty: 385 }, HeldLine { sku: "CS-GW400", qty: 8 }] }]
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.01s
+
+
+# 2. The same against manufacturer_orders in the dev database (owner connection)
+$ cargo test -q -p cairn-app --test manufacturer the_409 -- --ignored --nocapture
+
+running 1 test
+correlationId 75664f02-9745-4a4e-8928-1e4a6fac76a1
+08:42:26 created MFR-200001 for SO-2026-1100 (75664f02-9745-4a4e-8928-1e4a6fac76a1), then DROPPED the connection
+attempt 1: Unconfirmed { reason: "error sending request for url (http://127.0.0.1:60596/orders): client error (SendRequest): connection closed before message completed" }
+08:42:26 409 SO-2026-1100 (75664f02-9745-4a4e-8928-1e4a6fac76a1) is already MFR-200001, created nothing
+attempt 2: Confirmed { mfr_order_id: "MFR-200001", repeat: true }
+row: attempt 1 http None ref None error Some("error sending request for url (http://127.0.0.1:60596/orders): client error (SendRequest): connection closed before message completed")
+row: attempt 2 http Some(409) ref Some("MFR-200001") error None
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.08s
+
+
+# 3. Against the mock started by hand. Terminal 1, in part 2/crate:
+$ cargo run -q -p mock-manufacturer -- --mode drop --times 1 --ledger target/mfr-ledger-ch11.json
+Mock manufacturer API on http://localhost:8765/  (mode: drop for 1 order(s), ledger: target/mfr-ledger-ch11.json)
+POST /control?mode=stop or Ctrl+C to stop.
+08:42:27 created MFR-200001 for SO-2026-1100 (28cefe5a-93b9-4d4e-8205-32fb5c63ac38), then DROPPED the connection
+08:42:27 409 SO-2026-1100 (28cefe5a-93b9-4d4e-8205-32fb5c63ac38) is already MFR-200001, created nothing
+08:42:28 lookup 28cefe5a-93b9-4d4e-8205-32fb5c63ac38: 1 order(s)
+08:42:28 lookup 28cefe5a-93b9-4d4e-8205-32fb5c63ac38: 1 order(s)
+08:42:28 Mock manufacturer API stopped.
+
+# Terminal 2, in part 2/crate:
+$ cargo run -q -p cairn-app --example send_order -- SO-2026-1100
+SO-2026-1100, correlationId 28cefe5a-93b9-4d4e-8205-32fb5c63ac38
+attempt 1: Unconfirmed { reason: "error sending request for url (http://localhost:8765/orders): client error (SendRequest): connection closed before message completed" }
+Retry (same correlationId)
+attempt 2: Confirmed { mfr_order_id: "MFR-200001", repeat: true }
+$ python3 -c "import json; print(len(json.load(open('target/mfr-ledger-ch11.json'))), 'order(s) in the ledger')"
+1 order(s) in the ledger
+$ curl -sS -X POST "http://localhost:8765/control?mode=stop"
+{"ok":true,"stopping":true}

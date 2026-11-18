@@ -1,0 +1,86 @@
+# Edit: `industry` -> `industy` in the customers query_as!.
+# DATABASE_URL=postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5433/cairn
+$ cargo build -p cairn-app
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+error: error returned from database: column "industy" does not exist at line 3732
+   --> cairn-app/src/data.rs:205:19
+    |
+205 |       d.customers = sqlx::query_as!(
+    |  ___________________^
+206 | |         CustomerRow,
+207 | |         "SELECT id, company_name, industy, customer_status,
+208 | |                 assigned_rep_id, payment_terms, customer_since::text,
+...   |
+213 | |          FROM customers ORDER BY company_name"
+214 | |     )
+    | |_____^
+    |
+    = note: this error originates in the macro `$crate::sqlx_macros::expand_query` which comes from the expansion of the macro `sqlx::query_as` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: method call on a diverging inference variable
+   --> cairn-app/src/data.rs:217:6
+    |
+217 |     .into_iter()
+    |      ^^^^^^^^^
+    |
+    = help: consider providing a type annotation
+    = warning: this was previously accepted by the compiler but is being phased out; it will become a hard error in a future release!
+    = note: for more information, see issue #156047 <https://github.com/rust-lang/rust/issues/156047>
+    = note: `#[warn(method_call_on_diverging_infer_var)]` (part of `#[warn(future_incompatible)]`) on by default
+
+error[E0277]: `!` is not an iterator
+   --> cairn-app/src/data.rs:217:6
+    |
+217 |     .into_iter()
+    |      ^^^^^^^^^ `!` is not an iterator
+    |
+    = help: the trait `Iterator` is not implemented for `!`
+    = note: required for `!` to implement `IntoIterator`
+
+error[E0599]: `!` is not an iterator
+   --> cairn-app/src/data.rs:218:6
+    |
+205 |       d.customers = sqlx::query_as!(
+    |  ___________________-
+206 | |         CustomerRow,
+207 | |         "SELECT id, company_name, industy, customer_status,
+208 | |                 assigned_rep_id, payment_terms, customer_since::text,
+...   |
+217 | |     .into_iter()
+218 | |     .map(|r| {
+    | |     -^^^ `!` is not an iterator
+    | |_____|
+    |
+    |
+    = note: the following trait bounds were not satisfied:
+            `!: Iterator`
+            which is required by `&mut !: Iterator`
+
+warning: unreachable expression
+   --> cairn-app/src/data.rs:218:10
+    |
+205 |       d.customers = sqlx::query_as!(
+    |  ___________________-
+206 | |         CustomerRow,
+207 | |         "SELECT id, company_name, industy, customer_status,
+208 | |                 assigned_rep_id, payment_terms, customer_since::text,
+...   |
+216 | |     .await?
+217 | |     .into_iter()
+    | |________________- any code following this expression is unreachable
+218 |       .map(|r| {
+    |  __________^
+219 | |         Ok(CustomerDraft {
+220 | |             id: Some(CustomerId(r.id)),
+221 | |             company_name: r.company_name,
+...   |
+242 | |         })
+243 | |     })
+    | |_____^ unreachable expression
+    |
+    = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
+
+Some errors have detailed explanations: E0277, E0599.
+For more information about an error, try `rustc --explain E0277`.
+warning: `cairn-app` (lib) generated 2 warnings
+error: could not compile `cairn-app` (lib) due to 3 previous errors; 3 warnings emitted

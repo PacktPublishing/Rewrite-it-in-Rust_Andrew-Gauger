@@ -1,0 +1,21 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE payments AS p\n                SET payment_date = u.payment_date::date,\n                    amount = u.amount, payment_method = u.method,\n                    payment_ref = u.reference,\n                    received_by_rep_id = u.received_by,\n                    notes = u.notes, version = p.version + 1\n               FROM UNNEST($2::int4[], $3::text[], $4::numeric[],\n                           $5::text[], $6::text[], $7::int4[],\n                           $8::text[])\n                    AS u(id, payment_date, amount, method, reference,\n                         received_by, notes)\n              WHERE p.id = u.id AND p.order_id = $1\n                AND (p.payment_date, p.amount, p.payment_method,\n                     p.payment_ref, p.received_by_rep_id, p.notes)\n                    IS DISTINCT FROM\n                    (u.payment_date::date, u.amount, u.method,\n                     u.reference, u.received_by, u.notes)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4Array",
+        "TextArray",
+        "NumericArray",
+        "TextArray",
+        "TextArray",
+        "Int4Array",
+        "TextArray"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "9cb041bfd573aaafb4c29bae54f86662f613717e5ab2b82f5a93bf0cd934bbaf"
+}

@@ -1,0 +1,65 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE rmas\n                    SET customer_id = $2, order_id = $3, product_id = $4,\n                        serial_number = $5, opened_date = $6::text::date,\n                        opened_by_rep_id = $7, reason = $8,\n                        extended_warranty = $9, description = $10,\n                        rma_status = $11, disposition = $12,\n                        manufacturer_ref = $13,\n                        closed_date = $14::text::date,\n                        version = version + 1\n                  WHERE id = $1\n                 RETURNING id, rma_number, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "rma_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "rma_number"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "rmas",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Int4",
+        "Int4",
+        "Varchar",
+        "Text",
+        "Int4",
+        "Varchar",
+        "Bool",
+        "Text",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "efeb67bdb6240d7bc751ceeafdd79fc92e1999decdcda65a52676f1ec7b6df41"
+}

@@ -1,0 +1,84 @@
+# The products query edited to `ORDER BY sku, id` and not re-prepared,
+# so .sqlx/ has no entry for it. DATABASE_URL unset.
+$ SQLX_OFFLINE=true cargo build -p cairn-app
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+error: `SQLX_OFFLINE=true` but there is no cached data for this query, run `cargo sqlx prepare` to update the query cache or unset `SQLX_OFFLINE`
+   --> cairn-app/src/data.rs:271:18
+    |
+271 |       d.products = sqlx::query!(
+    |  __________________^
+272 | |         "SELECT id, sku, product_name, category, unit_price, unit_cost,
+273 | |                 lead_time_days, firmware_version, active, description
+274 | |          FROM products ORDER BY sku, id"
+275 | |     )
+    | |_____^
+    |
+    = note: this error originates in the macro `$crate::sqlx_macros::expand_query` which comes from the expansion of the macro `sqlx::query` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: method call on a diverging inference variable
+   --> cairn-app/src/data.rs:278:6
+    |
+278 |     .into_iter()
+    |      ^^^^^^^^^
+    |
+    = help: consider providing a type annotation
+    = warning: this was previously accepted by the compiler but is being phased out; it will become a hard error in a future release!
+    = note: for more information, see issue #156047 <https://github.com/rust-lang/rust/issues/156047>
+    = note: `#[warn(method_call_on_diverging_infer_var)]` (part of `#[warn(future_incompatible)]`) on by default
+
+error[E0277]: `!` is not an iterator
+   --> cairn-app/src/data.rs:278:6
+    |
+278 |     .into_iter()
+    |      ^^^^^^^^^ `!` is not an iterator
+    |
+    = help: the trait `Iterator` is not implemented for `!`
+    = note: required for `!` to implement `IntoIterator`
+
+error[E0599]: `!` is not an iterator
+   --> cairn-app/src/data.rs:279:6
+    |
+271 |       d.products = sqlx::query!(
+    |  __________________-
+272 | |         "SELECT id, sku, product_name, category, unit_price, unit_cost,
+273 | |                 lead_time_days, firmware_version, active, description
+274 | |          FROM products ORDER BY sku, id"
+...   |
+278 | |     .into_iter()
+279 | |     .map(|r| ProductDraft {
+    | |     -^^^ `!` is not an iterator
+    | |_____|
+    |
+    |
+    = note: the following trait bounds were not satisfied:
+            `!: Iterator`
+            which is required by `&mut !: Iterator`
+
+warning: unreachable expression
+   --> cairn-app/src/data.rs:279:10
+    |
+271 |       d.products = sqlx::query!(
+    |  __________________-
+272 | |         "SELECT id, sku, product_name, category, unit_price, unit_cost,
+273 | |                 lead_time_days, firmware_version, active, description
+274 | |          FROM products ORDER BY sku, id"
+...   |
+277 | |     .await?
+278 | |     .into_iter()
+    | |________________- any code following this expression is unreachable
+279 |       .map(|r| ProductDraft {
+    |  __________^
+280 | |         id: Some(ProductId(r.id)),
+281 | |         sku: r.sku,
+282 | |         name: r.product_name,
+...   |
+289 | |         description: r.description.unwrap_or_default(),
+290 | |     })
+    | |_____^ unreachable expression
+    |
+    = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
+
+Some errors have detailed explanations: E0277, E0599.
+For more information about an error, try `rustc --explain E0277`.
+warning: `cairn-app` (lib) generated 2 warnings
+error: could not compile `cairn-app` (lib) due to 3 previous errors; 3 warnings emitted

@@ -1,0 +1,19 @@
+# DATABASE_URL=postgres://cairn_owner:cairn_owner_dev@127.0.0.1:5433/cairn
+# 1. Right after `cargo sqlx prepare --workspace`.
+$ cargo sqlx prepare --workspace --check
+    Checking cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Checking cairn-auth v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-auth)
+    Checking migration v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/migration)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.57s
+$ echo $?
+0
+
+# 2. After editing the products query to `ORDER BY sku, id`, not re-prepared.
+$ cargo sqlx prepare --workspace --check
+    Checking cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Checking cairn-auth v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-auth)
+    Checking migration v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/migration)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.72s
+error: prepare check failed: .sqlx is missing one or more queries; you should re-run sqlx prepare
+$ echo $?
+1

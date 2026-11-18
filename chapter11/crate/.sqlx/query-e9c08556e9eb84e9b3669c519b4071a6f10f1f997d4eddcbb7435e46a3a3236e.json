@@ -1,0 +1,100 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT order_id, product_id, line_description, quantity,\n                unit_price, discount_pct, serial_numbers\n         FROM order_lines\n         WHERE $1::int4 IS NULL OR order_id = $1\n         ORDER BY order_id, id",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "order_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "order_lines",
+            "name": "order_id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "product_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "order_lines",
+            "name": "product_id"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "line_description",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "order_lines",
+            "name": "line_description"
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "quantity",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "order_lines",
+            "name": "quantity"
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "unit_price",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "order_lines",
+            "name": "unit_price"
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "discount_pct",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "order_lines",
+            "name": "discount_pct"
+          }
+        }
+      },
+      {
+        "ordinal": 6,
+        "name": "serial_numbers",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "order_lines",
+            "name": "serial_numbers"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      false,
+      false,
+      false,
+      true
+    ]
+  },
+  "hash": "e9c08556e9eb84e9b3669c519b4071a6f10f1f997d4eddcbb7435e46a3a3236e"
+}

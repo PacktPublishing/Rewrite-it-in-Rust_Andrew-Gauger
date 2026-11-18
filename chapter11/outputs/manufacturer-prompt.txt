@@ -1,0 +1,39 @@
+# H5: Send to Manufacturer on the order form, through the orchestrator and the real worker, as a cairn_app rep, against the in-process mock-manufacturer in drop mode for one request (--times 1). No answer, so the rep is asked; Retry sends the same correlationId, the mock answers 409 with the number it holds, and its ledger has one order. Then the same prompt over a fake worker, for the snapshot (tests/snapshots/manufacturer-prompt.png, copied beside this file).
+# 2026-11-03 13:42 PST, Darwin arm64, debug build, local Postgres 17 on 127.0.0.1:5433; DATABASE_URL unset, SQLX_OFFLINE=true (the build reads .sqlx)
+# working directory: part 2/crate
+$ cargo test -p cairn-app --test manufacturer drop_then -- --ignored --nocapture
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.21s
+     Running tests/manufacturer.rs (target/debug/deps/manufacturer-ecc8b5592ce0af0d)
+
+running 1 test
+SO-2016-0001; the mock in drop mode for 1 request
+Send to Manufacturer
+13:42:06 created MFR-200001 for SO-2016-0001 (e2525b82-df5d-4281-a779-d6baeba5978a), then DROPPED the connection
+prompt: The manufacturer didn't answer. Retry is safe: they won't place this order twice.
+attempt 1: http None, ref None, error Some("error sending request for url (http://127.0.0.1:51795/orders): client error (SendRequest): connection closed before message completed")
+Retry
+13:42:06 409 SO-2016-0001 (e2525b82-df5d-4281-a779-d6baeba5978a) is already MFR-200001, created nothing
+status line: SO-2016-0001 sent: MFR-200001, already on file
+manufacturer_orders: attempt 1 correlation e2525b82-df5d-4281-a779-d6baeba5978a http None ref None
+manufacturer_orders: attempt 2 correlation e2525b82-df5d-4281-a779-d6baeba5978a http Some(409) ref Some("MFR-200001")
+the mock's ledger: 1 order(s)
+test drop_then_retry_through_the_app ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 1.98s
+
+
+$ cargo test -p cairn-app --test orchestrator no_answer -- --nocapture
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.96s
+     Running tests/orchestrator.rs (target/debug/deps/orchestrator-95d6e17bddca6431)
+
+running 1 test
+attempt 1: SO-2026-0002 correlationId cff098b6-0813-45e4-9703-07c51680e248
+30 frames later: 0 requests sent
+Retry: correlationId cff098b6-0813-45e4-9703-07c51680e248
+status line: SO-2026-0002 sent: MFR-200001, already on file
+test no_answer_asks_and_retry_sends_the_same_id ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 1.02s
+
+

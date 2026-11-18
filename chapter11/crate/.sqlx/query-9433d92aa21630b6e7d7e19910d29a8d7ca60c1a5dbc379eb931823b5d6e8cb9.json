@@ -1,0 +1,19 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO quote_lines\n                 (quote_id, product_id, line_description, quantity,\n                  unit_price, discount_pct)\n             SELECT $1, u.product_id, u.description, u.quantity,\n                    u.unit_price, u.discount\n               FROM UNNEST($2::int4[], $3::text[], $4::int4[],\n                           $5::numeric[], $6::numeric[])\n                    WITH ORDINALITY\n                    AS u(product_id, description, quantity,\n                         unit_price, discount, n)\n              ORDER BY u.n",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4Array",
+        "TextArray",
+        "Int4Array",
+        "NumericArray",
+        "NumericArray"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "9433d92aa21630b6e7d7e19910d29a8d7ca60c1a5dbc379eb931823b5d6e8cb9"
+}

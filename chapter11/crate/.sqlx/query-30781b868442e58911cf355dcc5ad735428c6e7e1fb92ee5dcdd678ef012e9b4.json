@@ -1,0 +1,26 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT manufacturer_api_url FROM company_info\n                  ORDER BY id LIMIT 1",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "manufacturer_api_url",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "manufacturer_api_url"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": []
+    },
+    "nullable": [
+      true
+    ]
+  },
+  "hash": "30781b868442e58911cf355dcc5ad735428c6e7e1fb92ee5dcdd678ef012e9b4"
+}

@@ -1,0 +1,186 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, for_rep_id,\n                to_char(received_at, 'YYYY-MM-DD HH24:MI')\n                    AS \"received_at!\",\n                caller_name, customer_id, caller_company, caller_phone,\n                taken_by_rep_id, urgent, please_call_back,\n                will_call_again, message, message_status,\n                to_char(returned_at, 'YYYY-MM-DD HH24:MI')\n                    AS returned_at,\n                return_notes\n         FROM phone_messages\n         WHERE $1::int4 IS NULL OR id = $1\n         ORDER BY received_at DESC, id DESC",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "for_rep_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "for_rep_id"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "received_at!",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 3,
+        "name": "caller_name",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "caller_name"
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "customer_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "customer_id"
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "caller_company",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "caller_company"
+          }
+        }
+      },
+      {
+        "ordinal": 6,
+        "name": "caller_phone",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "caller_phone"
+          }
+        }
+      },
+      {
+        "ordinal": 7,
+        "name": "taken_by_rep_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "taken_by_rep_id"
+          }
+        }
+      },
+      {
+        "ordinal": 8,
+        "name": "urgent",
+        "type_info": "Bool",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "urgent"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "please_call_back",
+        "type_info": "Bool",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "please_call_back"
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "will_call_again",
+        "type_info": "Bool",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "will_call_again"
+          }
+        }
+      },
+      {
+        "ordinal": 11,
+        "name": "message",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "message"
+          }
+        }
+      },
+      {
+        "ordinal": 12,
+        "name": "message_status",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "message_status"
+          }
+        }
+      },
+      {
+        "ordinal": 13,
+        "name": "returned_at",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 14,
+        "name": "return_notes",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "return_notes"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      null,
+      false,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      true,
+      false,
+      null,
+      true
+    ]
+  },
+  "hash": "0f996a804eabe53bc463bc1df0c52e52832585b4535b4cdfcdd7571e5d76f611"
+}

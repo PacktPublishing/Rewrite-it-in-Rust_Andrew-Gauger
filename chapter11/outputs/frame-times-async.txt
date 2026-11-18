@@ -1,0 +1,45 @@
+# H1/H3: the same frames with the refresh sent to a worker (try_send, try_recv), through dev-latency, as a cairn_app rep. Delays are injected values, not a measurement of Cairn's VPN.
+# Paced at 60 a second like frame-times-blocking.txt; that pacing, not the worker, is why a typical frame here is slower than the 09:08 blocking capture's unpaced 0.16 ms. A save goes out on frame 60, and a customer is written outside the app before frame 100, so the refreshes bring changes. The merge and AppContext rebuild (about 35 ms) run on the builder thread; the frame only swaps the finished context in (the 'swapped in' lines).
+# 2026-11-03 13:48 PST, Darwin arm64, release build, local Postgres 17 on 127.0.0.1:5433; DATABASE_URL unset (the build reads .sqlx)
+# working directory: part 2/crate
+$ ./target/debug/dev-latency --delay-ms 0 &
+dev-latency: 127.0.0.1:5434 -> 127.0.0.1:5433, +0 ms each way (jitter up to 0 ms)
+$ cargo test --release -p cairn-app --test scroll_timing off_the -- --ignored --nocapture
+    Finished `release` profile [optimized] target(s) in 0.19s
+     Running tests/scroll_timing.rs (target/release/deps/scroll_timing-cb9facf8fb4d9d40)
+
+running 1 test
+through 127.0.0.1:5434/cairn
+refresh on a worker: 180 frames, median 0.671 ms, max 2.298 ms, 0 over 16.67 ms
+  frames 0, 45, 90, 135: 0.2, 0.7, 0.6, 1.5 ms
+  answers arrived at frames [2, 46, 62, 91, 136]: 5 drawn, 0 dropped as stale
+  a save went out on frame 60; a customer was written outside the app before frame 100
+  frame 66: rebuilt context swapped in, 1.039 ms
+  frame 95: rebuilt context swapped in, 1.018 ms
+  frame 140: rebuilt context swapped in, 0.814 ms
+test refresh_off_the_ui_thread ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 3.84s
+
+$ kill %1
+
+$ ./target/debug/dev-latency --delay-ms 300 &
+dev-latency: 127.0.0.1:5434 -> 127.0.0.1:5433, +300 ms each way (jitter up to 0 ms)
+$ cargo test --release -p cairn-app --test scroll_timing off_the -- --ignored --nocapture
+    Finished `release` profile [optimized] target(s) in 0.18s
+     Running tests/scroll_timing.rs (target/release/deps/scroll_timing-cb9facf8fb4d9d40)
+
+running 1 test
+through 127.0.0.1:5434/cairn
+refresh on a worker: 345 frames, median 0.810 ms, max 2.278 ms, 0 over 16.67 ms
+  frames 0, 45, 90, 135: 0.3, 0.6, 0.7, 1.6 ms
+  answers arrived at frames [219, 263, 307, 311, 339]: 2 drawn, 3 dropped as stale
+  a save went out on frame 60; a customer was written outside the app before frame 100
+  frame 315: rebuilt context swapped in, 1.165 ms
+  frame 343: rebuilt context swapped in, 0.972 ms
+test refresh_off_the_ui_thread ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 7.10s
+
+$ kill %1
+

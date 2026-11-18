@@ -1,0 +1,49 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE activities\n                    SET customer_id = $2, contact_id = $3, rep_id = $4,\n                        activity_date = $5::text::timestamptz,\n                        activity_type = $6, subject = $7, details = $8,\n                        follow_up_date = $9::text::date,\n                        completed = $10, version = version + 1\n                  WHERE id = $1\n                 RETURNING id, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "activities",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Int4",
+        "Int4",
+        "Text",
+        "Varchar",
+        "Varchar",
+        "Text",
+        "Text",
+        "Bool"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "cdb73ce2bd88e94eb714aaccad6d01756db3d01696f0814569082885c79b8dba"
+}

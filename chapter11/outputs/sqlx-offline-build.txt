@@ -1,0 +1,39 @@
+# DATABASE_URL unset; Postgres still running for other work, so this proves
+# the build reads .sqlx/, not that it survives Postgres being down.
+$ SQLX_OFFLINE=true cargo test -p cairn-app --test keyboard --test forms --test screens
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.83s
+     Running tests/forms.rs (target/debug/deps/forms-f05d9e371b41fd15)
+
+running 5 tests
+test mark_returned_stamps_the_message_and_saves_it ... ok
+test moving_to_the_next_record_saves_this_one_as_access_did ... ok
+test datasheet_headings_sort_and_filter_as_access_did ... ok
+test new_quote_on_a_customer_fills_in_the_customer_like_doc_load ... ok
+test datasheet_view_lists_the_records_and_opens_one ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+     Running tests/keyboard.rs (target/debug/deps/keyboard-aaf4e939b95df4ea)
+
+running 7 tests
+test enter_moves_to_the_next_field ... ok
+test a_name_not_in_the_list_is_refused ... ok
+test picking_a_customer_fills_rep_contact_and_tax_like_v1 ... ok
+test tab_follows_v1s_field_order_and_skips_the_locked_number ... ok
+test a_bad_tax_rate_is_outlined_and_blocks_the_save ... ok
+test esc_undoes_the_field_then_the_record ... ok
+test a_whole_quote_line_goes_in_without_the_mouse ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+
+     Running tests/screens.rs (target/debug/deps/screens-96ca8f2fad81f37b)
+
+running 4 tests
+test company_refused ... ignored, reads the dev database
+test datasheet_filter ... ignored, reads the dev database
+test every_form ... ignored, reads the dev database
+test lookup_open ... ignored, reads the dev database
+
+test result: ok. 0 passed; 0 failed; 4 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
