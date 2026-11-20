@@ -1,0 +1,9 @@
+running 6 tests
+header notes "Ship to the new dock" (v2); line 2 qty 3 (v2)
+..tax rate 0.0825, line 1 qty 20
+.A saved: version 2
+B refused: stale, version 1 sent
+.conflict on products 105: mine "Renamed by B", theirs "Renamed by A" at v2
+.after the refused save: qty 12 and 5
+.
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.79s

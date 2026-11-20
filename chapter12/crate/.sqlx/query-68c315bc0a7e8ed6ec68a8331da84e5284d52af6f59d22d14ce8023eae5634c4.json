@@ -1,0 +1,53 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO phone_messages\n                     (received_at, for_rep_id, taken_by_rep_id,\n                      customer_id, caller_name, caller_company,\n                      caller_phone, message, urgent, please_call_back,\n                      will_call_again, message_status, returned_at,\n                      return_notes)\n                 VALUES ($1::text::timestamptz, $2, $3, $4, $5, $6, $7,\n                         $8, $9, $10, $11, $12, $13::text::timestamptz,\n                         $14)\n                 RETURNING id, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "phone_messages",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Int4",
+        "Int4",
+        "Int4",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Text",
+        "Bool",
+        "Bool",
+        "Bool",
+        "Varchar",
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "68c315bc0a7e8ed6ec68a8331da84e5284d52af6f59d22d14ce8023eae5634c4"
+}

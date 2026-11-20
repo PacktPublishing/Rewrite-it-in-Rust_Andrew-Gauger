@@ -1,0 +1,64 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT DISTINCT ON (order_id)\n                  order_id, request_body, http_status, manufacturer_ref\n             FROM manufacturer_orders\n            WHERE $1::int4 IS NULL OR order_id = $1\n            ORDER BY order_id, sent_at DESC, attempt DESC",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "order_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "manufacturer_orders",
+            "name": "order_id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "request_body",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "manufacturer_orders",
+            "name": "request_body"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "http_status",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "manufacturer_orders",
+            "name": "http_status"
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "manufacturer_ref",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "manufacturer_orders",
+            "name": "manufacturer_ref"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "9fc43ffcfc91184bb3f4ece77d85fccab2cfbed8b7c61192e671d4672e552914"
+}

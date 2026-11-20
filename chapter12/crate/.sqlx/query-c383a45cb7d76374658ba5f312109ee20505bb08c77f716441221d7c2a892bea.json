@@ -1,0 +1,287 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, version, company_name, industry, customer_status,\n                assigned_rep_id, payment_terms, customer_since::text,\n                tax_exempt, phone, email, website, bill_address,\n                bill_city, bill_state, bill_zip, bill_country,\n                ship_address, ship_city, ship_state, ship_zip,\n                ship_country, notes\n         FROM customers\n         WHERE $1::int4 IS NULL OR id = $1\n         ORDER BY company_name",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "version"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "company_name",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "company_name"
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "industry",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "industry"
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "customer_status",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "customer_status"
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "assigned_rep_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "assigned_rep_id"
+          }
+        }
+      },
+      {
+        "ordinal": 6,
+        "name": "payment_terms",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "payment_terms"
+          }
+        }
+      },
+      {
+        "ordinal": 7,
+        "name": "customer_since",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 8,
+        "name": "tax_exempt",
+        "type_info": "Bool",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "tax_exempt"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "phone",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "phone"
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "email",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "email"
+          }
+        }
+      },
+      {
+        "ordinal": 11,
+        "name": "website",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "website"
+          }
+        }
+      },
+      {
+        "ordinal": 12,
+        "name": "bill_address",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "bill_address"
+          }
+        }
+      },
+      {
+        "ordinal": 13,
+        "name": "bill_city",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "bill_city"
+          }
+        }
+      },
+      {
+        "ordinal": 14,
+        "name": "bill_state",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "bill_state"
+          }
+        }
+      },
+      {
+        "ordinal": 15,
+        "name": "bill_zip",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "bill_zip"
+          }
+        }
+      },
+      {
+        "ordinal": 16,
+        "name": "bill_country",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "bill_country"
+          }
+        }
+      },
+      {
+        "ordinal": 17,
+        "name": "ship_address",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "ship_address"
+          }
+        }
+      },
+      {
+        "ordinal": 18,
+        "name": "ship_city",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "ship_city"
+          }
+        }
+      },
+      {
+        "ordinal": 19,
+        "name": "ship_state",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "ship_state"
+          }
+        }
+      },
+      {
+        "ordinal": 20,
+        "name": "ship_zip",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "ship_zip"
+          }
+        }
+      },
+      {
+        "ordinal": 21,
+        "name": "ship_country",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "ship_country"
+          }
+        }
+      },
+      {
+        "ordinal": 22,
+        "name": "notes",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "notes"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      true,
+      false,
+      true,
+      true,
+      null,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "c383a45cb7d76374658ba5f312109ee20505bb08c77f716441221d7c2a892bea"
+}

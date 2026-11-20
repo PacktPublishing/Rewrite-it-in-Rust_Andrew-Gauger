@@ -1,0 +1,21 @@
+[package]
+name = "mock-manufacturer"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+description = "The manufacturer's order API after the Chapter 11 negotiation: it stores correlationId and refuses repeats. V1's PowerShell mock stays as it was."
+
+[dependencies]
+bytes = "1.12.1"
+chrono = { version = "0.4.45", default-features = false, features = ["clock"] }
+http-body-util = "0.1.5"
+hyper = { version = "1.12.0", features = ["http1", "server"] }
+hyper-util = { version = "0.1.21", features = ["tokio"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+tokio = { version = "1.54.1", features = ["macros", "net", "rt-multi-thread", "sync", "time"] }
+uuid = { version = "1.29.0", features = ["serde"] }
+
+[dev-dependencies]
+uuid = { version = "1.29.0", features = ["v4"] }
+tokio = { version = "1.54.1", features = ["io-util"] }

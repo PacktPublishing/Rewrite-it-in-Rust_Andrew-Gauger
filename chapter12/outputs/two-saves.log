@@ -1,0 +1,16 @@
+# unordered (with_unordered_saves): both saves go out at once
+2026-11-19T01:41:44.013653Z  INFO cairn_app::orchestrator: sent to the worker id=1
+2026-11-19T01:41:44.013714Z  INFO cairn_app::orchestrator: sent to the worker id=2
+2026-11-19T01:41:44.013734Z  INFO request{id=1 kind="save"}: cairn_app::worker: started
+2026-11-19T01:41:44.013805Z  INFO request{id=2 kind="save"}: cairn_app::worker: started
+2026-11-19T01:41:44.015242Z  INFO request{id=2 kind="save"}: cairn_app::worker: finished ms=1
+2026-11-19T01:41:44.019653Z  WARN request{id=1 kind="save"}: cairn_app::worker: stale: conflict table=Products key=164 ms=5
+
+# ordered (the default): the second is held, then rebased
+2026-11-19T01:41:43.424909Z  INFO cairn_app::orchestrator: sent to the worker id=1
+2026-11-19T01:41:43.424962Z  INFO request{id=1 kind="save"}: cairn_app::worker: started
+2026-11-19T01:41:43.424972Z  INFO cairn_app::orchestrator: held: this record's save is still out id=2
+2026-11-19T01:41:43.430952Z  INFO request{id=1 kind="save"}: cairn_app::worker: finished ms=5
+2026-11-19T01:41:43.436691Z  INFO cairn_app::orchestrator: sent to the worker id=2
+2026-11-19T01:41:43.436731Z  INFO request{id=2 kind="save"}: cairn_app::worker: started
+2026-11-19T01:41:43.438344Z  INFO request{id=2 kind="save"}: cairn_app::worker: finished ms=1

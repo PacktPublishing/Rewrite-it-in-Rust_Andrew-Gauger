@@ -1,0 +1,148 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, version, sku, product_name, category, unit_price, unit_cost,\n                lead_time_days, firmware_version, active, description\n         FROM products\n         WHERE $1::int4 IS NULL OR id = $1\n         ORDER BY sku",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "version"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "sku",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "sku"
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "product_name",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "product_name"
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "category",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "category"
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "unit_price",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "unit_price"
+          }
+        }
+      },
+      {
+        "ordinal": 6,
+        "name": "unit_cost",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "unit_cost"
+          }
+        }
+      },
+      {
+        "ordinal": 7,
+        "name": "lead_time_days",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "lead_time_days"
+          }
+        }
+      },
+      {
+        "ordinal": 8,
+        "name": "firmware_version",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "firmware_version"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "active",
+        "type_info": "Bool",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "active"
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "description",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "description"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false,
+      true
+    ]
+  },
+  "hash": "3838c2588cc4e8056bb46206262ec1563a8aea63f572bf02f90dad5cff2d1370"
+}

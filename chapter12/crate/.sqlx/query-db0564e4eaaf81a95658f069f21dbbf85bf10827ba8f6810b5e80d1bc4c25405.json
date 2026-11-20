@@ -1,0 +1,143 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, version, first_name, last_name, title, hire_date::text,\n                active, email, phone, extension, commission_rate\n         FROM sales_reps\n         WHERE $1::int4 IS NULL OR id = $1\n         ORDER BY first_name, last_name",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "version"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "first_name",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "first_name"
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "last_name",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "last_name"
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "title",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "title"
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "hire_date",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 6,
+        "name": "active",
+        "type_info": "Bool",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "active"
+          }
+        }
+      },
+      {
+        "ordinal": 7,
+        "name": "email",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "email"
+          }
+        }
+      },
+      {
+        "ordinal": 8,
+        "name": "phone",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "phone"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "extension",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "extension"
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "commission_rate",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "commission_rate"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      true,
+      null,
+      false,
+      true,
+      true,
+      true,
+      false
+    ]
+  },
+  "hash": "db0564e4eaaf81a95658f069f21dbbf85bf10827ba8f6810b5e80d1bc4c25405"
+}

@@ -1,0 +1,2 @@
+a customer lookup alone: 21 ms
+the same lookup behind four slow sends: 37 ms
