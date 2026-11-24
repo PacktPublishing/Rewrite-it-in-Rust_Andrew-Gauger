@@ -1,0 +1,15 @@
+[package]
+name = "cairn-core"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+description = "Cairn Systems' business rules, ported from the V1 Access database. No UI, no database, no network."
+
+[dependencies]
+rust_decimal = { version = "1.43", features = ["serde"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+
+[dev-dependencies]
+csv = "1.4"

@@ -1,0 +1,194 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, version, company_name, address1, address2, city, state, zip,\n                country, phone, email, website, default_tax_rate,\n                quote_terms, receipt_footer\n         FROM company_info ORDER BY id LIMIT 1",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "version"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "company_name",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "company_name"
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "address1",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "address1"
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "address2",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "address2"
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "city",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "city"
+          }
+        }
+      },
+      {
+        "ordinal": 6,
+        "name": "state",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "state"
+          }
+        }
+      },
+      {
+        "ordinal": 7,
+        "name": "zip",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "zip"
+          }
+        }
+      },
+      {
+        "ordinal": 8,
+        "name": "country",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "country"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "phone",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "phone"
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "email",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "email"
+          }
+        }
+      },
+      {
+        "ordinal": 11,
+        "name": "website",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "website"
+          }
+        }
+      },
+      {
+        "ordinal": 12,
+        "name": "default_tax_rate",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "default_tax_rate"
+          }
+        }
+      },
+      {
+        "ordinal": 13,
+        "name": "quote_terms",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "quote_terms"
+          }
+        }
+      },
+      {
+        "ordinal": 14,
+        "name": "receipt_footer",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "company_info",
+            "name": "receipt_footer"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": []
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "3c43613aecff31bf5ee2634ce875c5931925599c6c981adcdf670376b4b51aca"
+}

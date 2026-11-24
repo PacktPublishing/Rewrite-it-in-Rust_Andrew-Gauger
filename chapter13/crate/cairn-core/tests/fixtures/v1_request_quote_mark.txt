@@ -1,0 +1,1 @@
+{"dealer":"CAIRN","po":"SO-2026-0204","customerPo":"","shipTo":{"name":"Harlow "Old Mill" Manufacturing","address":"2250 Foundry Ave","city":"Fresno","state":"CA","zip":"93721"},"lines":[{"sku":"CS-DEVKIT","qty":2},{"sku":"CS-VB220","qty":4}]}

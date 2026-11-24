@@ -1,0 +1,205 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, version, order_number, order_date::text AS \"order_date!\",\n                required_date::text, ship_date::text, order_status,\n                rep_id, customer_id, contact_id, quote_id, customer_po,\n                tax_rate, shipping_cost, ship_via, tracking_number, notes\n         FROM orders\n         WHERE $1::int4 IS NULL OR id = $1\n         ORDER BY order_number DESC",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "version"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "order_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "order_number"
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "order_date!",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 4,
+        "name": "required_date",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 5,
+        "name": "ship_date",
+        "type_info": "Text",
+        "origin": "Expression"
+      },
+      {
+        "ordinal": 6,
+        "name": "order_status",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "order_status"
+          }
+        }
+      },
+      {
+        "ordinal": 7,
+        "name": "rep_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "rep_id"
+          }
+        }
+      },
+      {
+        "ordinal": 8,
+        "name": "customer_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "customer_id"
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "contact_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "contact_id"
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "quote_id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "quote_id"
+          }
+        }
+      },
+      {
+        "ordinal": 11,
+        "name": "customer_po",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "customer_po"
+          }
+        }
+      },
+      {
+        "ordinal": 12,
+        "name": "tax_rate",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "tax_rate"
+          }
+        }
+      },
+      {
+        "ordinal": 13,
+        "name": "shipping_cost",
+        "type_info": "Numeric",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "shipping_cost"
+          }
+        }
+      },
+      {
+        "ordinal": 14,
+        "name": "ship_via",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "ship_via"
+          }
+        }
+      },
+      {
+        "ordinal": 15,
+        "name": "tracking_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "tracking_number"
+          }
+        }
+      },
+      {
+        "ordinal": 16,
+        "name": "notes",
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "notes"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      null,
+      null,
+      null,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "8cd973b805502b4d41b690fbf43148cfcc3a7a80df7f7d0bc00734ca0d32ed21"
+}

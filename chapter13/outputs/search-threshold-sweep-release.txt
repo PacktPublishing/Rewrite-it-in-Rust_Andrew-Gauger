@@ -1,0 +1,13 @@
+ products |  scan med scan worst |   tri med tri worst | tri build
+    10000 |     1.297     1.702 |     0.002     1.016 |      36 ms
+    25000 |     3.234     4.174 |     0.002     2.498 |      91 ms
+    50000 |     6.455     8.444 |     0.002     5.090 |     181 ms
+   100000 |    12.831    16.698 |     0.003     9.854 |     363 ms
+   200000 |    25.898    33.875 |     0.005    19.829 |     728 ms
+   300000 |    39.251    51.594 |     0.005    29.639 |    1105 ms
+   500000 |    64.687    83.146 |     0.006    46.775 |    1837 ms
+   750000 |    95.104   124.125 |     0.006    72.679 |    2639 ms
+  1000000 |   126.196   167.833 |     0.006    96.691 |    3560 ms
+worst case passes 16.7 ms: scan at about Some(100011) products, trigram at Some(168629)
+worst case passes 100 ms: scan at about Some(602820) products, trigram at None
+          1951334400  maximum resident set size

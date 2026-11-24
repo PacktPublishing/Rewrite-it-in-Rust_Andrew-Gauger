@@ -1,0 +1,9 @@
+form_state::tests::a_conflict_goes_to_the_dialog_and_back_to_editing
+form_state::tests::a_second_save_while_saving_is_dropped
+form_state::tests::an_answer_with_nothing_out_is_stale
+form_state::tests::failed_keeps_the_form_open_in_error
+form_state::tests::save_after_an_error_tries_again
+form_state::tests::save_moves_editing_to_saving
+form_state::tests::saved_leaves_the_machine_as_what_was_asked
+form_state::tests::typing_clears_an_error_and_is_ignored_while_saving
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

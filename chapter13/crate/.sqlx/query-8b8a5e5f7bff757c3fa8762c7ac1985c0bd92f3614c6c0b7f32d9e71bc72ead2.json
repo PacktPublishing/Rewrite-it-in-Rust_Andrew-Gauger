@@ -1,0 +1,18 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE manufacturer_orders\n            SET http_status = $2, response_body = $3, error_text = $4,\n                manufacturer_ref = $5, version = version + 1\n          WHERE id = $1",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Text",
+        "Varchar",
+        "Varchar"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "8b8a5e5f7bff757c3fa8762c7ac1985c0bd92f3614c6c0b7f32d9e71bc72ead2"
+}

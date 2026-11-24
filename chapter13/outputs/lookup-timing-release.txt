@@ -1,0 +1,22 @@
+   0.243 ms  li-              12 shown
+   0.770 ms  a                12 shown
+   0.892 ms  s                12 shown
+   0.982 ms  lorawan sensor   12 shown
+   1.061 ms  pipe rail        12 shown
+   1.076 ms  Accessory        12 shown
+   1.119 ms  calibrated       12 shown
+   1.176 ms  LI-9999          0 shown
+   1.200 ms  tempe            12 shown
+   1.211 ms  zzzzq            0 shown
+   1.235 ms  sensor           12 shown
+   1.271 ms  uplink           12 shown
+   1.283 ms  ateway           12 shown
+   1.293 ms  LI-05            12 shown
+   1.306 ms  temp             12 shown
+   1.347 ms  LI-05000         1 shown
+   1.355 ms  rail             12 shown
+   1.392 ms  LI-0500          10 shown
+   1.415 ms  2.4              12 shown
+   1.536 ms  te               12 shown
+10000 products (release): rows built in 3.1 ms, median 1.235 ms, worst 1.536 ms
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s

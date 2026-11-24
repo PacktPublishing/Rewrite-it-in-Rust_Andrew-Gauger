@@ -1,0 +1,70 @@
+== 10000 products (release)
+scan list built            0.9 ms
+prefix index built        22.7 ms
+trigram index built       46.7 ms
+trigram index: 1426 distinct trigrams, 913876 postings, longest list 10000, posting lists 3.5 MB (366 bytes a row)
+one product pushed      0.0082 ms
+query               scan   prefix  trigram |    cands   match |   isect  verify   order | same
+LI-0050000         1.095    0.000    0.002 |       11       0 |   0.001   0.001   0.000 | yes
+LI-005000          1.111    0.000    0.002 |       11       0 |   0.001   0.001   0.000 | yes
+LI-0050            1.280    0.000    0.018 |      111       0 |   0.004   0.015   0.000 | yes
+li-                0.218    0.294    0.222 |    10000   10000 |   0.001   0.208   0.012 | yes
+temp               1.420    0.097    0.084 |      961     961 |   0.005   0.077   0.001 | yes
+tempe              1.316    0.094    0.085 |      961     961 |   0.010   0.073   0.001 | yes
+sensor             1.313    0.306    0.325 |     2326    2326 |   0.044   0.277   0.004 | yes
+ateway             1.375    0.001    0.322 |     2364    2364 |   0.043   0.275   0.004 | yes
+lorawan sensor     1.024    0.106    0.014 |       89      89 |   0.009   0.005   0.000 | yes
+calibrated         1.208    0.756    1.040 |     5941    5941 |   0.315   0.717   0.007 | yes
+uplink             1.375    0.875    0.962 |     5946    5946 |   0.139   0.816   0.007 | yes
+rail               1.446    0.895    0.886 |     5923    5923 |   0.048   0.830   0.007 | yes
+Accessory          1.170    0.220    0.270 |     1698    1698 |   0.062   0.206   0.002 | yes
+2.4                1.496    0.055    0.051 |      334     334 |   0.000   0.050   0.001 | yes
+s                  0.979    0.415    0.966 |    10000    9609 |   0.001   0.954   0.011 | scan (<3 bytes)
+te                 1.603    0.096    1.611 |    10000    9637 |   0.001   1.599   0.011 | scan (<3 bytes)
+a                  0.772    0.823    0.802 |    10000    9996 |   0.001   0.789   0.012 | scan (<3 bytes)
+pipe rail          1.139    0.686    0.282 |     1356     500 |   0.122   0.160   0.001 | yes
+zzzzq              1.304    0.000    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+gat                1.503    0.342    0.332 |     2364    2364 |   0.000   0.328   0.003 | yes
+ens                1.535    0.000    0.336 |     2326    2326 |   0.000   0.333   0.003 | yes
+ura                1.511    0.000    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+wire               1.332    0.085    0.085 |     1020    1020 |   0.005   0.079   0.002 | yes
+LI-9999999         1.035    0.000    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+scan    median 1.313 ms, worst 1.603 ms
+prefix  median 0.097 ms, worst 0.895 ms, same results on 20 of 24
+trigram median 0.270 ms, worst 1.611 ms, same results on 24 of 24
+queries of three bytes or more only: scan median 1.313 ms, trigram median 0.085 ms, worst 1.040 ms
+== 100000 products (release)
+scan list built           10.7 ms
+prefix index built       246.7 ms
+trigram index built      437.4 ms
+trigram index: 1427 distinct trigrams, 9157353 postings, longest list 100000, posting lists 34.9 MB (366 bytes a row)
+one product pushed      0.0075 ms
+query               scan   prefix  trigram |    cands   match |   isect  verify   order | same
+LI-0050000        10.732    0.001    0.007 |       21       1 |   0.004   0.002   0.000 | yes
+LI-005000         10.894    0.002    0.006 |       21      10 |   0.004   0.002   0.000 | yes
+LI-0050           12.530    0.033    0.084 |     1128    1000 |   0.047   0.036   0.001 | yes
+li-                2.250    2.989    2.185 |   100000  100000 |   0.007   2.064   0.115 | yes
+temp              13.222    1.649    0.937 |    10071   10071 |   0.087   0.838   0.012 | yes
+tempe             12.566    1.617    0.958 |    10071   10071 |   0.162   0.784   0.011 | yes
+sensor            12.856    3.094    3.626 |    23509   23509 |   0.607   2.980   0.037 | yes
+ateway            13.333    0.001    3.629 |    23614   23614 |   0.666   2.936   0.027 | yes
+lorawan sensor     9.857    1.716    0.166 |      820     820 |   0.116   0.048   0.001 | yes
+calibrated        11.489    7.423   11.459 |    59632   59632 |   4.186   7.202   0.072 | yes
+uplink            13.528    8.435    9.984 |    59438   59438 |   1.715   8.200   0.069 | yes
+rail              14.054    8.786    9.235 |    59561   59561 |   0.573   8.591   0.071 | yes
+Accessory         11.424    2.535    2.990 |    16900   16900 |   0.905   2.065   0.019 | yes
+2.4               15.119    1.369    0.482 |     3334    3334 |   0.000   0.477   0.005 | yes
+s                  9.586    4.382    9.389 |   100000   95922 |   0.004   9.275   0.110 | scan (<3 bytes)
+te                16.496    1.742   15.897 |   100000   96582 |   0.004  15.782   0.111 | scan (<3 bytes)
+a                  8.050    9.014    8.033 |   100000   99946 |   0.004   7.908   0.119 | scan (<3 bytes)
+pipe rail         11.338    6.896    3.387 |    13832    4967 |   1.536   1.844   0.006 | yes
+zzzzq             12.697    0.001    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+gat               14.875    3.711    3.385 |    23614   23614 |   0.002   3.356   0.027 | yes
+ens               15.269    0.001    3.419 |    23509   23509 |   0.002   3.390   0.027 | yes
+ura               15.035    0.001    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+wire              13.602    1.398    0.893 |    10055   10055 |   0.076   0.806   0.011 | yes
+LI-9999999        10.527    0.001    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+scan    median 12.697 ms, worst 16.496 ms
+prefix  median 1.716 ms, worst 9.014 ms, same results on 20 of 24
+trigram median 2.990 ms, worst 15.897 ms, same results on 24 of 24
+queries of three bytes or more only: scan median 12.697 ms, trigram median 0.958 ms, worst 11.459 ms

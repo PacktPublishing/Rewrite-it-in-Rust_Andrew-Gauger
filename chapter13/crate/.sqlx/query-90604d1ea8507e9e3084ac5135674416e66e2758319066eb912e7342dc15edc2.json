@@ -1,0 +1,65 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO orders\n                 (customer_id, contact_id, rep_id, quote_id,\n                  customer_po, order_date, required_date, ship_date,\n                  order_status, tax_rate, shipping_cost, ship_via,\n                  tracking_number, notes)\n             VALUES ($1, $2, $3, $4, $5, $6::text::date,\n                     $7::text::date, $8::text::date, $9, $10, $11,\n                     $12, $13, $14)\n             RETURNING id, order_number, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "order_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "order_number"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "orders",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Int4",
+        "Int4",
+        "Varchar",
+        "Text",
+        "Text",
+        "Text",
+        "Varchar",
+        "Numeric",
+        "Numeric",
+        "Varchar",
+        "Varchar",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "90604d1ea8507e9e3084ac5135674416e66e2758319066eb912e7342dc15edc2"
+}

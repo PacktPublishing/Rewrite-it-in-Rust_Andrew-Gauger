@@ -1,0 +1,16 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "DELETE FROM quote_lines\n          WHERE quote_id = $1 AND id = $2 AND version = $3",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Int4"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "eebb113219294506d5745c076117fb02058adbc67881a1cf82f84bb1c9187bcd"
+}

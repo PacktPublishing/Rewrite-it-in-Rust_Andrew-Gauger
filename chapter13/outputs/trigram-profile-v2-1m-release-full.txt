@@ -1,0 +1,58 @@
+
+running 1 test
+== 1000000 products (release)
+scan list built          148.5 ms
+prefix index built      2728.0 ms
+trigram index built     4845.3 ms
+trigram index: 1437 distinct trigrams, 91605735 postings, longest list 1000000, posting lists 349.4 MB (366 bytes a row)
+one product pushed      0.0152 ms
+query               scan   prefix  trigram |    cands   match |   isect  verify   order | same
+LI-0050000       106.344    0.003    0.042 |       21       1 |   0.041   0.001   0.000 | yes
+LI-005000        108.082    0.004    0.041 |       21      10 |   0.040   0.001   0.000 | yes
+LI-0050          129.053    0.090    0.178 |     1128    1000 |   0.162   0.014   0.001 | yes
+li-               77.362   82.230    7.047 |  1000000 1000000 |   0.089   5.824   1.133 | yes
+temp             136.245   19.331    9.822 |   100350  100350 |   1.105   8.602   0.115 | yes
+tempe            130.520   19.373   10.700 |   100350  100350 |   2.138   8.444   0.119 | yes
+sensor           132.650   32.323   26.199 |   235809  235809 |   8.744  17.188   0.267 | yes
+ateway           136.698    0.002   27.098 |   236643  236643 |   8.887  17.943   0.267 | yes
+lorawan sensor    95.272   19.168    1.846 |     8303    8303 |   1.520   0.316   0.010 | yes
+calibrated       115.728   73.728   92.474 |   595682  595682 |  58.551  33.209   0.713 | yes
+uplink           138.482   85.935   69.455 |   594324  594324 |  24.400  44.367   0.688 | yes
+rail             146.817   89.501   57.552 |   594845  594845 |   8.737  48.119   0.696 | yes
+Accessory        116.366   25.496   25.670 |   166458  166458 |  12.655  12.810   0.204 | yes
+2.4              149.845   13.708    9.224 |    33334   33334 |   0.003   9.174   0.046 | yes
+s                110.775   52.429   43.872 |  1000000  959339 |   0.040  42.645   1.185 | scan (<3 bytes)
+te               173.591   20.768  103.160 |  1000000  965849 |   0.040 101.974   1.144 | scan (<3 bytes)
+a                104.567  109.979   41.273 |  1000000  999453 |   0.043  40.086   1.144 | scan (<3 bytes)
+pipe rail        111.919   68.602   33.467 |   139275   49964 |  20.901  12.506   0.059 | yes
+zzzzq            130.131    0.003    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+gat              149.810   37.356   21.356 |   236643  236643 |   0.018  21.063   0.274 | yes
+ens              155.349    0.003   22.316 |   235809  235809 |   0.017  22.034   0.266 | yes
+ura              151.389    0.003    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+wire             138.868   19.016    8.101 |   100790  100790 |   1.082   6.901   0.117 | yes
+LI-9999999       101.506    0.002    0.000 |        0       0 |   0.000   0.000   0.000 | yes
+scan    median 130.520 ms, worst 173.591 ms
+prefix  median 19.373 ms, worst 109.979 ms, same results on 20 of 24
+trigram median 21.356 ms, worst 103.160 ms, same results on 24 of 24
+queries of three bytes or more only: scan median 130.520 ms, trigram median 9.822 ms, worst 92.474 ms
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 40.57s
+
+       41.27 real        39.08 user         1.16 sys
+          2293334016  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              410296  page reclaims
+                1302  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   1  signals received
+                2890  voluntary context switches
+               32280  involuntary context switches
+          2663299628  instructions retired
+          1002798253  cycles elapsed
+           126027840  peak memory footprint

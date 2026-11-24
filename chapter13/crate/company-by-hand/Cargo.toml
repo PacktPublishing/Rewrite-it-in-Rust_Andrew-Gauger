@@ -1,0 +1,13 @@
+[package]
+name = "company-by-hand"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+description = "Chapter 10's first egui screen: V1's Company Info form, drawn by hand with egui's own widgets. No form kit, no database."
+
+[dependencies]
+eframe = "0.37"
+egui = "0.37"
+
+[dev-dependencies]
+egui_kittest = { version = "0.37", features = ["wgpu", "snapshot"] }

@@ -1,0 +1,52 @@
+10000 products (release)
+  index built in 22.1 ms; one product added in 0.0017 ms; lookups rebuilt in 3.9 ms
+  query               scan ms   index ms  same results
+  LI-05000              1.065      0.000  yes
+  LI-0500               1.173      0.001  yes
+  LI-05                 1.157      0.027  yes
+  li-                   0.224      0.292  yes
+  temp                  1.232      0.075  yes
+  tempe                 1.192      0.072  yes
+  sensor                1.206      0.271  yes
+  ateway                1.254      0.000  NO
+  lorawan sensor        0.957      0.096  yes
+  calibrated            1.081      0.691  yes
+  uplink                1.279      0.824  yes
+  rail                  1.344      0.837  yes
+  Accessory             1.058      0.191  yes
+  2.4                   1.450      0.050  yes
+  s                     0.913      0.395  NO
+  te                    1.571      0.090  NO
+  a                     0.750      0.814  NO
+  pipe rail             1.053      0.642  yes
+  zzzzq                 1.275      0.000  yes
+  LI-9999               1.167      0.000  yes
+  scan  : median 1.173 ms, worst 1.571 ms
+  index : median 0.096 ms, worst 0.837 ms
+  the index differs on 4 of 20: ["ateway", "s", "te", "a"]
+100000 products (release)
+  index built in 249.9 ms; one product added in 0.0018 ms; lookups rebuilt in 41.9 ms
+  query               scan ms   index ms  same results
+  LI-05000             11.144      0.000  yes
+  LI-0500              11.850      0.001  yes
+  LI-05                12.423      0.027  yes
+  li-                   2.176      3.645  yes
+  temp                 12.571      0.819  yes
+  tempe                12.192      0.823  yes
+  sensor               12.235      2.889  yes
+  ateway               12.757      0.000  NO
+  lorawan sensor        9.690      1.110  yes
+  calibrated           11.307      7.314  yes
+  uplink               13.574      8.725  yes
+  rail                 14.077      8.806  yes
+  Accessory            10.991      2.095  yes
+  2.4                  14.679      0.507  yes
+  s                     9.287      4.301  NO
+  te                   15.601      0.863  NO
+  a                     7.878      9.101  NO
+  pipe rail            10.821      6.670  yes
+  zzzzq                12.674      0.000  yes
+  LI-9999              11.725      0.001  yes
+  scan  : median 12.192 ms, worst 15.601 ms
+  index : median 1.110 ms, worst 9.101 ms
+  the index differs on 4 of 20: ["ateway", "s", "te", "a"]

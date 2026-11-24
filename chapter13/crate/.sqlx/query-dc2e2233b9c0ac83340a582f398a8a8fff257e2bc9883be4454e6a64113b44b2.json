@@ -1,0 +1,43 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO manufacturer_orders\n             (order_id, correlation_id, attempt, sent_by_rep_id,\n              request_body)\n           SELECT $1, $2, COALESCE(MAX(attempt), 0) + 1,\n                  COALESCE($3, (SELECT rep_id FROM users\n                                 WHERE role_name = session_user)),\n                  $4\n             FROM manufacturer_orders\n            WHERE correlation_id = $2\n           RETURNING id, attempt",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "manufacturer_orders",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "attempt",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "manufacturer_orders",
+            "name": "attempt"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Uuid",
+        "Int4",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "dc2e2233b9c0ac83340a582f398a8a8fff257e2bc9883be4454e6a64113b44b2"
+}

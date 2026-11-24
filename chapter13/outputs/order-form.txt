@@ -1,0 +1,8 @@
+quote after Save & Close: the quote list
+quote after Save & New: Quote # = Some("(New)")
+.SKU before Some("CS-TH050"), after the answer Some("CS-TH050")
+.held open, save failed: Notes = "Ship to the new dock"
+closed first, save failed: Notes = ""
+.after Save & Close: the order list
+.after Save & New: Order # = Some("(New)")
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 3.23s
