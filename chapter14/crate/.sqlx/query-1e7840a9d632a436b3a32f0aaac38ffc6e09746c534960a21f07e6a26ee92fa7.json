@@ -1,0 +1,38 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE contacts\n                        SET first_name = $3, last_name = $4,\n                            title = $5, email = $6, phone = $7,\n                            mobile = $8, is_primary = $9, notes = $10,\n                            version = version + 1\n                      WHERE id = $1 AND customer_id = $2\n                        AND version = $11\n                     RETURNING version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "contacts",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Bool",
+        "Text",
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "1e7840a9d632a436b3a32f0aaac38ffc6e09746c534960a21f07e6a26ee92fa7"
+}

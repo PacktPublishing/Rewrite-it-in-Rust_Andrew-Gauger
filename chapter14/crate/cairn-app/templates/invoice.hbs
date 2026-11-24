@@ -1,0 +1,53 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Invoice {{number}}</title>
+<link rel="stylesheet" href="report.css"></head>
+<body>
+<div class="letterhead">
+  <div><img src="logo.svg"><h1>INVOICE</h1></div>
+  <div class="co"><b>{{company.name}}</b>
+    {{#each company.address}}<br>{{this}}{{/each}}
+    <br>{{company.contact}}</div>
+</div>
+<table class="meta">
+  <tr><td class="k">Invoice #</td><td>{{number}}</td>
+      <td class="k">Invoice date</td><td>{{date}}</td></tr>
+  <tr><td class="k">Customer PO</td><td>{{customer_po}}</td>
+      <td class="k">Terms</td><td>{{terms}}</td></tr>
+  <tr><td class="k">Sales rep</td><td>{{rep}}</td>
+      <td class="k">Ship via</td><td>{{ship_via}} {{tracking}}</td></tr>
+</table>
+<div class="addresses">
+  <div class="window"><h2>Bill to</h2>
+    {{#each bill_to}}{{this}}<br>{{/each}}</div>
+  <div><h2>Ship to</h2>
+    {{#each ship_to}}{{this}}<br>{{/each}}</div>
+</div>
+<table class="rows">
+  <thead><tr><th>#</th><th>SKU</th><th>Description</th>
+    <th class="r">Qty</th><th class="r">Unit price</th>
+    <th class="r">Disc.</th><th class="r">Amount</th></tr></thead>
+  <tbody>
+  {{#each lines}}
+  <tr><td>{{n}}</td><td>{{sku}}</td><td>{{description}}</td>
+    <td class="r">{{quantity}}</td><td class="r">{{unit_price}}</td>
+    <td class="r">{{discount}}</td><td class="r">{{total}}</td></tr>
+  {{/each}}
+  </tbody>
+</table>
+<table class="totals">
+  <tr><td>Subtotal ({{line_count}} lines)</td>
+      <td class="r">{{subtotal}}</td></tr>
+  <tr><td>Tax ({{tax_rate}})</td><td class="r">{{tax}}</td></tr>
+  <tr><td>Shipping</td><td class="r">{{shipping}}</td></tr>
+  <tr class="grand"><td>Invoice total</td>
+      <td class="r">{{total}}</td></tr>
+  <tr><td>Paid</td><td class="r">{{paid}}</td></tr>
+  <tr><td><b>Balance due</b></td>
+      <td class="r"><b>{{balance_due}}</b></td></tr>
+</table>
+{{#if notes}}<p class="notes">{{notes}}</p>{{/if}}
+<div class="stub">
+  <b>Remittance.</b> Invoice {{number}} &middot; Balance due
+  {{balance_due}} &middot; Make payable to {{company.name}}.
+</div>
+</body></html>

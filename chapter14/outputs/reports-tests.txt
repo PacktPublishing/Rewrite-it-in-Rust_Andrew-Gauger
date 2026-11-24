@@ -1,0 +1,28 @@
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 20.82s
+     Running tests/reports.rs (target/debug/deps/reports-36594027b58cc4ed)
+
+running 8 tests
+test a_field_the_view_lacks_is_an_error_not_a_blank ... template: Error rendering "bad" line 1, col 8: Failed to access variable in strict mode Some("grand_total")
+ok
+test a_long_invoice_repeats_its_header_and_numbers_its_pages ... 3 pages
+ok
+test a_missing_weasyprint_is_named ... WeasyPrint not found at /nowhere/weasyprint
+ok
+test every_report_renders_to_a_pdf ... Quote(QuoteId(1)): 1 page(s)
+Invoice(OrderId(4)): 1 page(s)
+Receipt { order: OrderId(4), payment: PaymentId(40) }: 1 page(s)
+Commission(Date { year: 2026, month: 10, day: 1 }): 2 page(s)
+RmaSummary(Date { year: 2026, month: 10, day: 1 }): 1 page(s)
+ok
+test the_commission_totals_are_the_sum_of_the_statements ... ok
+test the_invoice_prints_all_eight_lines ... 1 page(s)
+ok
+test the_receipt_matches_the_core_numbers ... ok
+test the_rma_summary_groups_returns_by_route ... Advance Replacement (1)
+Carrier Claim (1)
+Manufacturer Repair (1)
+ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.32s
+

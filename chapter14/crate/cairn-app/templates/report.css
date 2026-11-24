@@ -1,0 +1,52 @@
+/* One stylesheet for every Cairn report. Edit freely: no rebuild. */
+@page {
+  size: Letter;
+  margin: 0.75in 0.75in 0.9in 0.75in;
+  @bottom-left {
+    content: "Cairn Systems";
+    font: 8pt Helvetica, Arial, sans-serif;
+    color: #666;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font: 8pt Helvetica, Arial, sans-serif;
+    color: #666;
+  }
+}
+body { font: 10pt/1.35 Helvetica, Arial, sans-serif; color: #111; }
+h1 { font-size: 20pt; margin: 0; color: #2b5d7a; letter-spacing: 0.05em; }
+h2 { font-size: 12pt; margin: 0 0 4pt 0; color: #2b5d7a; }
+.letterhead { display: flex; justify-content: space-between;
+  border-bottom: 2pt solid #2b5d7a; padding-bottom: 8pt; }
+.letterhead img { height: 40pt; }
+.letterhead .co { text-align: right; font-size: 9pt; }
+.meta { width: 100%; margin: 10pt 0; border-collapse: collapse; }
+.meta td { padding: 2pt 6pt 2pt 0; vertical-align: top; }
+.meta .k { color: #666; width: 18%; }
+.addresses { display: flex; gap: 24pt; margin: 0.35in 0 12pt 0; }
+.addresses div { flex: 1; }
+/* Window envelope: the bill-to block sits where the window is. */
+.window { min-height: 1in; }
+table.rows { width: 100%; border-collapse: collapse; margin-top: 8pt; }
+table.rows thead { display: table-header-group; }
+table.rows th { text-align: left; background: #2b5d7a; color: #fff;
+  padding: 4pt 6pt; font-size: 9pt; }
+table.rows td { padding: 4pt 6pt; border-bottom: 0.5pt solid #ccc; }
+table.rows tr { break-inside: avoid; }
+.r { text-align: right; }
+.totals { margin: 10pt 0 0 auto; width: 3in; break-inside: avoid;
+  border-collapse: collapse; }
+.totals td { padding: 2pt 6pt; }
+.totals .grand td { border-top: 1.5pt solid #111; font-weight: 700; }
+.stub { break-inside: avoid; margin-top: 18pt; padding-top: 10pt;
+  border-top: 1pt dashed #666; font-size: 9pt; }
+.notes { margin-top: 10pt; color: #333; }
+.terms { margin-top: 14pt; font-size: 8.5pt; color: #444;
+  break-inside: avoid; }
+.rep { break-after: page; }
+.rep:last-of-type { break-after: auto; }
+.summary { break-before: page; }
+.group { break-inside: avoid; margin-top: 12pt; }
+.big { font-size: 22pt; font-weight: 700; color: #2b5d7a; }
+table.rows tfoot { display: table-row-group; }
+table.rows tfoot td { border-top: 1.5pt solid #111; padding-top: 5pt; }

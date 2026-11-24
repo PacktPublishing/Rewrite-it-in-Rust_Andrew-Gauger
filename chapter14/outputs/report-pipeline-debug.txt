@@ -1,0 +1,23 @@
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.31s
+     Running tests/report_pipeline.rs (target/debug/deps/report_pipeline-37ac7aa4c3209a1f)
+
+running 4 tests
+test a_slow_render_does_not_hold_up_a_lookup ... a customer lookup alone: 26 ms
+the same lookup behind two slow renders: 36 ms
+ok
+test an_eight_line_invoice_through_the_worker ... invoice for an 8-line order: 439 ms, Pages:           1, /var/folders/hc/pwcgm2y50qj5p_xspvf5sf2w0000gn/T/cairn-reports/pipeline/invoice-13555.pdf
+ok
+test every_report_from_the_placeholder_history ... Quote(QuoteId(19427)): 430 ms, Pages:           1
+Invoice(OrderId(13404)): 457 ms, Pages:           1
+Receipt { order: OrderId(13404), payment: PaymentId(15728) }: 455 ms, Pages:           1
+Commission(Date { year: 2026, month: 10, day: 1 }): 920 ms, Pages:           15
+RmaSummary(Date { year: 2026, month: 10, day: 1 }): 620 ms, Pages:           7
+ok
+test weasyprint_failures_come_back_in_its_own_words ... missing: WeasyPrint not found at /nowhere/weasyprint
+refused: WeasyPrint exit status: 3: ERROR: no such font
+gone: Invoice(OrderId(2000000000)) is no longer there
+ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.02s
+

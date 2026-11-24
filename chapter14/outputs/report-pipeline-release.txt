@@ -1,0 +1,28 @@
+   Compiling cairn-app v0.1.0 (/Users/andy/Users/andy/rewrite-it-rust/part 2/crate/cairn-app)
+    Finished `release` profile [optimized] target(s) in 22.40s
+     Running tests/report_pipeline.rs (target/release/deps/report_pipeline-74227306cd8e63aa)
+
+running 4 tests
+test a_slow_render_does_not_hold_up_a_lookup ... a customer lookup alone: 18 ms
+the same lookup behind two slow renders: 25 ms
+ok
+test an_eight_line_invoice_through_the_worker ... invoice for an 8-line order: 596 ms, Pages:           1, /var/folders/hc/pwcgm2y50qj5p_xspvf5sf2w0000gn/T/cairn-reports/pipeline/invoice-13559.pdf
+ok
+test every_report_from_the_placeholder_history ... Quote(QuoteId(19427)): 459 ms, Pages:           1
+Invoice(OrderId(13404)): 470 ms, Pages:           1
+Receipt { order: OrderId(13404), payment: PaymentId(15728) }: 478 ms, Pages:           1
+Commission(Date { year: 2026, month: 10, day: 1 }): 834 ms, Pages:           15
+RmaSummary(Date { year: 2026, month: 10, day: 1 }): 634 ms, Pages:           7
+List { list: Orders, month: Date { year: 2026, month: 10, day: 1 }, csv: false }: 614 ms, Pages:           4
+List { list: SalesByProduct, month: Date { year: 2026, month: 10, day: 1 }, csv: false }: 416 ms, Pages:           1
+List { list: CashReceived, month: Date { year: 2026, month: 10, day: 1 }, csv: true }: 48 ms, 65 bytes
+List { list: QuotePipeline, month: Date { year: 2026, month: 10, day: 1 }, csv: false }: 404 ms, Pages:           1
+List { list: OpenReceivables, month: Date { year: 2026, month: 10, day: 1 }, csv: false }: 30444 ms, Pages:           367
+ok
+test weasyprint_failures_come_back_in_its_own_words ... missing: WeasyPrint not found at /nowhere/weasyprint
+refused: WeasyPrint exit status: 3: ERROR: no such font
+gone: Invoice(OrderId(2000000000)) is no longer there
+ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 35.73s
+

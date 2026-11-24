@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>{{title}}, {{month}}</title>
+<link rel="stylesheet" href="report.css"></head>
+<body>
+<div class="letterhead">
+  <div><img src="logo.svg"><h1>{{title}}</h1></div>
+  <div class="co"><b>{{company.name}}</b><br>{{month}}
+    <br>{{count}} rows</div>
+</div>
+<table class="rows">
+  <thead><tr>
+    {{#each columns}}<th{{#if right}} class="r"{{/if}}>{{name}}</th>{{/each}}
+  </tr></thead>
+  <tbody>
+  {{#each rows}}
+  <tr>{{#each cells}}<td{{#if right}} class="r"{{/if}}>{{v}}</td>{{/each}}</tr>
+  {{/each}}
+  </tbody>
+  {{#if total}}
+  <tfoot><tr class="grand">
+    {{#each total.cells}}<td{{#if right}} class="r"{{/if}}><b>{{v}}</b></td>{{/each}}
+  </tr></tfoot>
+  {{/if}}
+</table>
+</body></html>

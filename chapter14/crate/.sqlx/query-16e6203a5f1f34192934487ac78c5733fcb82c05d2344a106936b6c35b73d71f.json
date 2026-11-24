@@ -1,0 +1,36 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE payments\n                        SET payment_date = $3::text::date,\n                            amount = $4, payment_method = $5,\n                            payment_ref = $6, received_by_rep_id = $7,\n                            notes = $8, version = version + 1\n                      WHERE id = $1 AND order_id = $2 AND version = $9\n                     RETURNING version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "payments",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Text",
+        "Numeric",
+        "Varchar",
+        "Varchar",
+        "Int4",
+        "Text",
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "16e6203a5f1f34192934487ac78c5733fcb82c05d2344a106936b6c35b73d71f"
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Returns opened, {{month}}</title>
+<link rel="stylesheet" href="report.css"></head>
+<body>
+<div class="letterhead">
+  <div><img src="logo.svg"><h1>RMA SUMMARY</h1></div>
+  <div class="co"><b>{{company.name}}</b><br>Returns opened,
+    {{month}}<br>{{total}} in all</div>
+</div>
+{{#each groups}}
+<div class="group"><h2>{{route}} ({{count}})</h2>
+<table class="rows">
+  <thead><tr><th>RMA</th><th>Opened</th><th>Customer</th>
+    <th>Product</th><th>Reason</th><th>Status</th></tr></thead>
+  <tbody>
+  {{#each returns}}
+  <tr><td>{{number}}</td><td>{{opened}}</td><td>{{customer}}</td>
+    <td>{{product}}</td><td>{{reason}}</td><td>{{status}}</td></tr>
+  {{/each}}
+  </tbody>
+</table></div>
+{{/each}}
+</body></html>

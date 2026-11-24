@@ -1,0 +1,60 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO customers\n                     (company_name, industry, phone, email, website,\n                      bill_address, bill_city, bill_state, bill_zip,\n                      bill_country, ship_address, ship_city,\n                      ship_state, ship_zip, ship_country,\n                      assigned_rep_id, payment_terms, tax_exempt,\n                      customer_status, customer_since, notes)\n                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,\n                         $12, $13, $14, $15, $16, $17, $18, $19,\n                         $20::text::date, $21)\n                 RETURNING id, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "customers",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Int4",
+        "Varchar",
+        "Bool",
+        "Varchar",
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "b905e8109987b5f6f4fcf76641ab481ed4f139c288812c24f8111a09586b9872"
+}

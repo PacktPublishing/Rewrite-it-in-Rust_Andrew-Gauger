@@ -1,0 +1,32 @@
+[package]
+name = "cairn-app"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+description = "Cairn V2, the desktop app."
+default-run = "cairn-app"
+
+[dependencies]
+cairn-auth = { version = "0.1.0", path = "../cairn-auth" }
+cairn-core = { version = "0.1.0", path = "../cairn-core" }
+cairn-forms = { version = "0.1.0", path = "../cairn-forms" }
+eframe = "0.37"
+egui = "0.37"
+egui_extras = "0.37"
+handlebars = "6.4"
+iana-time-zone = "0.1.65"
+rust_decimal = "1.43"
+# rustls only: no native-tls or OpenSSL in the build.
+reqwest = { version = "0.12.28", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+sqlx = { version = "0.9", default-features = false, features = ["postgres", "runtime-tokio", "tls-rustls", "rust_decimal", "uuid", "macros"] }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "sync", "time", "macros", "process", "io-util", "fs"] }
+tracing = "0.1"
+tracing-appender = "0.2"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1.29.0", features = ["serde"] }
+
+[dev-dependencies]
+mock-manufacturer = { path = "../mock-manufacturer" }
+egui_kittest = { version = "0.37", features = ["wgpu", "snapshot"] }

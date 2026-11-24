@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Receipt {{receipt_number}}</title>
+<link rel="stylesheet" href="report.css"></head>
+<body>
+<div class="letterhead">
+  <div><img src="logo.svg"><h1>RECEIPT</h1></div>
+  <div class="co"><b>{{company.name}}</b>
+    {{#each company.address}}<br>{{this}}{{/each}}
+    <br>{{company.contact}}</div>
+</div>
+<table class="meta">
+  <tr><td class="k">Receipt #</td><td>{{receipt_number}}</td>
+      <td class="k">Date</td><td>{{date}}</td></tr>
+  <tr><td class="k">Order #</td><td>{{order_number}}</td>
+      <td class="k">Method</td><td>{{method}} {{reference}}</td></tr>
+</table>
+<div class="addresses"><div><h2>Received from</h2>
+  {{#each customer}}{{this}}<br>{{/each}}</div></div>
+<p>Amount received</p>
+<p class="big">{{amount}}</p>
+<table class="totals">
+  <tr><td>Order total</td><td class="r">{{order_total}}</td></tr>
+  <tr><td>Paid to date</td><td class="r">{{paid_to_date}}</td></tr>
+  <tr class="grand"><td>Balance</td>
+      <td class="r">{{balance}}</td></tr>
+</table>
+<p class="terms">{{footer}}</p>
+</body></html>

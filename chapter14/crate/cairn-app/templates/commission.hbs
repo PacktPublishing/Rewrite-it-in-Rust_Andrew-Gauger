@@ -1,0 +1,61 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Commission statements, {{month}}</title>
+<link rel="stylesheet" href="report.css"></head>
+<body>
+{{#each reps}}
+<section class="rep">
+<div class="letterhead">
+  <div><img src="logo.svg"><h1>COMMISSION STATEMENT</h1></div>
+  <div class="co"><b>{{../company.name}}</b><br>{{../month}}</div>
+</div>
+<table class="meta"><tr><td class="k">Sales rep</td><td>{{rep}}</td>
+  <td class="k">Rate</td><td>{{rate}}</td></tr></table>
+<table class="rows">
+  <thead><tr><th>Order</th><th>Date</th><th>Status</th>
+    <th class="r">Net sales</th><th class="r">Paid</th>
+    <th class="r">Balance</th><th class="r">Commission</th></tr></thead>
+  <tbody>
+  {{#each orders}}
+  <tr><td>{{order}}</td><td>{{date}}</td><td>{{status}}</td>
+    <td class="r">{{net_sales}}</td><td class="r">{{paid}}</td>
+    <td class="r">{{balance}}</td><td class="r">{{commission}}</td></tr>
+  {{/each}}
+  </tbody>
+</table>
+<table class="totals">
+  <tr><td>Orders</td><td class="r">{{order_count}}</td></tr>
+  <tr><td>Net sales</td><td class="r">{{net_sales}}</td></tr>
+  <tr><td>Orders with no payment</td>
+      <td class="r">{{no_payment}}</td></tr>
+  <tr class="grand"><td>Commission</td>
+      <td class="r">{{commission}}</td></tr>
+</table>
+</section>
+{{/each}}
+<section class="summary">
+<div class="letterhead">
+  <div><img src="logo.svg"><h1>COMMISSION TOTALS</h1></div>
+  <div class="co"><b>{{company.name}}</b><br>{{month}}</div>
+</div>
+<table class="rows">
+  <thead><tr><th>Sales rep</th><th class="r">Orders</th>
+    <th class="r">Net sales</th><th class="r">Commission</th></tr></thead>
+  <tbody>
+  {{#each reps}}
+  <tr><td>{{rep}}</td><td class="r">{{order_count}}</td>
+    <td class="r">{{net_sales}}</td>
+    <td class="r">{{commission}}</td></tr>
+  {{/each}}
+  </tbody>
+</table>
+<table class="totals">
+  <tr><td>Orders</td><td class="r">{{order_count}}</td></tr>
+  <tr><td>Net sales</td><td class="r">{{net_sales}}</td></tr>
+  <tr><td>Orders with no payment</td>
+      <td class="r">{{no_payment}}</td></tr>
+  <tr class="grand"><td>All commission</td>
+      <td class="r">{{commission}}</td></tr>
+</table>
+</section>
+</body></html>

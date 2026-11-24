@@ -1,0 +1,48 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO products\n                     (sku, product_name, category, description,\n                      unit_price, unit_cost, firmware_version,\n                      lead_time_days, active)\n                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)\n                 RETURNING id, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "products",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Text",
+        "Numeric",
+        "Numeric",
+        "Varchar",
+        "Int4",
+        "Bool"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "fe01718b72ec725a093d6b3934048ad0a33d30a0692b19cc4e420cadee5fd8e5"
+}

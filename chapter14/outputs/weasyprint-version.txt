@@ -1,0 +1,1 @@
+WeasyPrint version 70.0

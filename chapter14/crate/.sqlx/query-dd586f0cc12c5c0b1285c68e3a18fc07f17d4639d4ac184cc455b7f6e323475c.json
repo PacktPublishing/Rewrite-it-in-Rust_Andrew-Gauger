@@ -1,0 +1,61 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO quotes\n                 (customer_id, contact_id, rep_id, quote_date,\n                  valid_until, quote_status, tax_rate, shipping_cost,\n                  terms, notes)\n             VALUES ($1, $2, $3, $4::text::date, $5::text::date, $6,\n                     $7, $8, $9, $10)\n             RETURNING id, quote_number, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "quote_number",
+        "type_info": "Varchar",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "quote_number"
+          }
+        }
+      },
+      {
+        "ordinal": 2,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "quotes",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Int4",
+        "Text",
+        "Text",
+        "Varchar",
+        "Numeric",
+        "Numeric",
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "dd586f0cc12c5c0b1285c68e3a18fc07f17d4639d4ac184cc455b7f6e323475c"
+}

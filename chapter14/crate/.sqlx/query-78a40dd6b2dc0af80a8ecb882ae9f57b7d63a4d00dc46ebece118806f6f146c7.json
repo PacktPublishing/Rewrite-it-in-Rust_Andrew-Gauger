@@ -1,0 +1,50 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE sales_reps\n                    SET first_name = $2, last_name = $3, title = $4,\n                        email = $5, phone = $6, extension = $7,\n                        commission_rate = $8, hire_date = $9::text::date,\n                        active = $10, version = version + 1\n                  WHERE id = $1 AND version = $11\n                 RETURNING id, version",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "version",
+        "type_info": "Int4",
+        "origin": {
+          "Table": {
+            "table": "sales_reps",
+            "name": "version"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Varchar",
+        "Numeric",
+        "Text",
+        "Bool",
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "78a40dd6b2dc0af80a8ecb882ae9f57b7d63a4d00dc46ebece118806f6f146c7"
+}

@@ -1,0 +1,16 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "DELETE FROM contacts\n          WHERE customer_id = $1 AND id = $2 AND version = $3",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Int4",
+        "Int4"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "99c2f0b5c36822eb4e09fd773b502e7d20c5c1e17b6b268afd848dca747c51be"
+}
